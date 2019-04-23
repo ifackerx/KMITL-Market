@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Log in to my Poll</h1>
+    <br>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table border="1">
+            {% if error %}
+                <tr>
+                <td colspan="2">
+                    <span style="color: red; text-align: center;">{{ error }}</span>
+                </td>
+                </tr>
+
+            {% endif %}
+            <tr>
+
+                <th>Username : </th>
+                <td><input type="text" name="username"></td>
+
+            </tr>
+
+            <tr>
+                <th>Password : </th>
+                <td><input type="password" name="password"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="...">                <input type="submit" value="LOGIN">
+</td>
+                <input type="hidden" name="next_url" value="{{ next_url }}">
+            </tr>
+
+        </table>
+
+
+    </form>
+
+</body>
+</html>

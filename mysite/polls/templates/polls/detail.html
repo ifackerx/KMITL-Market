@@ -1,0 +1,50 @@
+<!DOCTYPE html> {% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Detail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap/css' %}" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <h1>{{ poll.title }}</h1>
+    <h1>Question List</h1>
+
+    <form method="post" action="{% url 'poll_detail' poll.id %}">
+    {% csrf_token %}
+
+    <div>
+        <a href="{% url 'create_comment' poll_id=poll.id %}">เพิ่ม Comment</a>
+        <input type="submit" value="SAVE">
+        <input type="button" value="CANCLE" onclick="window.location = {% url 'index' %}">
+
+    </div>
+    <ul>
+        {% for question in poll.question_set.all %}
+            <li>
+                {{ question.text }} ?
+
+                    {% for choice in question.choice_set.all %}
+                      <br>  <input type="radio"
+                                   name="choice{{ question.id }}"
+                                   value="{{ choice.id }}"
+                                   {% if choice.answer %}checked="checked"{% endif %}>
+                                    {{ choice.text }} -- {{ choice.answer }}
+                    {% endfor%}
+
+            </li>
+        {% endfor %}
+    </ul>
+    </form>
+
+    <p>  {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Log Out</a>
+        {% endif %}</p>
+</body>
+
+</html>
