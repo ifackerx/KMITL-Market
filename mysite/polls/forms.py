@@ -3,6 +3,9 @@ from django.core.exceptions import ValidationError
 from django.forms import forms
 from django import forms
 
+from .models import Poll, Question, Choice
+
+
 def validate_even(value):
     if value % 2 != 0:
         raise ValidationError('%(value)s ไม่ใช่เลขคู่', params={'value' : value})
@@ -63,3 +66,26 @@ class CommentForm(forms.Form):
 
         if not mail and not mobile:
             raise forms.ValidationError('ต้องกรอก email หรือ moblie number')
+
+
+class QuestionForm(forms.Form):
+    question_id = forms.IntegerField(required=False, widget=forms.HiddenInput)
+    text = forms.CharField()
+    type = forms.ChoiceField(choices=Question.TYPES, initial='01')
+
+
+
+class PollModelForm(forms.ModelForm):
+
+    # email = forms.CharField(validators=[validators.validate_email])
+    # no_questions = forms.IntegerField(label="จำนวนคำถาม", min_value=0, max_value=10, required=True,
+    #                                   validators=[validate_even])
+
+    class Meta:
+        model = Poll
+        exclude = ['del_flag']
+
+class ChoiceModelForm(forms.ModelForm):
+    class Meta:
+        model = Choice
+        fields = '__all__'

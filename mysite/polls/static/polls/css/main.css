@@ -1,0 +1,25 @@
+
+
+body {
+    font-family: 'Athiti', sans-serif;
+}
+
+.jumbotron {
+    background: white url("../images/banner") no-repeat;
+
+    /*background-image: url("polls/images/banner");*/
+    background-position: center;
+    
+    height: 500px;
+    
+} 
+.jumbotron h1 {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 40%;
+    color: #ffd017;
+    border-style: solid;
+}
+
+

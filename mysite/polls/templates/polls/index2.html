@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> {% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,15 +7,15 @@
   <title>KMITL WALKING-STREET
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/main.css">
-  
+  <link rel="stylesheet" href="{% static 'polls/css/main.css' %}">
+
+
   <link href="https://fonts.googleapis.com/css?family=Athiti:500" rel="stylesheet">
   
   
 </head>
 <body>
   <div id="app">
-    
     
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
       <a class="navbar-brand" href="#">
@@ -72,9 +72,13 @@
           </ul>
         </div>
         
-        
-        
-        
+        <script>
+
+
+
+        </script>
+
+
         
         <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -86,14 +90,28 @@
                 </button><br>
                 
                 <p class="text-center h3">LOGIN</p> 
-                
-                <form action="">
-                  
+                      {% if error %}
+                <script>
+                  alert(" Wrong Username or Password");
+                </script>
+
+                <tr>
+                <td colspan="2">
+
+                    <span style="color: red; text-align: center;">{{ error }}</span>
+                </td>
+                </tr>
+
+            {% endif %}
+
+                <form method="post" action="{% url 'index2' %}">
+                  {% csrf_token %}
+
                   <div class="input-group mb-3" width="100">
                     <div class="input-group-prepend">
                       <span class="input-group-text " id="inputGroup-sizing-default">1</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     
                   </div>
                   
@@ -101,13 +119,13 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroup-sizing-default">2</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     
                     
                   </div>
                   <div class="row">
                     <div class="col text-center">
-                      <button type="submit" class="btn btn-primary btn-block">Login</button>
+                      <button type="submit" value="LOGIN" class="btn btn-primary btn-block">Login</button>
                     </div></div>
                     <div class="row">
                       <div class="col">
@@ -136,35 +154,39 @@
                   
                   
                   <p class="text-center h3">Sign Up</p> 
+                  <p class="text-center mt-4">คุณต้องการสมัครสมาชิกในรูปแบบใด ? </p>
+
+                  <div class="row">
+
+
+                   <div class="col-6">
+                        <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
+                        <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
+                   </div> 
+                   <div class="col-6">
+                      <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
+                      <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
+               
+                   
+                    </div> 
                   
-                  <form action="" class="mt-4">
-                    
-                    <div class="input-group mb-3" width="100">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text " id="inputGroup-sizing-default">1</span>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                      
-                    </div>
-                    
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">2</span>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mb-3" width="100">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text " id="inputGroup-sizing-default">3</span>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                      
-                    </div>
-                    
-                    
                   </div>
-                  
-                  
+
+
+                  <form action="" class="mt-4" v-show="statusSign">
+                 
+                      <div class="form-group">
+                          <label for="inputAddress">Username :</label>
+                          <input type="text" class="form-control" id="inputAddress" placeholder="Username">
+                        </div>
+                      <div class="form-group">
+                          <label for="inputAddress">Password : </label>
+                          <input type="password" class="form-control" id="inputAddress" placeholder="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Confirm Password :</label>
+                            <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
+                          </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="inputEmail4">Name : </label>
@@ -203,7 +225,7 @@
                     <div class="col text-center">
                       <button type="submit" class="btn btn-primary btn-block">Sign up</button>
                     </div></div>
-                  </form>
+                </form>
                   
                 </div>
                 
@@ -219,9 +241,8 @@
         <div class="jumbotron"></div>
         
         
-        
-        <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">Market</button>
-        
+            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">Market</button>
+
         <!-- ### MARKET FORM ###
           ###             ###
           ###             ###
@@ -303,9 +324,16 @@
               var app = new Vue({
                 el: '#app',
                 data: {
-                  message: 'Hello Vue!'
-                }
-              })
+                  message: 'Hello Vue!',
+                  statusSign: false
+                },
+                methods: {
+                  statusForm(){
+                    this.statusSign = !this.statusSign
+                  }
+                },
+              }
+              )
               
             </script>
             

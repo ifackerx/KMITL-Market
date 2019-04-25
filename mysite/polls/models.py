@@ -19,10 +19,6 @@ class Poll(models.Model):
         return self.title
 
 
-
-
-
-
 class Question(models.Model):
     text = models.TextField()
     SINGLE = '01'
@@ -64,3 +60,13 @@ class Comment(models.Model):
         return self.title
 
 
+# project
+class Shop(models.Model):
+    shop_name = models.CharField(max_length=100)
+    shop_open = models.CharField(null=True, blank=True, max_length=100)
+    shop_close = models.CharField(null = True, blank=True, max_length=100)
+
+class Review(models.Model):
+    review_title = models.CharField(max_length=100)
+    review_message = models.CharField(max_length=500)
+    review_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
