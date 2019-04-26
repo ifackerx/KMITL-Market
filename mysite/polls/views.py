@@ -7,9 +7,9 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 # Create your views here.
 
-from .models import Poll, Question, Answer, Comment, Review, Shop
+from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea
 
-from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
+from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm
 
 
 def my_login(request):
@@ -70,16 +70,31 @@ def index2(request):
 	return render(request, template_name='polls/index2.html', context=context)
 
 
-def review(request):
+def review(request, shop_area):
 
-	review_list = Review.objects.all()
-	# for poll in review_list:
-	# 	question_count = Question.objects.filter(poll_id=poll.id).count()
-	# 	poll.question_count = question_count
+	area = ShopArea.objects.get(pk=shop_area)
+	# การเอาข้อมูลมาแสดง
+	# review_list = Review.objects.all()
+
+	##ส่วนของฐานข้อมูล
+
+	if request.method == 'POST':
+		form = ReviewForm(request.POST)
+
+		if form.is_valid():
+			review = Review.objects.create(
+				review_title = form.cleaned_data.get('review_title'),
+				review_message = form.cleaned_data.get('review_message'),
+				review_shop_id = shop_area,
+			)
+	else:
+		form = ReviewForm()
+
 
 	context = {
         'page_title' : 'wellcome to my poll page',
-        'review_list' : review_list
+        'area' : area,
+		'form' : form
     }
 
 	return render(request, template_name='polls/review.html', context=context)

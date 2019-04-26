@@ -16,7 +16,14 @@
 </head>
 <body>
   <div id="app">
-    
+
+    {% for shop in shop_list %}
+      {{ shop.shop_name }} {{ shop.id }}
+
+        <a href="{% url 'review' shop.id %}">Update</a>
+
+    {% endfor %}
+
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
       <a class="navbar-brand" href="#">
         
