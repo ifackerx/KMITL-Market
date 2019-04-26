@@ -10,11 +10,16 @@ from django.shortcuts import render, redirect
 # Create your views here.
 
 from .models import Poll, Question, Answer, Comment, Review, Shop
+<<<<<<< HEAD
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
 
 
 
+=======
+
+from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
+>>>>>>> parent of 11edb71... :apple: can review
 
 
 def my_login(request):

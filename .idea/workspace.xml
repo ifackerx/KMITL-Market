@@ -43,7 +43,10 @@
       <change beforePath="$PROJECT_DIR$/mysite/polls/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/models.py" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 11edb71... :apple: can review
       <change beforePath="$PROJECT_DIR$/mysite/polls/templates/polls/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/templates/polls/create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/polls/templates/polls/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/templates/polls/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/urls.py" afterDir="false" />
@@ -65,8 +68,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <caret line="28" selection-start-line="28" selection-end-line="28" />
 =======
+=======
+>>>>>>> parent of 11edb71... :apple: can review
               <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
 >>>>>>> parent of 11edb71... :apple: can review
             </state>
@@ -77,8 +83,13 @@
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/review.html">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="486">
               <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
+=======
+            <state relative-caret-position="156">
+              <caret line="174" column="36" lean-forward="true" selection-start-line="174" selection-end-line="175" />
+>>>>>>> parent of 11edb71... :apple: can review
 =======
             <state relative-caret-position="156">
               <caret line="174" column="36" lean-forward="true" selection-start-line="174" selection-end-line="175" />
@@ -89,11 +100,14 @@
       </file>
       <file pinned="false" current-in-tab="true">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/mysite/polls/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="7" selection-start-line="7" selection-end-line="7" />
 =======
+=======
+>>>>>>> parent of 11edb71... :apple: can review
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/index2.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
@@ -108,10 +122,17 @@
       </file>
       <file pinned="false" current-in-tab="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/mysite/polls/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="5" column="33" selection-start-line="5" selection-end-line="6" />
+=======
+        <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="37" column="31" lean-forward="true" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+>>>>>>> parent of 11edb71... :apple: can review
 =======
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/detail.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -123,6 +144,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/mysite/polls/models.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -137,6 +159,12 @@
             <state relative-caret-position="465">
               <caret line="37" column="28" lean-forward="true" selection-start-line="37" selection-end-line="38" />
 >>>>>>> parent of 11edb71... :apple: can review
+=======
+        <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="37" column="28" lean-forward="true" selection-start-line="37" selection-end-line="38" />
+>>>>>>> parent of 11edb71... :apple: can review
             </state>
           </provider>
         </entry>
@@ -145,8 +173,13 @@
         <entry file="file://$PROJECT_DIR$/mysite/polls/admin.py">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="210">
               <caret line="14" column="15" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="15" />
+=======
+            <state relative-caret-position="239">
+              <caret line="55" column="18" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="18" />
+>>>>>>> parent of 11edb71... :apple: can review
 =======
             <state relative-caret-position="239">
               <caret line="55" column="18" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="18" />
@@ -159,6 +192,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/detail.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -176,11 +210,18 @@
 =======
         <entry file="file://$PROJECT_DIR$/mysite/polls/views.py">
           <provider selected="true" editor-type-id="text-editor">
+=======
+        <entry file="file://$PROJECT_DIR$/mysite/polls/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> parent of 11edb71... :apple: can review
             <state relative-caret-position="262">
               <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
+<<<<<<< HEAD
+>>>>>>> parent of 11edb71... :apple: can review
+=======
 >>>>>>> parent of 11edb71... :apple: can review
             </state>
           </provider>
@@ -224,23 +265,34 @@
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/login.html" />
         <option value="$PROJECT_DIR$/mysite/polls/urls.py" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/index2.html" />
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/review.html" />
         <option value="$PROJECT_DIR$/mysite/polls/models.py" />
         <option value="$PROJECT_DIR$/mysite/polls/forms.py" />
+=======
+>>>>>>> parent of 11edb71... :apple: can review
         <option value="$PROJECT_DIR$/mysite/polls/views.py" />
 =======
         <option value="$PROJECT_DIR$/mysite/polls/views.py" />
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/review.html" />
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/index2.html" />
+<<<<<<< HEAD
+>>>>>>> parent of 11edb71... :apple: can review
+=======
 >>>>>>> parent of 11edb71... :apple: can review
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="321" />
     <option name="y" value="521" />
+=======
+    <option name="x" value="286" />
+    <option name="y" value="179" />
+>>>>>>> parent of 11edb71... :apple: can review
 =======
     <option name="x" value="286" />
     <option name="y" value="179" />
@@ -390,8 +442,12 @@
       <option name="presentableId" value="Default" />
       <updated>1556098349852</updated>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1556098352761" duration="20286000" />
       <workItem from="1556259280785" duration="1843000" />
+=======
+      <workItem from="1556098352761" duration="10919000" />
+>>>>>>> parent of 11edb71... :apple: can review
 =======
       <workItem from="1556098352761" duration="10919000" />
 >>>>>>> parent of 11edb71... :apple: can review
@@ -399,6 +455,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="22129000" />
   </component>
@@ -408,6 +465,16 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2539543" />
+=======
+    <option name="totallyTimeSpent" value="10919000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="286" y="179" width="1180" height="715" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24956064" />
+>>>>>>> parent of 11edb71... :apple: can review
 =======
     <option name="totallyTimeSpent" value="10919000" />
   </component>
@@ -461,6 +528,7 @@
     <entry file="file://$PROJECT_DIR$/mysite/mysite/urls.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/index2.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -536,6 +604,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/login.html">
+=======
+    <entry file="file://$PROJECT_DIR$/mysite/polls/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/static/polls/css/review_style.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/urls.py">
+>>>>>>> parent of 11edb71... :apple: can review
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
         <state relative-caret-position="420">
@@ -543,16 +627,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/polls/models.py">
+    <entry file="file://$PROJECT_DIR$/mysite/polls/views.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="1275">
           <caret line="85" selection-start-line="85" selection-end-line="85" />
+=======
+        <state relative-caret-position="262">
+          <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+>>>>>>> parent of 11edb71... :apple: can review
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/mysite/polls/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -584,6 +674,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+=======
+    <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="37" column="31" lean-forward="true" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="37" column="28" lean-forward="true" selection-start-line="37" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
@@ -591,16 +700,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="174" column="36" lean-forward="true" selection-start-line="174" selection-end-line="175" />
+>>>>>>> parent of 11edb71... :apple: can review
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/index2.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="156">
+          <caret line="174" column="36" lean-forward="true" selection-start-line="174" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/index2.html">
+      <provider selected="true" editor-type-id="text-editor">
+=======
+>>>>>>> parent of 11edb71... :apple: can review
         <state relative-caret-position="285">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#div#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+<<<<<<< HEAD
+>>>>>>> parent of 11edb71... :apple: can review
+=======
 >>>>>>> parent of 11edb71... :apple: can review
         </state>
       </provider>
