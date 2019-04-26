@@ -5,11 +5,16 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.forms import formset_factory
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+
+
 # Create your views here.
 
 from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm
+
+
+
 
 
 def my_login(request):

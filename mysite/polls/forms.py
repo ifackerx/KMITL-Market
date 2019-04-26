@@ -3,7 +3,15 @@ from django.core.exceptions import ValidationError
 from django.forms import forms
 from django import forms
 
+from django.contrib.auth.models import User
 from .models import Poll, Question, Choice
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+    class Meta:
+        model = User
+        field = ['username', 'email', 'password']
 
 
 def validate_even(value):

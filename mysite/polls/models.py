@@ -77,3 +77,9 @@ class Review(models.Model):
     review_title = models.CharField(max_length=100)
     review_message = models.CharField(max_length=500)
     review_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
+
+class Member(models.Model):
+    member_name = models.CharField(max_length=100)
+    member_surname = models.CharField(max_length=100)
+    member_phone = models.CharField(max_length=10)
+    member_email = models.EmailField()
