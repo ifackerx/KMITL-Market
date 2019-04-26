@@ -61,17 +61,10 @@ class Comment(models.Model):
 
 
 # project
-
-class ShopArea(models.Model):
-    area_code = models.CharField(max_length=10)
-    del_shop = models.BooleanField(default=False)
-
-
 class Shop(models.Model):
     shop_name = models.CharField(max_length=100)
     shop_open = models.CharField(null=True, blank=True, max_length=100)
     shop_close = models.CharField(null = True, blank=True, max_length=100)
-    shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT)
 
 class Review(models.Model):
     review_title = models.CharField(max_length=100)

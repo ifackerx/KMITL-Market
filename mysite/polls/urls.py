@@ -6,7 +6,7 @@ urlpatterns = [
     path('index/', views.index, name='index'),
 
     path('index2/', views.index2, name='index2'),
-    path('review/<int:shop_area>', views.review, name='review'),
+    path('review/', views.review, name='review'),
 
     path('detail/<int:poll_id>/', views.detail, name='poll_detail'),
     path('create/', views.create, name='create_poll'),

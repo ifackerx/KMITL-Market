@@ -97,8 +97,3 @@ class ChoiceModelForm(forms.ModelForm):
     class Meta:
         model = Choice
         fields = '__all__'
-
-
-class ReviewForm(forms.Form):
-    review_title = forms.CharField(label="Titile :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
-    review_message = forms.CharField(label="Desicription", max_length=500, required=True, widget=forms.Textarea(attrs={'class':'form-control'}))

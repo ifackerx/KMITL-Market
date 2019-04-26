@@ -13,16 +13,13 @@
   
 </head>
 <body>
-
-
-
   
   <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <a class="navbar-brand" href="#">
-
+      
 <!--      <img src="img/train.png" width="30" height="30" alt="">-->
       
-
+      
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -150,45 +147,39 @@
       
                 <hr>
   
-                    {% for shopname in area.shop_set.all %}
-
+  
                 <dl class="row mt-3">
                   <dt class="col-sm-3">ร้าน : </dt>
-                  <dd class="col-sm-9"> {{ shopname.shop_name}}</dd>
+                  <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
             
                 </dl>    
-                {% endfor %}
-                <form method="post" action="{% url 'review' area.id %}">
-                  {% csrf_token %}
-
-
-
-                    <div class="form-group">
-
-                      <label for="inputAddress">หัวข้อ : </label>
-                      {{ form.review_title }}
-
-                      <label for="inputAddress">รายละเอียด : </label>
-                      {{ form.review_message }}
+  
+                <form>
+                    <div class="form-row">
+               
                     </div>
-                  <div class="row" width="50%">
-                    <div class="col-6 text-right">  <button type="submit" class="btn btn-primary">Submit</button></div>
-                    <div class="col-6 text-left"><button type="button" class="btn btn-primary" data-dismiss="modal">CANCLE</button></div>
-                  </div>
+                    <div class="form-group">
+                      <label for="inputAddress">รายละเอียด : </label>
+                      <textarea  class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                     </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
     
               </div>
-            </div>
+             
             </div>
           </div>
 
-   {% for market in area.shop_set.all %}
-        {% for review in market.review_set.all %}
 
-     <div class="row mt-2 p-4 border">
+                    {% for review in review_list %}
 
-            <div class="col-4">
 
+          <div class="row mt-2 p-4 border">
+
+            <div class="col-4"> 
+
+                {{ review.id }} {{ review.review_title }}
 
              </div>
             <div class="col-8">
@@ -196,22 +187,21 @@
 
               <small style="color:gray; display: block; text-align: right; margin-bottom: 10px;"><i><b> Comment 1. #</b></i></small>
 
-              <h4>Title :             {{ review.review_title }}</h4>
+              <h4>Title : lormsadasdasdasdasd </h4>
 
-              <p> {{ review.review_message }}</p>
-
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima sit nemo tempore inventore repellendus cumque exercitationem ullam numquam, ut, illum officiis sint, distinctio optio reiciendis. Eius iste veritatis assumenda facilis.</p>
+            
+            
               <small class="mr-4" style="color:gray;"><i>Create by : eieiza</i></small>
               <small style="color:gray;"><i>Create Date : 18/12/2541</i></small>
             </div>
 
           </div>
-  {% endfor%}
-
-   {% endfor %}
+                  {% endfor %}
 
         </div>
   
-
+    
 
 
     </div>
