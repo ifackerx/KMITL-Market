@@ -10,7 +10,10 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 4d55ea8... revert :clock1:
 
     path('detail/<int:poll_id>/', views.detail, name='poll_detail'),
     path('create/', views.create, name='create_poll'),

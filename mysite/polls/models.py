@@ -66,6 +66,10 @@ class Shop(models.Model):
     shop_name = models.CharField(max_length=100)
     shop_open = models.CharField(null=True, blank=True, max_length=100)
     shop_close = models.CharField(null = True, blank=True, max_length=100)
+<<<<<<< HEAD
+=======
+    shop_user = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
+>>>>>>> parent of 4d55ea8... revert :clock1:
 
 class Review(models.Model):
     review_title = models.CharField(max_length=100)

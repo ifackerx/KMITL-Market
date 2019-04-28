@@ -77,8 +77,11 @@ class UserFormView(View):
 					requset.user
 					return redirect('index')
 		return render(render, self.template_name, {'form' : form})
+<<<<<<< HEAD
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
+=======
+>>>>>>> parent of 4d55ea8... revert :clock1:
 
 
 def my_login(request):
