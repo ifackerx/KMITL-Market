@@ -5,8 +5,9 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 
+# users/models.py
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
 
 
 class Poll(models.Model):
@@ -71,10 +72,12 @@ class ShopArea(models.Model):
 class Shop(models.Model):
     shop_name = models.CharField(max_length=100)
     shop_open = models.CharField(null=True, blank=True, max_length=100)
-    shop_close = models.CharField(null = True, blank=True, max_length=100)
-    shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT)
+    shop_detail = models.CharField(null = True, blank=True, max_length=500)
+    shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT, default=1)
 
 class Review(models.Model):
     review_title = models.CharField(max_length=100)
     review_message = models.CharField(max_length=500)
     review_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
+    review_user = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
+    text = models.CharField(max_length=100, null=True)

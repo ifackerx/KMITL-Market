@@ -2,6 +2,7 @@ import json
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import User
 from django.forms import formset_factory
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -16,6 +17,7 @@ from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceMod
 
 def profile(request):
 	args = {'user' : request.user}
+
 	return render(request, 'polls/profile.html', args)
 
 def edit_profile(request):
@@ -105,8 +107,9 @@ def index2(request):
 
 
 def review(request, shop_area):
-
 	area = ShopArea.objects.get(pk=shop_area)
+	a = request.user.id
+	print(a)
 	# การเอาข้อมูลมาแสดง
 	# review_list = Review.objects.all()
 
@@ -114,12 +117,13 @@ def review(request, shop_area):
 
 	if request.method == 'POST':
 		form = ReviewForm(request.POST)
-
+		user = User.objects.get(id=request.user.id)
 		if form.is_valid():
 			review = Review.objects.create(
 				review_title = form.cleaned_data.get('review_title'),
 				review_message = form.cleaned_data.get('review_message'),
 				review_shop_id = shop_area,
+				review_user = user
 			)
 	else:
 		form = ReviewForm()
@@ -128,7 +132,7 @@ def review(request, shop_area):
 	context = {
         'page_title' : 'wellcome to my poll page',
         'area' : area,
-		'form' : form
+		'form' : form,
     }
 
 	return render(request, template_name='polls/review.html', context=context)
