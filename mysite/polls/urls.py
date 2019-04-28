@@ -7,9 +7,12 @@ urlpatterns = [
 
     path('index2/', views.index2, name='index2'),
     path('review/', views.review, name='review'),
+<<<<<<< HEAD
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+=======
+>>>>>>> parent of 11edb71... :apple: can review
 
     path('detail/<int:poll_id>/', views.detail, name='poll_detail'),
     path('create/', views.create, name='create_poll'),
