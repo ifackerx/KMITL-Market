@@ -1,12 +1,11 @@
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth.models import User
 from django.core import validators
 from django.core.exceptions import ValidationError
 from django.forms import forms
 from django import forms
 
-from django.contrib.auth.models import User
 from .models import Poll, Question, Choice
-
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 class EditProfileForm(UserChangeForm):
     class Meta:
@@ -41,15 +40,6 @@ class RegistrationForm(UserCreationForm):
             user.save()
 
         return user
-
-
-
-# class UserForm(forms.ModelForm):
-#     password = forms.CharField(widget=forms.PasswordInput)
-#     class Meta:
-#         model = User
-#         field = ['username', 'email', 'password']
-#
 
 def validate_even(value):
     if value % 2 != 0:
@@ -119,12 +109,6 @@ class QuestionForm(forms.Form):
     type = forms.ChoiceField(choices=Question.TYPES, initial='01')
 
 
-class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-
-    class Meta:
-        model = User
-        exclude = ['username', 'email', 'password']
 
 class PollModelForm(forms.ModelForm):
 
@@ -140,3 +124,8 @@ class ChoiceModelForm(forms.ModelForm):
     class Meta:
         model = Choice
         fields = '__all__'
+
+
+class ReviewForm(forms.Form):
+    review_title = forms.CharField(label="Titile :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+    review_message = forms.CharField(label="Desicription", max_length=500, required=True, widget=forms.Textarea(attrs={'class':'form-control'}))

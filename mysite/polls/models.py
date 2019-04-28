@@ -1,9 +1,9 @@
-from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
 
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -62,22 +62,19 @@ class Comment(models.Model):
 
 
 # project
+
+class ShopArea(models.Model):
+    area_code = models.CharField(max_length=10)
+    del_shop = models.BooleanField(default=False)
+
+
 class Shop(models.Model):
     shop_name = models.CharField(max_length=100)
     shop_open = models.CharField(null=True, blank=True, max_length=100)
     shop_close = models.CharField(null = True, blank=True, max_length=100)
-<<<<<<< HEAD
-=======
-    shop_user = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
->>>>>>> parent of 4d55ea8... revert :clock1:
+    shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT)
 
 class Review(models.Model):
     review_title = models.CharField(max_length=100)
     review_message = models.CharField(max_length=500)
     review_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
-
-class Member(models.Model):
-    member_name = models.CharField(max_length=100)
-    member_surname = models.CharField(max_length=100)
-    member_phone = models.CharField(max_length=10)
-    member_email = models.EmailField()

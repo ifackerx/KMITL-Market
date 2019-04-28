@@ -5,20 +5,13 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.forms import formset_factory
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.contrib.auth.models import User
-
-from django.views import generic
-from django.views.generic import View
 # Create your views here.
+from django.views import View
 
-from .models import Poll, Question, Answer, Comment, Review, Shop
+from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea
 
-from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, UserForm, RegistrationForm, \
-	EditProfileForm
-
-from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
-
+from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm, EditProfileForm, \
+	RegistrationForm
 
 
 def profile(request):
@@ -50,39 +43,8 @@ def register(request):
 	return render(request, template_name='polls/register.html', context=args)
 
 
-class UserFormView(View):
-	form_class = UserForm
-	template_name = 'index'
-
-	def get(self, requset):
-		form = self.form_class(None)
-		return render(render, self.template_name, {'form' : form})
-
-	def post(self, requset):
-		form = self.form_class(requset.POST)
-
-		if form.is_valid():
-			user = form.save(comit=False)
-			username = form.cleaned_data['username']
-			password = form.cleaned_data['password']
-			user.set_password(password)
-
-			user.save()
-
-			user = authenticate(username=username, password=password)
-
-			if user is not None:
-				if user.is_active:
-					login(requset, user)
-					requset.user
-					return redirect('index')
-		return render(render, self.template_name, {'form' : form})
-<<<<<<< HEAD
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
-=======
->>>>>>> parent of 4d55ea8... revert :clock1:
-
 
 def my_login(request):
 	context = {}
@@ -142,16 +104,31 @@ def index2(request):
 	return render(request, template_name='polls/index2.html', context=context)
 
 
-def review(request):
+def review(request, shop_area):
 
-	review_list = Review.objects.all()
-	# for poll in review_list:
-	# 	question_count = Question.objects.filter(poll_id=poll.id).count()
-	# 	poll.question_count = question_count
+	area = ShopArea.objects.get(pk=shop_area)
+	# การเอาข้อมูลมาแสดง
+	# review_list = Review.objects.all()
+
+	##ส่วนของฐานข้อมูล
+
+	if request.method == 'POST':
+		form = ReviewForm(request.POST)
+
+		if form.is_valid():
+			review = Review.objects.create(
+				review_title = form.cleaned_data.get('review_title'),
+				review_message = form.cleaned_data.get('review_message'),
+				review_shop_id = shop_area,
+			)
+	else:
+		form = ReviewForm()
+
 
 	context = {
         'page_title' : 'wellcome to my poll page',
-        'review_list' : review_list
+        'area' : area,
+		'form' : form
     }
 
 	return render(request, template_name='polls/review.html', context=context)
