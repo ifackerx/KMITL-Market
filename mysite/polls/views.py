@@ -13,7 +13,6 @@ from django.views.generic import View
 # Create your views here.
 
 from .models import Poll, Question, Answer, Comment, Review, Shop
-<<<<<<< HEAD
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, UserForm, RegistrationForm, \
 	EditProfileForm
@@ -78,10 +77,8 @@ class UserFormView(View):
 					requset.user
 					return redirect('index')
 		return render(render, self.template_name, {'form' : form})
-=======
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
->>>>>>> parent of 11edb71... :apple: can review
 
 
 def my_login(request):
