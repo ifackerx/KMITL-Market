@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.forms import formset_factory
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.models import User
 
 from django.views import generic
 from django.views.generic import View
@@ -13,10 +14,28 @@ from django.views.generic import View
 
 from .models import Poll, Question, Answer, Comment, Review, Shop
 
-from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, UserForm, RegistrationForm
+from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, UserForm, RegistrationForm, \
+	EditProfileForm
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
 
+
+
+def profile(request):
+	args = {'user' : request.user}
+	return render(request, 'polls/profile.html', args)
+
+def edit_profile(request):
+	if request.method == 'POST':
+		form = EditProfileForm(request.POST, instance=request.user)
+
+		if form.is_valid():
+			form.save()
+			return redirect('profile')
+	else:
+		form = EditProfileForm(instance=request.user)
+		args = {'form' : form}
+		return render(request, template_name='polls/edit_profile.html', context=args)
 
 def register(request):
 	if request.method == 'POST':
