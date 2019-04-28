@@ -5,21 +5,59 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.forms import formset_factory
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
 
-
+from django.views import generic
+from django.views.generic import View
 # Create your views here.
 
 from .models import Poll, Question, Answer, Comment, Review, Shop
-<<<<<<< HEAD
+
+from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, UserForm, RegistrationForm
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
 
 
+def register(request):
+	if request.method == 'POST':
+		form = RegistrationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('index')
+	else:
+		form = RegistrationForm()
 
-=======
+	args = {'form': form}
+	return render(request, template_name='polls/register.html', context=args)
 
-from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
->>>>>>> parent of 11edb71... :apple: can review
+
+class UserFormView(View):
+	form_class = UserForm
+	template_name = 'index'
+
+	def get(self, requset):
+		form = self.form_class(None)
+		return render(render, self.template_name, {'form' : form})
+
+	def post(self, requset):
+		form = self.form_class(requset.POST)
+
+		if form.is_valid():
+			user = form.save(comit=False)
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password']
+			user.set_password(password)
+
+			user.save()
+
+			user = authenticate(username=username, password=password)
+
+			if user is not None:
+				if user.is_active:
+					login(requset, user)
+					requset.user
+					return redirect('index')
+		return render(render, self.template_name, {'form' : form})
 
 
 def my_login(request):
