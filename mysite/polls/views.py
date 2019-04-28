@@ -1,3 +1,4 @@
+import datetime
 import json
 
 from django.contrib.auth import authenticate, login, logout
@@ -108,8 +109,8 @@ def index2(request):
 
 def review(request, shop_area):
 	area = ShopArea.objects.get(pk=shop_area)
-	a = request.user.id
-	print(a)
+	now = datetime.date.today()
+	print(now)
 	# การเอาข้อมูลมาแสดง
 	# review_list = Review.objects.all()
 
@@ -123,6 +124,7 @@ def review(request, shop_area):
 				review_title = form.cleaned_data.get('review_title'),
 				review_message = form.cleaned_data.get('review_message'),
 				review_shop_id = shop_area,
+				text = now,
 				review_user = user
 			)
 	else:
