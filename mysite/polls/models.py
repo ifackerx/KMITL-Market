@@ -74,7 +74,7 @@ class Shop(models.Model):
     shop_open = models.CharField(null=True, blank=True, max_length=100)
     shop_detail = models.CharField(null = True, blank=True, max_length=500)
     shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT, default=1)
-
+    shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
 class Review(models.Model):
     review_title = models.CharField(max_length=100)
     review_message = models.CharField(max_length=500)

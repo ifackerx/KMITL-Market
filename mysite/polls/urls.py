@@ -7,6 +7,7 @@ urlpatterns = [
 
     path('index2/', views.index2, name='index2'),
     path('review/<int:shop_area>/', views.review, name='review'),
+    path('booking/<int:shop_area>/', views.booking, name='booking'),
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),

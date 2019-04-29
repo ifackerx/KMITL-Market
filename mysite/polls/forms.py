@@ -19,7 +19,13 @@ class EditProfileForm(UserChangeForm):
 
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(required=True,widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.validate_email])
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    password1 = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'password'}))
+    password2 = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'password'}))
+
     class Meta:
         model = User
         fields = (
@@ -124,6 +130,13 @@ class ChoiceModelForm(forms.ModelForm):
     class Meta:
         model = Choice
         fields = '__all__'
+
+
+class BookingForm(forms.Form):
+    shop_name = forms.CharField(label="Shop Name :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+    shop_open = forms.CharField(label="OPEN/CLOSE :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+    shop_detail = forms.CharField(label="Descirption :", max_length=500, required=True, widget=forms.Textarea(attrs={'class':'form-control'}))
+
 
 
 class ReviewForm(forms.Form):

@@ -3,14 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'polls/css/review_style.css' %}">
+
+  <link href="https://fonts.googleapis.com/css?family=Athiti:500" rel="stylesheet">
+
 </head>
 <body>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">submit</button>
-    </form>
 
+    <div class="container">
+<div class="row">
+    <form method="post" class="w-50 p-4 m-auto" style="background-color: #dfdfdf">
+        {% csrf_token %}
+    <div class="row">
+
+            <div class="col mb-2">
+                <label>First Name :</label>
+                {{ form.first_name }}
+            </div>
+            <div class="col mb-2">
+                <label>Last Name :</label>
+                {{ form.last_name }}
+            </div>
+    </div>
+                <label>E-mail</label>
+                    {{ form.email }}
+                        {{ form.errors }}
+                <label class="mt-2">Username :</label>
+                    {{ form.username }}
+
+                <label class="mt-2">Password :</label>
+                {{ form.password1 }}
+
+                <label class="mt-2">Confirm Password :</label>
+
+                {{ form.password2 }}
+
+        <button class="btn btn-primary mt-4 w-100" type="submit"><h5>submit</h5></button>
+    </form>
+</div></div>
+</div>
 </body>
 </html>

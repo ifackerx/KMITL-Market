@@ -13,7 +13,7 @@ from django.views import View
 from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm, EditProfileForm, \
-	RegistrationForm
+	RegistrationForm, BookingForm
 
 
 def profile(request):
@@ -82,7 +82,7 @@ def my_logout(request):
 
 def index2(request):
 
-	shop_list = Shop.objects.all()
+	shop_list = ShopArea.objects.all()
 
 	context = {
 		'shop_list' : shop_list
@@ -141,6 +141,37 @@ def review(request, shop_area):
 
 
 
+def booking(request, shop_area):
+	area = ShopArea.objects.get(pk=shop_area)
+	now = datetime.date.today()
+	print(now)
+	# การเอาข้อมูลมาแสดง
+	# review_list = Review.objects.all()
+
+	##ส่วนของฐานข้อมูล
+
+	if request.method == 'POST':
+		form = BookingForm(request.POST)
+		user = User.objects.get(id=request.user.id)
+		if form.is_valid():
+			shop = Shop.objects.create(
+				shop_name = form.cleaned_data.get('shop_name'),
+				shop_open = form.cleaned_data.get('shop_open'),
+				shop_detail = form.cleaned_data.get('shop_detail'),
+				shop_area = area,
+				shop_owner = user
+			)
+	else:
+		form = BookingForm()
+
+
+	context = {
+        'page_title' : 'wellcome to my poll page',
+        'area' : area,
+		'form' : form,
+    }
+
+	return render(request, template_name='polls/booking.html', context=context)
 
 
 def index(request):

@@ -18,9 +18,15 @@
   <div id="app">
 
     {% for shop in shop_list %}
-      {{ shop.shop_name }} {{ shop.id }}
 
-        <a href="{% url 'review' shop.id %}">Update</a>
+    <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">
+      {{ shop.id }}: {{ shop.area_code }}
+    </button>
+
+
+
+        <a href="{% url 'review' shop.id %}">Review</a>
+        <a href="{% url 'booking' shop.id %}">Book</a> <br>
 
     {% endfor %}
 
