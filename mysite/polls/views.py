@@ -84,8 +84,12 @@ def index2(request):
 
 	shop_list = ShopArea.objects.all()
 
+	shop = Shop.objects.all()
+
 	context = {
-		'shop_list' : shop_list
+		'shop_list' : shop_list,
+		'user': request.user,
+		'shopr': shop
 	}
 	if request.method == 'POST':
 		username = request.POST.get('username')
@@ -153,14 +157,21 @@ def booking(request, shop_area):
 	if request.method == 'POST':
 		form = BookingForm(request.POST)
 		user = User.objects.get(id=request.user.id)
-		if form.is_valid():
+		shopArea = ShopArea.objects.get(id=shop_area)
+
+		if form.is_valid() and shopArea.isBooking != 1:
 			shop = Shop.objects.create(
 				shop_name = form.cleaned_data.get('shop_name'),
 				shop_open = form.cleaned_data.get('shop_open'),
 				shop_detail = form.cleaned_data.get('shop_detail'),
 				shop_area = area,
-				shop_owner = user
+				shop_owner = user,
 			)
+			shopArea.isBooking = 1
+			shopArea.shop_owner = user
+			shopArea.save()
+			print(shopArea.isBooking)
+
 	else:
 		form = BookingForm()
 

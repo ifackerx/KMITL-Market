@@ -67,6 +67,8 @@ class Comment(models.Model):
 class ShopArea(models.Model):
     area_code = models.CharField(max_length=10)
     del_shop = models.BooleanField(default=False)
+    isBooking = models.BooleanField(default=False)
+    shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
 
 
 class Shop(models.Model):
