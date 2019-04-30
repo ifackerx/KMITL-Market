@@ -78,14 +78,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'KMITL-Market',
+        'NAME': 'mysite',
         'USER': 'root',
-        'PASSWORD': 'darkpunk15',
+        'PASSWORD': 'earth',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
