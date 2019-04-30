@@ -24,14 +24,24 @@
 
     <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">
       {{ shop.id }}: {{ shop.area_code }}
+
     </button>
 
 
 
         <a href="{% url 'review' shop.id %}">Review</a>
-        <a href="{% url 'booking' shop.id %}">Book</a> <br>
+        {% if shop.isBooking == 0 %}
+        <a href="{% url 'booking' shop.id %}">Book</a>
+        {% endif %}
+        {% if shop.shop_owner_id == user.id %}
+            <h1>success</h1>
+        {% endif %}
+        <br>
+
 
     {% endfor %}
+
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
       <a class="navbar-brand" href="#">
