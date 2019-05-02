@@ -88,23 +88,11 @@ def index2(request):
 
 	shop_all = ShopArea.objects.all()
 
-	line_1 = ShopArea.objects.all()[0:34:-1]
-	line_2 = ShopArea.objects.all()[76:101:-1]
-	line_3 = ShopArea.objects.all()[101:126:-1]
-	line_4 = ShopArea.objects.all()[127:144:-1]
-	line_5 = ShopArea.objects.all()[38:45]
-	line_6 = ShopArea.objects.all()[145:160:-1]
-	line_7 = ShopArea.objects.all()[45:62]
-
-
-	line_extra = ShopArea.objects.all()[62:72]
-	line_extra2 = ShopArea.objects.all()[72:76]
-
 	shop = Shop.objects.all()
-
 
 	context = {
 		'shop_list' : shop_list,
+<<<<<<< HEAD
 		'shop_all' : shop_all,
 		'shopy' : shopy,
 		'line_1' : line_1,
@@ -117,6 +105,9 @@ def index2(request):
 		'line_extra' : line_extra,
 		'line_extra2' : line_extra2,
 		'user' : request.user,
+=======
+		'user': request.user,
+>>>>>>> parent of 84c1bae... map update :snowflake:
 		'shopr': shop
 	}
 	if request.method == 'POST':

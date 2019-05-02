@@ -8,8 +8,8 @@
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'polls/css/main.css' %}">
-  
-  
+
+
   <link href="https://fonts.googleapis.com/css?family=Athiti:500" rel="stylesheet">
   
   
@@ -17,6 +17,7 @@
 <body>
   <div id="app">
 
+<<<<<<< HEAD
 
     {% for x in shopy %}
     {{ x.shop_name }}
@@ -46,6 +47,28 @@
 
 
     <br>
+=======
+    <button></button>
+
+ิ
+    {% for shop in shop_list %}
+
+    <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">
+      {{ shop.id }}: {{ shop.area_code }}
+
+    </button>
+
+
+
+        <a href="{% url 'review' shop.id %}">Review</a>
+        {% if shop.isBooking == 0 %}
+        <a href="{% url 'booking' shop.id %}">Book</a>
+        {% endif %}
+        {% if shop.shop_owner_id == user.id %}
+            <h1>success</h1>
+        {% endif %}
+        <br>
+>>>>>>> parent of 84c1bae... map update :snowflake:
 
 
     {% endfor %}
@@ -92,25 +115,43 @@
 
           <ul class="navbar-nav ml-auto">
             <span class="navbar-text mr-2">
+<<<<<<< HEAD
 
               Welcome :  {{ user }}
 
+=======
+              
+              User Type : Guest
+              
+>>>>>>> parent of 84c1bae... map update :snowflake:
             </span>
             <li class="nav-item mr-2">
-              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#loginForm">Login</button>
+              <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#loginForm">Login</button>
             </li>
 
             <li class="nav-item">
-              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#signupForm">Sign-Up</button>
+              <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#signupForm">Sign-Up</button>
             </li>
 
           </ul>
         </div>
+<<<<<<< HEAD
 
 
 
 
 
+=======
+        
+        <script>
+
+
+
+        </script>
+
+
+        
+>>>>>>> parent of 84c1bae... map update :snowflake:
         <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content p-5">
@@ -119,21 +160,35 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button><br>
+<<<<<<< HEAD
 
                 <p class="text-center h3">LOGIN</p>
                 {% if error %}
+=======
+                
+                <p class="text-center h3">LOGIN</p> 
+                      {% if error %}
+>>>>>>> parent of 84c1bae... map update :snowflake:
                 <script>
                   alert(" Wrong Username or Password");
                 </script>
 
                 <tr>
+<<<<<<< HEAD
                   <td colspan="2">
+=======
+                <td colspan="2">
+>>>>>>> parent of 84c1bae... map update :snowflake:
 
                     <span style="color: red; text-align: center;">{{ error }}</span>
-                  </td>
+                </td>
                 </tr>
 
+<<<<<<< HEAD
                 {% endif %}
+=======
+            {% endif %}
+>>>>>>> parent of 84c1bae... map update :snowflake:
 
                 <form method="post" action="{% url 'index2' %}">
                   {% csrf_token %}
@@ -190,6 +245,7 @@
                   <div class="row">
 
 
+<<<<<<< HEAD
                     <div class="col-6">
                       <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
                       <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
@@ -201,10 +257,24 @@
 
                     </div>
 
+=======
+                   <div class="col-6">
+                        <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
+                        <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
+                   </div> 
+                   <div class="col-6">
+                      <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
+                      <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
+               
+                   
+                    </div> 
+                  
+>>>>>>> parent of 84c1bae... map update :snowflake:
                   </div>
 
 
                   <form action="" class="mt-4" v-show="statusSign">
+<<<<<<< HEAD
 
                     <div class="form-group">
                       <label for="inputAddress">Username :</label>
@@ -217,21 +287,42 @@
                     <div class="form-group">
                       <label for="inputAddress">Confirm Password :</label>
                       <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
+=======
+                 
+                      <div class="form-group">
+                          <label for="inputAddress">Username :</label>
+                          <input type="text" class="form-control" id="inputAddress" placeholder="Username">
+                        </div>
+                      <div class="form-group">
+                          <label for="inputAddress">Password : </label>
+                          <input type="password" class="form-control" id="inputAddress" placeholder="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Confirm Password :</label>
+                            <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
+                          </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Name : </label>
+                      <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
+>>>>>>> parent of 84c1bae... map update :snowflake:
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputEmail4">Name : </label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputPassword4">Surname : </label>
-                        <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
-                      </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Surname : </label>
+                      <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
                     </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Email</label>
-                      <input type="email" class="form-control" id="inputAddress" placeholder="youremail@text.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress">Email</label>
+                    <input type="email" class="form-control" id="inputAddress" placeholder="youremail@text.com">
+                  </div>
+                  
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Tel : </label>
+                      <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
                     </div>
+<<<<<<< HEAD
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
@@ -260,9 +351,33 @@
 
                   </div>
 
+=======
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Surname : </label>
+                      <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Check me out
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col text-center">
+                      <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+                    </div></div>
+                </form>
+                  
+>>>>>>> parent of 84c1bae... map update :snowflake:
                 </div>
+                
               </div>
             </div>
+<<<<<<< HEAD
 
 
 
@@ -355,10 +470,78 @@
 
                     </div>
 
+=======
+          </div>
+          
+          
+          
+          
+          
+        </nav>
+        <div class="jumbotron"></div>
+        
+        
+            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">Market</button>
+
+        <!-- ### MARKET FORM ###
+          ###             ###
+          ###             ###
+          ###             ###
+          ###             ###
+          ###             ###
+          ###             ###
+          ###             ###
+          ### MARKET FORM ### -->
+          
+          <div class="modal fade" id="marketForm" tabindex="-1" role="dialog" aria-labelledby="marketForm" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content p-5">
+                
+                <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button><br>
+                  <p class="text-center h3"> ร้านบะหมี่เป็ดในตำนาน</p> 
+                  
+                  <hr>
+                  
+                  
+                  
+                  
+                  
+                  
+                  <textarea readonly class="form-control" rows="5" id="comment"></textarea>
+                  
+                  <dl class="row mt-3">
+                    <dt class="col-sm-3">Location: </dt>
+                    <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+                    
+                    <dt class="col-sm-3">Open/Close: </dt>
+                    <dd class="col-sm-9 text-success"> Mon-Sun 11 Am. - 17 pm.</dd>
+                    
+                    <dt class="col-sm-3"></dt>                
+                    <dd class="col-sm-9 text-danger"> Sat 12 pm.</dd>
+                    
+                  </dl>    
+                  
+                  <form action="" class="mt-4">
+                    
+                    
+                    <div class="row">
+                      <div class="col text-center">
+                        <a href="review.html"><button type="button" class="btn btn-primary btn-block" >Review</button></a>
+                      </div></div>
+                      
+                      
+                    </form>
+                    
+>>>>>>> parent of 84c1bae... map update :snowflake:
                   </div>
+                  
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 
             {% endfor %}
             <!-- ### MARKET FORM ###  ^^^^^^^^^^
@@ -558,22 +741,155 @@
               
               
               
+=======
+          </div>
+          
+          <!-- ### MARKET FORM ###  ^^^^^^^^^^
+            ###             ###
+            ###             ###
+            ###             ###
+            ###             ###
+            ###             ###
+            ###             ###
+            ###             ###
+            ### MARKET FORM ### -->
+
+
+            <table border="1" class="m-auto">
+ <tr>
+                <td><button class="mr-3">F</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              </tr>
+
+                       <tr class="blank_row">
+            <td>&nbsp;</td>
+        </tr>
+
+                   <tr class="blank_row">
+            <td>&nbsp;</td>
+        </tr>
+
+
+
+              <tr>
+              <td><button class="mr-3">F</button></td>
+              <td colspan="6"></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td colspan="6"></td>
+            </tr>
+
+                  <tr>
+              <td><button class="mr-3">F</button></td>
+              <td colspan="6"></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td colspan="6"></td>
+            </tr>
+
+                   <tr class="blank_row">
+            <td>&nbsp;</td>
+        </tr>
+
+                   <tr class="blank_row">
+            <td>&nbsp;</td>
+        </tr>
+              <tr>
+                <td><button class="mr-3">F</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              <td><button>A01</button></td>
+              </tr>
+
+            </table>
+
+
+
+>>>>>>> parent of 84c1bae... map update :snowflake:
             </div>
-            
-            
-            <style>
-              
-              #map_table button {
-                /*border-radius: 20px;*/
-                
-              }
-              
-            </style>
+
+
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-            
-            <!-- #for view Js. -->
+           
+           <!-- #for view Js. -->
             <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
             
             <script>
