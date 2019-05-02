@@ -82,7 +82,11 @@ def my_logout(request):
 
 def index2(request):
 
-	shop_list = ShopArea.objects.all()
+	shopy = Shop.objects.all()
+
+	shop_list = ShopArea.objects.all()[0:1]
+
+	shop_all = ShopArea.objects.all()
 
 	line_1 = ShopArea.objects.all()[0:34:-1]
 	line_2 = ShopArea.objects.all()[76:101:-1]
@@ -101,6 +105,8 @@ def index2(request):
 
 	context = {
 		'shop_list' : shop_list,
+		'shop_all' : shop_all,
+		'shopy' : shopy,
 		'line_1' : line_1,
 		'line_2' : line_2,
 		'line_3' : line_3,

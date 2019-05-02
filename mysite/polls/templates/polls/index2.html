@@ -18,60 +18,59 @@
   <div id="app">
 
 
-
+    {% for x in shopy %}
+    {{ x.shop_name }}
+    {% endfor %}
 
     <button></button>
-    
+
     {% for shop in shop_list %}
-    
-    
+
+
     {% if shop.shop_owner_id == user.id %}
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#marketForm">
       {{ shop.id }}: {{ shop.area_code }}
-      
+
     </button>
     {% endif %}
-    
+
     {% if shop.shop_owner_id != user.id %}
     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#marketForm">
       {{ shop.id }}: {{ shop.area_code }}
-      
+
     </button>
     {% endif %}
-    
-    
-    
-    <a href="{% url 'review' shop.id %}">Review</a>
-    {% if shop.isBooking == 0 %}
-    <a href="{% url 'booking' shop.id %}">Book</a>
-    {% endif %}
-    
+
+
+
+
+
     <br>
-    
-    
+
+
     {% endfor %}
-    
-    
-    
+
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
       <a class="navbar-brand" href="#">
-        
+
         <img src="img/train.png" width="30" height="30" alt="">
-        
-        
+
+
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse">
-        
+
         <ul class="navbar-nav ">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
-            
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -80,84 +79,80 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        
+
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">
               <h3>KMITL WALKING STREET   </h3>
               <span class="sr-only">(current)</span></a>
             </li>
-            
+
           </ul>
-          
-          
+
+
           <ul class="navbar-nav ml-auto">
             <span class="navbar-text mr-2">
-              
+
               Welcome :  {{ user }}
-              
+
             </span>
             <li class="nav-item mr-2">
               <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#loginForm">Login</button>
             </li>
-            
+
             <li class="nav-item">
               <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#signupForm">Sign-Up</button>
             </li>
-            
+
           </ul>
         </div>
-        
-        <script>
-          
-          
-          
-        </script>
-        
-        
-        
+
+
+
+
+
         <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content p-5">
-              
+
               <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button><br>
-                
-                <p class="text-center h3">LOGIN</p> 
+
+                <p class="text-center h3">LOGIN</p>
                 {% if error %}
                 <script>
                   alert(" Wrong Username or Password");
                 </script>
-                
+
                 <tr>
                   <td colspan="2">
-                    
+
                     <span style="color: red; text-align: center;">{{ error }}</span>
                   </td>
                 </tr>
-                
+
                 {% endif %}
-                
+
                 <form method="post" action="{% url 'index2' %}">
                   {% csrf_token %}
-                  
+
                   <div class="input-group mb-3" width="100">
                     <div class="input-group-prepend">
                       <span class="input-group-text " id="inputGroup-sizing-default">1</span>
                     </div>
                     <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    
+
                   </div>
-                  
+
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroup-sizing-default">2</span>
                     </div>
                     <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    
-                    
+
+
                   </div>
                   <div class="row">
                     <div class="col text-center">
@@ -166,51 +161,51 @@
                     <div class="row">
                       <div class="col">
                         Don't have an account ?
-                        <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp" 
+                        <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp"
                         href="#signupForm">sign-up</a>
                       </div>
-                    </div> 
+                    </div>
                   </form>
-                  
+
                 </div>
-                
+
               </div>
             </div>
           </div>
-          
+
           <div class="modal fade" id="signupForm" tabindex="-1" role="dialog" aria-labelledby="signupForm" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content p-5">
-                
+
                 <div class="modal-body">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button><br>
-                  
-                  
-                  
-                  <p class="text-center h3">Sign Up</p> 
+
+
+
+                  <p class="text-center h3">Sign Up</p>
                   <p class="text-center mt-4">คุณต้องการสมัครสมาชิกในรูปแบบใด ? </p>
-                  
+
                   <div class="row">
-                    
-                    
+
+
                     <div class="col-6">
                       <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
                       <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
-                    </div> 
+                    </div>
                     <div class="col-6">
                       <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
                       <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
-                      
-                      
-                    </div> 
-                    
+
+
+                    </div>
+
                   </div>
-                  
-                  
+
+
                   <form action="" class="mt-4" v-show="statusSign">
-                    
+
                     <div class="form-group">
                       <label for="inputAddress">Username :</label>
                       <input type="text" class="form-control" id="inputAddress" placeholder="Username">
@@ -237,7 +232,7 @@
                       <label for="inputAddress">Email</label>
                       <input type="email" class="form-control" id="inputAddress" placeholder="youremail@text.com">
                     </div>
-                    
+
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputEmail4">Tel : </label>
@@ -248,7 +243,7 @@
                         <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
                       </div>
                     </div>
-                    
+
                     <div class="form-group">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -262,23 +257,23 @@
                         <button type="submit" class="btn btn-primary btn-block">Sign up</button>
                       </div></div>
                     </form>
-                    
+
                   </div>
-                  
+
                 </div>
               </div>
             </div>
-            
-            
-            
-            
-            
+
+
+
+
+
           </nav>
           <div class="jumbotron"></div>
-          
-          
+
+
           <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#marketForm">Market</button>
-          
+
           <!-- ### MARKET FORM ###
             ###             ###
             ###             ###
@@ -288,57 +283,83 @@
             ###             ###
             ###             ###
             ### MARKET FORM ### -->
-            
-            {% for w in shop_list %}
-            
+
+            {% for w in shop_all %}
+
+
             <div class="modal fade" id="{{ w.area_code }}" tabindex="-1" role="dialog" aria-labelledby="{{ w.area_code }}" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content p-5">
-                  
+
                   <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button><br>
-                    <p class="text-center h3"></p>
-                    
+                    <p class="text-center h3">
+
+                      {% for x in shopy %}
+
+                      {% if w.id == x.id %}
+                      {{ x.shop_name }}
+                      {% endif %}
+                      {{ break }}
+
+                      {% endfor %}
+
+                    </p>
+
                     <hr>
-                    
-                    
-                    
-                    
-                    
+
+
+
+
                     <textarea readonly class="form-control" rows="5" id="comment"></textarea>
-                    
+
                     <dl class="row mt-3">
                       <dt class="col-sm-3">Location: </dt>
-                      <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
-                      
+                      <dd class="col-sm-9">
+
+                        {% for x in shopy %}
+
+                        {% if w.id == x.id %}
+                        {{ x.shop_detail }}
+                        {% endif %}
+                        {{ break }}
+
+                        {% endfor %}
+
+                      </dd>
+
                       <dt class="col-sm-3">Open/Close: </dt>
                       <dd class="col-sm-9 text-success"> Mon-Sun 11 Am. - 17 pm.</dd>
-                      
-                      <dt class="col-sm-3"></dt>                
+
+                      <dt class="col-sm-3"></dt>
                       <dd class="col-sm-9 text-danger"> Sat 12 pm.</dd>
-                      
-                    </dl>    
-                    
+
+                    </dl>
+
                     <form action="" class="mt-4">
-                      
-                      
+
+
                       <div class="row">
                         <div class="col text-center">
+                              <a href="{% url 'review' w.id %}">Review</a>
+    {% if w.isBooking == 0 %}
+    <a href="{% url 'booking' w.id %}">Book</a>
+    {% endif %}
                           <a href="review.html"><button type="button" class="btn btn-primary btn-block" >Review</button></a>
                         </div></div>
-                        
-                        
+
+
                       </form>
-                      
+
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
             </div>
-            
+
             {% endfor %}
             <!-- ### MARKET FORM ###  ^^^^^^^^^^
               ###             ###
@@ -349,54 +370,54 @@
               ###             ###
               ###             ###
               ### MARKET FORM ### -->
-              
-              
+
+
               <table class="m-auto" id="map_table">
-                
-                
-                
+
+
+
                 <tr>
                   <td colspan="7"></td>
                   {% for x in line_7 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                  
+
                   {% if x.area_code == 'F55' %}
-                  
+
                   <td colspan="2"></td>
                   {% endif %}
-                  
+
                   {% endfor %}
-                  
+
                   <td colspan="5"></td>
-                  
+
                   {% for y in line_extra %}
                   {% if y.area_code == 'F63'%}
                   <td><button class="btn btn-warning btn-sm w-100 data-taget=#marketform"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-                  
+
                   <tr class="blank_row">
                     <td>&nbsp;</td>
                     <td colspan="30"></td>
-                    
+
                     {% for y in line_extra %}
                     {% if y.area_code == 'F64'%}
                     <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                     {% endif %}
                     {% endfor %}
                   </tr>
-                  
+
                 </tr>
                 <tr>
                   <td>&nbsp;</td>
-                  <td colspan="30"></td>
-                  
+                  <td colspan="30" class="text-center h3"><hr>ทางเดิน<hr></td>
+
                   {% for y in line_extra %}
                   {% if y.area_code == 'F65'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-                  
+
                 </tr>
                 <tr>
                   <td colspan="9"></td>
@@ -404,96 +425,96 @@
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
                   <td colspan="7"></td>
-                  
+
                   {% for y in line_extra %}
                   {% if y.area_code == 'F66'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-                  
-                  
+
+
                 </tr>
                 <tr>
                   {% for x in line_5 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
-                  
+
                   <td colspan="24"></td>
-                  
+
                   {% for y in line_extra %}
                   {% if y.area_code == 'F67'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
                 </tr>
-                
+
                 <tr>
                   <td colspan="8"></td>
                   {% for x in line_4 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
-                  
+
                   <td colspan="6"></td>
                   {% for y in line_extra %}
                   {% if y.area_code == 'F68'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-                  
+
                 </tr>
-                
+
                 <tr class="blank_row">
                   <td>&nbsp;</td>
-                  <td colspan="30"></td>
-                  
+                  <td colspan="30" class="text-center h3"><hr>ทางเดิน<hr></td>
+
                   {% for y in line_extra %}
                   {% if y.area_code == 'F69'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
                 </tr>
-                
+
                 <tr>
                   {% for y in shop_list %}
                   {% if y.area_code == 'F70'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-                  
+
                   <td colspan="30"></td>
-                  
+
                   {% for y in line_extra %}
                   {% if y.area_code == 'F70'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-                  
-                  
+
+
                 </tr>
-                
-                
-                
+
+
+
                 <tr>
                   {% for y in shop_list %}
                   {% if y.area_code == 'F37'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-                  
+
                   <td colspan="4"></td>
                   {% for x in line_3 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
-                  
+
                   <td colspan="1"></td>
-                  
+
                   {% for y in line_extra %}
                   {% if y.area_code == 'F71'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
                 </tr>
-                
+
                 <tr id="top">
                   {% for y in shop_list %}
                   {% if y.area_code == 'F36'%}
@@ -504,7 +525,7 @@
                   {% for x in line_2 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
-                  
+
                   <td colspan="1"></td>
                   {% for y in line_extra %}
                   {% if y.area_code == 'F72'%}
@@ -514,15 +535,15 @@
                   {% for y in line_extra2 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endfor %}
-                  
+
                 </tr>
-                
+
                 <tr class="blank_row">
                   <td>&nbsp;</td>
                 </tr>
-                
+
                 <tr class="blank_row">
-                  <td>&nbsp;</td>
+                  <td colspan="32" class="text-center h3 "><hr>ทางเดิน<hr></td>
                 </tr>
                 
                 <tr>
