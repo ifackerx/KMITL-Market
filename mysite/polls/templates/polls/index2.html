@@ -17,7 +17,6 @@
 <body>
   <div id="app">
 
-<<<<<<< HEAD
 
     {% for x in shopy %}
     {{ x.shop_name }}
@@ -47,7 +46,7 @@
 
 
     <br>
-=======
+
     <button></button>
 
 ิ
@@ -68,9 +67,9 @@
             <h1>success</h1>
         {% endif %}
         <br>
->>>>>>> parent of 84c1bae... map update :snowflake:
 
 
+    {% endfor %}
     {% endfor %}
 
 
@@ -115,15 +114,13 @@
 
           <ul class="navbar-nav ml-auto">
             <span class="navbar-text mr-2">
-<<<<<<< HEAD
+
 
               Welcome :  {{ user }}
 
-=======
-              
               User Type : Guest
               
->>>>>>> parent of 84c1bae... map update :snowflake:
+:
             </span>
             <li class="nav-item mr-2">
               <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#loginForm">Login</button>
@@ -135,13 +132,6 @@
 
           </ul>
         </div>
-<<<<<<< HEAD
-
-
-
-
-
-=======
         
         <script>
 
@@ -151,7 +141,6 @@
 
 
         
->>>>>>> parent of 84c1bae... map update :snowflake:
         <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content p-5">
@@ -160,35 +149,26 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button><br>
-<<<<<<< HEAD
 
                 <p class="text-center h3">LOGIN</p>
                 {% if error %}
-=======
-                
+
                 <p class="text-center h3">LOGIN</p> 
                       {% if error %}
->>>>>>> parent of 84c1bae... map update :snowflake:
                 <script>
                   alert(" Wrong Username or Password");
                 </script>
 
                 <tr>
-<<<<<<< HEAD
                   <td colspan="2">
-=======
                 <td colspan="2">
->>>>>>> parent of 84c1bae... map update :snowflake:
 
                     <span style="color: red; text-align: center;">{{ error }}</span>
                 </td>
                 </tr>
 
-<<<<<<< HEAD
                 {% endif %}
-=======
             {% endif %}
->>>>>>> parent of 84c1bae... map update :snowflake:
 
                 <form method="post" action="{% url 'index2' %}">
                   {% csrf_token %}
@@ -245,7 +225,6 @@
                   <div class="row">
 
 
-<<<<<<< HEAD
                     <div class="col-6">
                       <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
                       <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
@@ -257,7 +236,6 @@
 
                     </div>
 
-=======
                    <div class="col-6">
                         <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
                         <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
@@ -269,12 +247,10 @@
                    
                     </div> 
                   
->>>>>>> parent of 84c1bae... map update :snowflake:
                   </div>
 
 
                   <form action="" class="mt-4" v-show="statusSign">
-<<<<<<< HEAD
 
                     <div class="form-group">
                       <label for="inputAddress">Username :</label>
@@ -287,8 +263,7 @@
                     <div class="form-group">
                       <label for="inputAddress">Confirm Password :</label>
                       <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
-=======
-                 
+
                       <div class="form-group">
                           <label for="inputAddress">Username :</label>
                           <input type="text" class="form-control" id="inputAddress" placeholder="Username">
@@ -305,7 +280,6 @@
                     <div class="form-group col-md-6">
                       <label for="inputEmail4">Name : </label>
                       <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
->>>>>>> parent of 84c1bae... map update :snowflake:
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Surname : </label>
@@ -322,7 +296,6 @@
                       <label for="inputEmail4">Tel : </label>
                       <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
                     </div>
-<<<<<<< HEAD
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
@@ -351,7 +324,6 @@
 
                   </div>
 
-=======
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Surname : </label>
                       <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
@@ -372,12 +344,10 @@
                     </div></div>
                 </form>
                   
->>>>>>> parent of 84c1bae... map update :snowflake:
                 </div>
                 
               </div>
             </div>
-<<<<<<< HEAD
 
 
 
@@ -535,13 +505,11 @@
                       
                     </form>
                     
->>>>>>> parent of 84c1bae... map update :snowflake:
                   </div>
                   
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
 
             {% endfor %}
             <!-- ### MARKET FORM ###  ^^^^^^^^^^
