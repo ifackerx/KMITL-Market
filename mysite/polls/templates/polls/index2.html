@@ -17,6 +17,7 @@
 <body>
   <div id="app">
 
+<<<<<<< HEAD
 
     {% for x in shopy %}
     {{ x.shop_name }}
@@ -56,6 +57,17 @@
       {{ shop.id }}: {{ shop.area_code }}
 
     </button>
+=======
+    <button></button>
+
+ิ
+    {% for shop in shop_list %}
+
+    <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">
+      {{ shop.id }}: {{ shop.area_code }}
+
+    </button>
+>>>>>>> parent of 84c1bae... map update :snowflake:
 
 
 
@@ -70,7 +82,10 @@
 
 
     {% endfor %}
+<<<<<<< HEAD
     {% endfor %}
+=======
+>>>>>>> parent of 84c1bae... map update :snowflake:
 
 
 
@@ -114,10 +129,14 @@
 
           <ul class="navbar-nav ml-auto">
             <span class="navbar-text mr-2">
+<<<<<<< HEAD
 
 
               Welcome :  {{ user }}
 
+=======
+              
+>>>>>>> parent of 84c1bae... map update :snowflake:
               User Type : Guest
               
 :
@@ -149,10 +168,14 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button><br>
+<<<<<<< HEAD
 
                 <p class="text-center h3">LOGIN</p>
                 {% if error %}
 
+=======
+                
+>>>>>>> parent of 84c1bae... map update :snowflake:
                 <p class="text-center h3">LOGIN</p> 
                       {% if error %}
                 <script>
@@ -160,14 +183,20 @@
                 </script>
 
                 <tr>
+<<<<<<< HEAD
                   <td colspan="2">
+=======
+>>>>>>> parent of 84c1bae... map update :snowflake:
                 <td colspan="2">
 
                     <span style="color: red; text-align: center;">{{ error }}</span>
                 </td>
                 </tr>
 
+<<<<<<< HEAD
                 {% endif %}
+=======
+>>>>>>> parent of 84c1bae... map update :snowflake:
             {% endif %}
 
                 <form method="post" action="{% url 'index2' %}">
@@ -225,6 +254,7 @@
                   <div class="row">
 
 
+<<<<<<< HEAD
                     <div class="col-6">
                       <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
                       <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
@@ -243,6 +273,15 @@
                    <div class="col-6">
                       <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
                       <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
+=======
+                   <div class="col-6">
+                        <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
+                        <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
+                   </div> 
+                   <div class="col-6">
+                      <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
+                      <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
+>>>>>>> parent of 84c1bae... map update :snowflake:
                
                    
                     </div> 
@@ -251,6 +290,7 @@
 
 
                   <form action="" class="mt-4" v-show="statusSign">
+<<<<<<< HEAD
 
                     <div class="form-group">
                       <label for="inputAddress">Username :</label>
@@ -264,6 +304,9 @@
                       <label for="inputAddress">Confirm Password :</label>
                       <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
 
+=======
+                 
+>>>>>>> parent of 84c1bae... map update :snowflake:
                       <div class="form-group">
                           <label for="inputAddress">Username :</label>
                           <input type="text" class="form-control" id="inputAddress" placeholder="Username">
@@ -296,6 +339,7 @@
                       <label for="inputEmail4">Tel : </label>
                       <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
                     </div>
+<<<<<<< HEAD
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
@@ -337,6 +381,21 @@
                         Check me out
                       </label>
                     </div>
+=======
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Surname : </label>
+                      <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Check me out
+                      </label>
+                    </div>
+>>>>>>> parent of 84c1bae... map update :snowflake:
                   </div>
                   <div class="row">
                     <div class="col text-center">
@@ -348,6 +407,7 @@
                 
               </div>
             </div>
+<<<<<<< HEAD
 
 
 
@@ -441,6 +501,8 @@
                     </div>
 
 =======
+=======
+>>>>>>> parent of 84c1bae... map update :snowflake:
           </div>
           
           
@@ -510,6 +572,7 @@
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 
             {% endfor %}
             <!-- ### MARKET FORM ###  ^^^^^^^^^^
@@ -710,6 +773,8 @@
               
               
 =======
+=======
+>>>>>>> parent of 84c1bae... map update :snowflake:
           </div>
           
           <!-- ### MARKET FORM ###  ^^^^^^^^^^
@@ -849,6 +914,9 @@
 
 
 
+<<<<<<< HEAD
+>>>>>>> parent of 84c1bae... map update :snowflake:
+=======
 >>>>>>> parent of 84c1bae... map update :snowflake:
             </div>
 

@@ -85,6 +85,7 @@ def index2(request):
 	shopy = Shop.objects.all()
 	shop_list = Shop.objects.all()
 
+<<<<<<< HEAD
 	shop_list = ShopArea.objects.all()[0:1]
 
 	shop_all = ShopArea.objects.all()
@@ -115,6 +116,12 @@ def index2(request):
 		'line_extra' : line_extra,
 		'line_extra2' : line_extra2,
 		'user' : request.user,
+=======
+	shop = Shop.objects.all()
+
+	context = {
+		'shop_list' : shop_list,
+>>>>>>> parent of 84c1bae... map update :snowflake:
 		'user': request.user,
 		'shopr': shop
 	}
