@@ -82,15 +82,8 @@ def my_logout(request):
 
 def index2(request):
 
-	shopy = Shop.objects.all()
-	shop_list = Shop.objects.all()
+	shop_list = ShopArea.objects.all()
 
-<<<<<<< HEAD
-	shop_list = ShopArea.objects.all()[0:1]
-
-	shop_all = ShopArea.objects.all()
-
-	shop = Shop.objects.all()
 	line_1 = ShopArea.objects.all()[0:34:-1]
 	line_2 = ShopArea.objects.all()[76:101:-1]
 	line_3 = ShopArea.objects.all()[101:126:-1]
@@ -99,13 +92,15 @@ def index2(request):
 	line_6 = ShopArea.objects.all()[145:160:-1]
 	line_7 = ShopArea.objects.all()[45:62]
 
+
 	line_extra = ShopArea.objects.all()[62:72]
 	line_extra2 = ShopArea.objects.all()[72:76]
 
+	shop = Shop.objects.all()
+
+
 	context = {
 		'shop_list' : shop_list,
-		'shop_all' : shop_all,
-		'shopy' : shopy,
 		'line_1' : line_1,
 		'line_2' : line_2,
 		'line_3' : line_3,
@@ -116,13 +111,6 @@ def index2(request):
 		'line_extra' : line_extra,
 		'line_extra2' : line_extra2,
 		'user' : request.user,
-=======
-	shop = Shop.objects.all()
-
-	context = {
-		'shop_list' : shop_list,
->>>>>>> parent of 84c1bae... map update :snowflake:
-		'user': request.user,
 		'shopr': shop
 	}
 	if request.method == 'POST':

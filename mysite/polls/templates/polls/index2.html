@@ -8,8 +8,8 @@
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'polls/css/main.css' %}">
-
-
+  
+  
   <link href="https://fonts.googleapis.com/css?family=Athiti:500" rel="stylesheet">
   
   
@@ -17,97 +17,61 @@
 <body>
   <div id="app">
 
-<<<<<<< HEAD
 
-    {% for x in shopy %}
-    {{ x.shop_name }}
-    {% endfor %}
+
 
     <button></button>
-
+    
     {% for shop in shop_list %}
-
-
+    
+    
     {% if shop.shop_owner_id == user.id %}
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#marketForm">
       {{ shop.id }}: {{ shop.area_code }}
-
+      
     </button>
     {% endif %}
-
+    
     {% if shop.shop_owner_id != user.id %}
     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#marketForm">
       {{ shop.id }}: {{ shop.area_code }}
-
+      
     </button>
     {% endif %}
-
-
-
-
-
+    
+    
+    
+    <a href="{% url 'review' shop.id %}">Review</a>
+    {% if shop.isBooking == 0 %}
+    <a href="{% url 'booking' shop.id %}">Book</a>
+    {% endif %}
+    
     <br>
-
-    <button></button>
-
-ิ
-    {% for shop in shop_list %}
-
-    <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">
-      {{ shop.id }}: {{ shop.area_code }}
-
-    </button>
-=======
-    <button></button>
-
-ิ
-    {% for shop in shop_list %}
-
-    <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">
-      {{ shop.id }}: {{ shop.area_code }}
-
-    </button>
->>>>>>> parent of 84c1bae... map update :snowflake:
-
-
-
-        <a href="{% url 'review' shop.id %}">Review</a>
-        {% if shop.isBooking == 0 %}
-        <a href="{% url 'booking' shop.id %}">Book</a>
-        {% endif %}
-        {% if shop.shop_owner_id == user.id %}
-            <h1>success</h1>
-        {% endif %}
-        <br>
-
-
+    
+    
     {% endfor %}
-<<<<<<< HEAD
-    {% endfor %}
-=======
->>>>>>> parent of 84c1bae... map update :snowflake:
-
-
-
+    
+    
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
       <a class="navbar-brand" href="#">
-
+        
         <img src="img/train.png" width="30" height="30" alt="">
-
-
+        
+        
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse">
-
+        
         <ul class="navbar-nav ">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
-
+            
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -116,107 +80,84 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-
+        
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">
               <h3>KMITL WALKING STREET   </h3>
               <span class="sr-only">(current)</span></a>
             </li>
-
+            
           </ul>
-
-
+          
+          
           <ul class="navbar-nav ml-auto">
             <span class="navbar-text mr-2">
-<<<<<<< HEAD
-
-
+              
               Welcome :  {{ user }}
-
-=======
               
->>>>>>> parent of 84c1bae... map update :snowflake:
-              User Type : Guest
-              
-:
             </span>
             <li class="nav-item mr-2">
-              <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#loginForm">Login</button>
+              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#loginForm">Login</button>
             </li>
-
+            
             <li class="nav-item">
-              <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#signupForm">Sign-Up</button>
+              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#signupForm">Sign-Up</button>
             </li>
-
+            
           </ul>
         </div>
         
         <script>
-
-
-
+          
+          
+          
         </script>
-
-
+        
+        
         
         <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content p-5">
-
+              
               <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button><br>
-<<<<<<< HEAD
-
-                <p class="text-center h3">LOGIN</p>
-                {% if error %}
-
-=======
                 
->>>>>>> parent of 84c1bae... map update :snowflake:
                 <p class="text-center h3">LOGIN</p> 
-                      {% if error %}
+                {% if error %}
                 <script>
                   alert(" Wrong Username or Password");
                 </script>
-
+                
                 <tr>
-<<<<<<< HEAD
                   <td colspan="2">
-=======
->>>>>>> parent of 84c1bae... map update :snowflake:
-                <td colspan="2">
-
+                    
                     <span style="color: red; text-align: center;">{{ error }}</span>
-                </td>
+                  </td>
                 </tr>
-
-<<<<<<< HEAD
+                
                 {% endif %}
-=======
->>>>>>> parent of 84c1bae... map update :snowflake:
-            {% endif %}
-
+                
                 <form method="post" action="{% url 'index2' %}">
                   {% csrf_token %}
-
+                  
                   <div class="input-group mb-3" width="100">
                     <div class="input-group-prepend">
                       <span class="input-group-text " id="inputGroup-sizing-default">1</span>
                     </div>
                     <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-
+                    
                   </div>
-
+                  
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroup-sizing-default">2</span>
                     </div>
                     <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-
-
+                    
+                    
                   </div>
                   <div class="row">
                     <div class="col text-center">
@@ -225,73 +166,51 @@
                     <div class="row">
                       <div class="col">
                         Don't have an account ?
-                        <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp"
+                        <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp" 
                         href="#signupForm">sign-up</a>
                       </div>
-                    </div>
+                    </div> 
                   </form>
-
+                  
                 </div>
-
+                
               </div>
             </div>
           </div>
-
+          
           <div class="modal fade" id="signupForm" tabindex="-1" role="dialog" aria-labelledby="signupForm" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content p-5">
-
+                
                 <div class="modal-body">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button><br>
-
-
-
-                  <p class="text-center h3">Sign Up</p>
+                  
+                  
+                  
+                  <p class="text-center h3">Sign Up</p> 
                   <p class="text-center mt-4">คุณต้องการสมัครสมาชิกในรูปแบบใด ? </p>
-
+                  
                   <div class="row">
-
-
-<<<<<<< HEAD
+                    
+                    
                     <div class="col-6">
                       <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
                       <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
-                    </div>
+                    </div> 
                     <div class="col-6">
                       <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
                       <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
-
-
-                    </div>
-
-                   <div class="col-6">
-                        <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
-                        <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
-                   </div> 
-                   <div class="col-6">
-                      <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
-                      <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
-=======
-                   <div class="col-6">
-                        <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
-                        <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
-                   </div> 
-                   <div class="col-6">
-                      <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
-                      <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
->>>>>>> parent of 84c1bae... map update :snowflake:
-               
-                   
+                      
+                      
                     </div> 
-                  
+                    
                   </div>
-
-
+                  
+                  
                   <form action="" class="mt-4" v-show="statusSign">
-<<<<<<< HEAD
-
+                    
                     <div class="form-group">
                       <label for="inputAddress">Username :</label>
                       <input type="text" class="form-control" id="inputAddress" placeholder="Username">
@@ -303,44 +222,22 @@
                     <div class="form-group">
                       <label for="inputAddress">Confirm Password :</label>
                       <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
-
-=======
-                 
->>>>>>> parent of 84c1bae... map update :snowflake:
-                      <div class="form-group">
-                          <label for="inputAddress">Username :</label>
-                          <input type="text" class="form-control" id="inputAddress" placeholder="Username">
-                        </div>
-                      <div class="form-group">
-                          <label for="inputAddress">Password : </label>
-                          <input type="password" class="form-control" id="inputAddress" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Confirm Password :</label>
-                            <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
-                          </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="inputEmail4">Name : </label>
-                      <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
                     </div>
-                    <div class="form-group col-md-6">
-                      <label for="inputPassword4">Surname : </label>
-                      <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Name : </label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Surname : </label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputAddress">Email</label>
-                    <input type="email" class="form-control" id="inputAddress" placeholder="youremail@text.com">
-                  </div>
-                  
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="inputEmail4">Tel : </label>
-                      <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
+                    <div class="form-group">
+                      <label for="inputAddress">Email</label>
+                      <input type="email" class="form-control" id="inputAddress" placeholder="youremail@text.com">
                     </div>
-<<<<<<< HEAD
-
+                    
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputEmail4">Tel : </label>
@@ -351,7 +248,7 @@
                         <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
                       </div>
                     </div>
-
+                    
                     <div class="form-group">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -365,60 +262,23 @@
                         <button type="submit" class="btn btn-primary btn-block">Sign up</button>
                       </div></div>
                     </form>
-
+                    
                   </div>
-
-                    <div class="form-group col-md-6">
-                      <label for="inputPassword4">Surname : </label>
-                      <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
-                    </div>
-                  </div>
-                  
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck">
-                      <label class="form-check-label" for="gridCheck">
-                        Check me out
-                      </label>
-                    </div>
-=======
-                    <div class="form-group col-md-6">
-                      <label for="inputPassword4">Surname : </label>
-                      <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
-                    </div>
-                  </div>
-                  
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck">
-                      <label class="form-check-label" for="gridCheck">
-                        Check me out
-                      </label>
-                    </div>
->>>>>>> parent of 84c1bae... map update :snowflake:
-                  </div>
-                  <div class="row">
-                    <div class="col text-center">
-                      <button type="submit" class="btn btn-primary btn-block">Sign up</button>
-                    </div></div>
-                </form>
                   
                 </div>
-                
               </div>
             </div>
-<<<<<<< HEAD
-
-
-
-
-
+            
+            
+            
+            
+            
           </nav>
           <div class="jumbotron"></div>
-
-
+          
+          
           <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#marketForm">Market</button>
-
+          
           <!-- ### MARKET FORM ###
             ###             ###
             ###             ###
@@ -428,152 +288,57 @@
             ###             ###
             ###             ###
             ### MARKET FORM ### -->
-
-            {% for w in shop_all %}
-
-
+            
+            {% for w in shop_list %}
+            
             <div class="modal fade" id="{{ w.area_code }}" tabindex="-1" role="dialog" aria-labelledby="{{ w.area_code }}" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content p-5">
-
+                  
                   <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button><br>
-                    <p class="text-center h3">
-
-                      {% for x in shopy %}
-
-                      {% if w.id == x.id %}
-                      {{ x.shop_name }}
-                      {% endif %}
-                      {{ break }}
-
-                      {% endfor %}
-
-                    </p>
-
+                    <p class="text-center h3"></p>
+                    
                     <hr>
-
-
-
-
+                    
+                    
+                    
+                    
+                    
                     <textarea readonly class="form-control" rows="5" id="comment"></textarea>
-
+                    
                     <dl class="row mt-3">
                       <dt class="col-sm-3">Location: </dt>
-                      <dd class="col-sm-9">
-
-                        {% for x in shopy %}
-
-                        {% if w.id == x.id %}
-                        {{ x.shop_detail }}
-                        {% endif %}
-                        {{ break }}
-
-                        {% endfor %}
-
-                      </dd>
-
+                      <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+                      
                       <dt class="col-sm-3">Open/Close: </dt>
                       <dd class="col-sm-9 text-success"> Mon-Sun 11 Am. - 17 pm.</dd>
-
-                      <dt class="col-sm-3"></dt>
+                      
+                      <dt class="col-sm-3"></dt>                
                       <dd class="col-sm-9 text-danger"> Sat 12 pm.</dd>
-
-                    </dl>
-
+                      
+                    </dl>    
+                    
                     <form action="" class="mt-4">
-
-
+                      
+                      
                       <div class="row">
                         <div class="col text-center">
-                              <a href="{% url 'review' w.id %}">Review</a>
-    {% if w.isBooking == 0 %}
-    <a href="{% url 'booking' w.id %}">Book</a>
-    {% endif %}
                           <a href="review.html"><button type="button" class="btn btn-primary btn-block" >Review</button></a>
                         </div></div>
-
-
+                        
+                        
                       </form>
-
+                      
                     </div>
-
-=======
-=======
->>>>>>> parent of 84c1bae... map update :snowflake:
-          </div>
-          
-          
-          
-          
-          
-        </nav>
-        <div class="jumbotron"></div>
-        
-        
-            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#marketForm">Market</button>
-
-        <!-- ### MARKET FORM ###
-          ###             ###
-          ###             ###
-          ###             ###
-          ###             ###
-          ###             ###
-          ###             ###
-          ###             ###
-          ### MARKET FORM ### -->
-          
-          <div class="modal fade" id="marketForm" tabindex="-1" role="dialog" aria-labelledby="marketForm" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content p-5">
-                
-                <div class="modal-body">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button><br>
-                  <p class="text-center h3"> ร้านบะหมี่เป็ดในตำนาน</p> 
-                  
-                  <hr>
-                  
-                  
-                  
-                  
-                  
-                  
-                  <textarea readonly class="form-control" rows="5" id="comment"></textarea>
-                  
-                  <dl class="row mt-3">
-                    <dt class="col-sm-3">Location: </dt>
-                    <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
-                    
-                    <dt class="col-sm-3">Open/Close: </dt>
-                    <dd class="col-sm-9 text-success"> Mon-Sun 11 Am. - 17 pm.</dd>
-                    
-                    <dt class="col-sm-3"></dt>                
-                    <dd class="col-sm-9 text-danger"> Sat 12 pm.</dd>
-                    
-                  </dl>    
-                  
-                  <form action="" class="mt-4">
-                    
-                    
-                    <div class="row">
-                      <div class="col text-center">
-                        <a href="review.html"><button type="button" class="btn btn-primary btn-block" >Review</button></a>
-                      </div></div>
-                      
-                      
-                    </form>
                     
                   </div>
-                  
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-
+            
             {% endfor %}
             <!-- ### MARKET FORM ###  ^^^^^^^^^^
               ###             ###
@@ -584,54 +349,54 @@
               ###             ###
               ###             ###
               ### MARKET FORM ### -->
-
-
+              
+              
               <table class="m-auto" id="map_table">
-
-
-
+                
+                
+                
                 <tr>
                   <td colspan="7"></td>
                   {% for x in line_7 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-
+                  
                   {% if x.area_code == 'F55' %}
-
+                  
                   <td colspan="2"></td>
                   {% endif %}
-
+                  
                   {% endfor %}
-
+                  
                   <td colspan="5"></td>
-
+                  
                   {% for y in line_extra %}
                   {% if y.area_code == 'F63'%}
                   <td><button class="btn btn-warning btn-sm w-100 data-taget=#marketform"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-
+                  
                   <tr class="blank_row">
                     <td>&nbsp;</td>
                     <td colspan="30"></td>
-
+                    
                     {% for y in line_extra %}
                     {% if y.area_code == 'F64'%}
                     <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                     {% endif %}
                     {% endfor %}
                   </tr>
-
+                  
                 </tr>
                 <tr>
                   <td>&nbsp;</td>
-                  <td colspan="30" class="text-center h3"><hr>ทางเดิน<hr></td>
-
+                  <td colspan="30"></td>
+                  
                   {% for y in line_extra %}
                   {% if y.area_code == 'F65'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-
+                  
                 </tr>
                 <tr>
                   <td colspan="9"></td>
@@ -639,96 +404,96 @@
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
                   <td colspan="7"></td>
-
+                  
                   {% for y in line_extra %}
                   {% if y.area_code == 'F66'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-
-
+                  
+                  
                 </tr>
                 <tr>
                   {% for x in line_5 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
-
+                  
                   <td colspan="24"></td>
-
+                  
                   {% for y in line_extra %}
                   {% if y.area_code == 'F67'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
                 </tr>
-
+                
                 <tr>
                   <td colspan="8"></td>
                   {% for x in line_4 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
-
+                  
                   <td colspan="6"></td>
                   {% for y in line_extra %}
                   {% if y.area_code == 'F68'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-
+                  
                 </tr>
-
+                
                 <tr class="blank_row">
                   <td>&nbsp;</td>
-                  <td colspan="30" class="text-center h3"><hr>ทางเดิน<hr></td>
-
+                  <td colspan="30"></td>
+                  
                   {% for y in line_extra %}
                   {% if y.area_code == 'F69'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
                 </tr>
-
+                
                 <tr>
                   {% for y in shop_list %}
                   {% if y.area_code == 'F70'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-
+                  
                   <td colspan="30"></td>
-
+                  
                   {% for y in line_extra %}
                   {% if y.area_code == 'F70'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-
-
+                  
+                  
                 </tr>
-
-
-
+                
+                
+                
                 <tr>
                   {% for y in shop_list %}
                   {% if y.area_code == 'F37'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
-
+                  
                   <td colspan="4"></td>
                   {% for x in line_3 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
-
+                  
                   <td colspan="1"></td>
-
+                  
                   {% for y in line_extra %}
                   {% if y.area_code == 'F71'%}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endif %}
                   {% endfor %}
                 </tr>
-
+                
                 <tr id="top">
                   {% for y in shop_list %}
                   {% if y.area_code == 'F36'%}
@@ -739,7 +504,7 @@
                   {% for x in line_2 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
                   {% endfor %}
-
+                  
                   <td colspan="1"></td>
                   {% for y in line_extra %}
                   {% if y.area_code == 'F72'%}
@@ -749,15 +514,15 @@
                   {% for y in line_extra2 %}
                   <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                   {% endfor %}
-
+                  
                 </tr>
-
+                
                 <tr class="blank_row">
                   <td>&nbsp;</td>
                 </tr>
-
+                
                 <tr class="blank_row">
-                  <td colspan="32" class="text-center h3 "><hr>ทางเดิน<hr></td>
+                  <td>&nbsp;</td>
                 </tr>
                 
                 <tr>
@@ -772,160 +537,22 @@
               
               
               
-=======
-=======
->>>>>>> parent of 84c1bae... map update :snowflake:
-          </div>
-          
-          <!-- ### MARKET FORM ###  ^^^^^^^^^^
-            ###             ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ### MARKET FORM ### -->
-
-
-            <table border="1" class="m-auto">
- <tr>
-                <td><button class="mr-3">F</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              </tr>
-
-                       <tr class="blank_row">
-            <td>&nbsp;</td>
-        </tr>
-
-                   <tr class="blank_row">
-            <td>&nbsp;</td>
-        </tr>
-
-
-
-              <tr>
-              <td><button class="mr-3">F</button></td>
-              <td colspan="6"></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td colspan="6"></td>
-            </tr>
-
-                  <tr>
-              <td><button class="mr-3">F</button></td>
-              <td colspan="6"></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td colspan="6"></td>
-            </tr>
-
-                   <tr class="blank_row">
-            <td>&nbsp;</td>
-        </tr>
-
-                   <tr class="blank_row">
-            <td>&nbsp;</td>
-        </tr>
-              <tr>
-                <td><button class="mr-3">F</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              <td><button>A01</button></td>
-              </tr>
-
-            </table>
-
-
-
-<<<<<<< HEAD
->>>>>>> parent of 84c1bae... map update :snowflake:
-=======
->>>>>>> parent of 84c1bae... map update :snowflake:
             </div>
-
-
+            
+            
+            <style>
+              
+              #map_table button {
+                /*border-radius: 20px;*/
+                
+              }
+              
+            </style>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-           
-           <!-- #for view Js. -->
+            
+            <!-- #for view Js. -->
             <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
             
             <script>
