@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib.auth.models import Permission
 
-from .models import Poll, Question, Choice, Comment
+from .models import Poll, Question, Choice, Comment, Shop
 
 admin.site.register(Permission)
 
@@ -70,3 +70,4 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(Shop)

@@ -1,0 +1,31 @@
+<!DOCTYPE html>    {% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Detail</title>
+</head>
+<body>
+
+    {% if shoplink != 'noo' %}
+
+        {% for i in shoplink %}
+
+            {{ i.shop_name }}
+
+
+    {{i.image.url}}
+            <img src="../../../media/img/51538827_386445645474417_392867856930308096_n.jpg">
+            <img src="{{ i.image.url }}">
+        {% endfor %}
+
+
+
+     {% else %}
+            NO data
+
+    {% endif %}
+
+
+</body>
+</html>

@@ -7,6 +7,7 @@
   <title>KMITL WALKING-STREET
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <link rel="stylesheet" href="{% static 'polls/css/main.css' %}">
   
   
@@ -16,13 +17,13 @@
 </head>
 <body>
   <div id="app">
+    
 
-
-
-
+    
+    <img src="{% static 'polls/images/1.jpg' %}">
     <button></button>
     
-    {% for shop in shop_list %}
+    {% for shop in shop_listz %}
     
     
     {% if shop.shop_owner_id == user.id %}
@@ -56,7 +57,6 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
       <a class="navbar-brand" href="#">
         
-        <img src="img/train.png" width="30" height="30" alt="">
         
         
       </a>
@@ -289,57 +289,7 @@
             ###             ###
             ### MARKET FORM ### -->
             
-            {% for w in shop_list %}
             
-            <div class="modal fade" id="{{ w.area_code }}" tabindex="-1" role="dialog" aria-labelledby="{{ w.area_code }}" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content p-5">
-                  
-                  <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button><br>
-                    <p class="text-center h3"></p>
-                    
-                    <hr>
-                    
-                    
-                    
-                    
-                    
-                    <textarea readonly class="form-control" rows="5" id="comment"></textarea>
-                    
-                    <dl class="row mt-3">
-                      <dt class="col-sm-3">Location: </dt>
-                      <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
-                      
-                      <dt class="col-sm-3">Open/Close: </dt>
-                      <dd class="col-sm-9 text-success"> Mon-Sun 11 Am. - 17 pm.</dd>
-                      
-                      <dt class="col-sm-3"></dt>                
-                      <dd class="col-sm-9 text-danger"> Sat 12 pm.</dd>
-                      
-                    </dl>    
-                    
-                    <form action="" class="mt-4">
-                      
-                      
-                      <div class="row">
-                        <div class="col text-center">
-                          <a href="review.html"><button type="button" class="btn btn-primary btn-block" >Review</button></a>
-                        </div></div>
-                        
-                        
-                      </form>
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {% endfor %}
             <!-- ### MARKET FORM ###  ^^^^^^^^^^
               ###             ###
               ###             ###
@@ -351,203 +301,299 @@
               ### MARKET FORM ### -->
               
               
-              <table class="m-auto" id="map_table">
+              <div id="scroll_demo" class="m-5">
                 
-                
-                
-                <tr>
-                  <td colspan="7"></td>
-                  {% for x in line_7 %}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
+                <table class="m-auto table-responsive-sm" id="map_table">
                   
-                  {% if x.area_code == 'F55' %}
                   
-                  <td colspan="2"></td>
-                  {% endif %}
                   
-                  {% endfor %}
+                  <tr>
+                    <td colspan="7"></td>
+                    {% for x in line_7 %}
+                    <td> <a href="{% url 'shop_detail' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button>                       </a>
+</td>
+
+                    {% if x.area_code == 'F55' %}
+                    
+                    <td colspan="2"></td>
+                    {% endif %}
+                    
+                    {% endfor %}
+                    
+                    <td colspan="5"></td>
+                    
+                    {% for y in line_extra %}
+                    {% if y.area_code == 'F63'%}
+                    <td><button class="btn btn-warning btn-sm w-100 data-taget=#marketform"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    <tr class="blank_row">
+                      <td>&nbsp;</td>
+                      <td colspan="30"></td>
+                      
+                      {% for y in line_extra %}
+                      {% if y.area_code == 'F64'%}
+                      <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                      {% endif %}
+                      {% endfor %}
+                    </tr>
+                    
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="30"></td>
+                    
+                    {% for y in line_extra %}
+                    {% if y.area_code == 'F65'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    
+                  </tr>
+                  <tr>
+                    <td colspan="9"></td>
+                    {% for x in line_6 %}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
+                    {% endfor %}
+                    <td colspan="7"></td>
+                    
+                    {% for y in line_extra %}
+                    {% if y.area_code == 'F66'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    
+                  </tr>
+                  <tr>
+                    {% for x in line_5 %}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
+                    {% endfor %}
+                    
+                    <td colspan="24"></td>
+                    
+                    {% for y in line_extra %}
+                    {% if y.area_code == 'F67'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                  </tr>
                   
-                  <td colspan="5"></td>
-                  
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F63'%}
-                  <td><button class="btn btn-warning btn-sm w-100 data-taget=#marketform"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
+                  <tr>
+                    <td colspan="8"></td>
+                    {% for x in line_4 %}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
+                    {% endfor %}
+                    
+                    <td colspan="6"></td>
+                    {% for y in line_extra %}
+                    {% if y.area_code == 'F68'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    
+                  </tr>
                   
                   <tr class="blank_row">
                     <td>&nbsp;</td>
                     <td colspan="30"></td>
                     
                     {% for y in line_extra %}
-                    {% if y.area_code == 'F64'%}
+                    {% if y.area_code == 'F69'%}
                     <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
                     {% endif %}
                     {% endfor %}
                   </tr>
                   
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td colspan="30"></td>
-                  
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F65'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
-                  
-                </tr>
-                <tr>
-                  <td colspan="9"></td>
-                  {% for x in line_6 %}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                  {% endfor %}
-                  <td colspan="7"></td>
-                  
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F66'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
+                  <tr>
+                    {% for y in shop_list %}
+                    {% if y.area_code == 'F70'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    <td colspan="30"></td>
+                    
+                    {% for y in line_extra %}
+                    {% if y.area_code == 'F70'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    
+                  </tr>
                   
                   
-                </tr>
-                <tr>
-                  {% for x in line_5 %}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                  {% endfor %}
                   
-                  <td colspan="24"></td>
+                  <tr>
+                    {% for y in shop_list %}
+                    {% if y.area_code == 'F37'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    <td colspan="4"></td>
+                    {% for x in line_3 %}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
+                    {% endfor %}
+                    
+                    <td colspan="1"></td>
+                    
+                    {% for y in line_extra %}
+                    {% if y.area_code == 'F71'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                  </tr>
                   
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F67'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
-                </tr>
-                
-                <tr>
-                  <td colspan="8"></td>
-                  {% for x in line_4 %}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                  {% endfor %}
+                  <tr id="top">
+                    {% for y in shop_list %}
+                    {% if y.area_code == 'F36'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    <td colspan="4"></td>
+                    {% for x in line_2 %}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
+                    {% endfor %}
+                    
+                    <td colspan="1"></td>
+                    {% for y in line_extra %}
+                    {% if y.area_code == 'F72'%}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endif %}
+                    {% endfor %}
+                    {% for y in line_extra2 %}
+                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
+                    {% endfor %}
+                    
+                  </tr>
                   
-                  <td colspan="6"></td>
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F68'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
+                  <tr class="blank_row">
+                    <td>&nbsp;</td>
+                  </tr>
                   
-                </tr>
-                
-                <tr class="blank_row">
-                  <td>&nbsp;</td>
-                  <td colspan="30"></td>
+                  <tr class="blank_row">
+                    <td>&nbsp;</td>
+                  </tr>
                   
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F69'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
-                </tr>
-                
-                <tr>
-                  {% for y in shop_list %}
-                  {% if y.area_code == 'F70'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
+                  <tr>
+                    {% for x in line_1 %}
+                    <td><button class="btn btn-warning btn-sm w-100" data-toggle="modal" data-target="#{{ x.area_code }}"> {{ x.area_code }} </button></td>
+                    
+                    
+                    {% endfor %}
+                  </tr>
                   
-                  <td colspan="30"></td>
-                  
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F70'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
-                  
-                  
-                </tr>
-                
-                
-                
-                <tr>
-                  {% for y in shop_list %}
-                  {% if y.area_code == 'F37'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
-                  
-                  <td colspan="4"></td>
-                  {% for x in line_3 %}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                  {% endfor %}
-                  
-                  <td colspan="1"></td>
-                  
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F71'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
-                </tr>
-                
-                <tr id="top">
-                  {% for y in shop_list %}
-                  {% if y.area_code == 'F36'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
-                  <td colspan="4"></td>
-                  {% for x in line_2 %}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                  {% endfor %}
-                  
-                  <td colspan="1"></td>
-                  {% for y in line_extra %}
-                  {% if y.area_code == 'F72'%}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endif %}
-                  {% endfor %}
-                  {% for y in line_extra2 %}
-                  <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                  {% endfor %}
-                  
-                </tr>
-                
-                <tr class="blank_row">
-                  <td>&nbsp;</td>
-                </tr>
-                
-                <tr class="blank_row">
-                  <td>&nbsp;</td>
-                </tr>
-                
-                <tr>
-                  {% for x in line_1 %}
-                  <td><button class="btn btn-warning btn-sm w-100" data-toggle="modal" data-target="#{{ x.area_code }}"> {{ x.area_code }} </button></td>
-                  
-                  
-                  {% endfor %}
-                </tr>
-                
-              </table>
-              
+                </table>
+              </div>
               
               
             </div>
             
+            <!-- Footer -->
+<footer class="page-footer font-small blue pt-4" style="background-color: rgb(239,192,47)">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">Footer Content</h5>
+          <p>Here you can use rows and columns here to organize your footer content.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+            
+            <style type="text/css">
+              #scroll_demo {
+                width: 100%;
+                height:100%;
+                /*border:1px solid red;*/
+                overflow:auto;
+              }
+            </style>
             
             <style>
               
               #map_table button {
                 /*border-radius: 20px;*/
-                
               }
               
             </style>
+            
+            
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

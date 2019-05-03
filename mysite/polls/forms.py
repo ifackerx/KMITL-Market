@@ -5,7 +5,8 @@ from django.core.exceptions import ValidationError
 from django.forms import forms
 from django import forms
 
-from .models import Poll, Question, Choice
+from .models import Poll, Question, Choice, Hotel
+
 
 class EditProfileForm(UserChangeForm):
     class Meta:
@@ -136,9 +137,15 @@ class BookingForm(forms.Form):
     shop_name = forms.CharField(label="Shop Name :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
     shop_open = forms.CharField(label="OPEN/CLOSE :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
     shop_detail = forms.CharField(label="Descirption :", max_length=500, required=True, widget=forms.Textarea(attrs={'class':'form-control'}))
-
+    image = forms.ImageField()
 
 
 class ReviewForm(forms.Form):
     review_title = forms.CharField(label="Titile :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
     review_message = forms.CharField(label="Desicription", max_length=500, required=True, widget=forms.Textarea(attrs={'class':'form-control'}))
+
+
+class HotelForm(forms.ModelForm):
+    class Meta:
+        model = Hotel
+        fields = ['name', 'hotel_Main_Img']

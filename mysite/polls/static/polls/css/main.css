@@ -7,12 +7,11 @@ body {
 .jumbotron {
     background: white url("../images/banner") no-repeat;
 
-    /*background-image: url("polls/images/banner");*/
     background-position: center;
-    
+
     height: 500px;
-    
-} 
+
+}
 .jumbotron h1 {
     margin: auto;
     text-align: center;

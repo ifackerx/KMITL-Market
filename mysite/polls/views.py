@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.forms import formset_factory
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.views import View
@@ -13,7 +13,38 @@ from django.views import View
 from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm, EditProfileForm, \
-	RegistrationForm, BookingForm
+	RegistrationForm, BookingForm, HotelForm
+
+
+# Create your views here.
+def hotel_image_view(request):
+	if request.method == 'POST':
+		form = HotelForm(request.POST, request.FILES)
+
+		if form.is_valid():
+			form.save()
+			return redirect('success')
+	else:
+		form = HotelForm()
+	return render(request, 'hotel_image_form.html', {'form': form})
+
+
+def success(request):
+	return HttpResponse('successfuly uploaded')
+
+
+def shop_detail(request, shop_area):
+	shoplink = Shop.objects.filter(shop_area=shop_area)
+	if shoplink:
+
+		context = {
+			'shoplink' : shoplink
+		}
+	else:
+		context = {
+			'shoplink': 'noo'
+		}
+	return render(request, 'polls/shop_detail.html', context=context)
 
 
 def profile(request):
@@ -83,6 +114,7 @@ def my_logout(request):
 def index2(request):
 
 	shop_list = ShopArea.objects.all()
+	shop_listz = ShopArea.objects.all()[0:1]
 
 	line_1 = ShopArea.objects.all()[0:34:-1]
 	line_2 = ShopArea.objects.all()[76:101:-1]
@@ -101,6 +133,7 @@ def index2(request):
 
 	context = {
 		'shop_list' : shop_list,
+		'shop_listz' : shop_listz,
 		'line_1' : line_1,
 		'line_2' : line_2,
 		'line_3' : line_3,
@@ -135,7 +168,10 @@ def index2(request):
 
 def review(request, shop_area):
 	area = ShopArea.objects.get(pk=shop_area)
+	shoplink = Shop.objects.get(shop_area=shop_area)
 	now = datetime.date.today()
+
+
 	print(now)
 	# การเอาข้อมูลมาแสดง
 	# review_list = Review.objects.all()
@@ -149,7 +185,7 @@ def review(request, shop_area):
 			review = Review.objects.create(
 				review_title = form.cleaned_data.get('review_title'),
 				review_message = form.cleaned_data.get('review_message'),
-				review_shop_id = shop_area,
+				review_shop_id = shoplink.id,
 				text = now,
 				review_user = user
 			)
