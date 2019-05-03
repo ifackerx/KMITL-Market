@@ -7,6 +7,7 @@ from django import forms
 
 from .models import Poll, Question, Choice
 
+
 class EditProfileForm(UserChangeForm):
     class Meta:
         model = User
@@ -36,6 +37,7 @@ class RegistrationForm(UserCreationForm):
             'password1',
             'password2'
         )
+
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
         user.first_name = self.cleaned_data['first_name']
@@ -47,9 +49,11 @@ class RegistrationForm(UserCreationForm):
 
         return user
 
+
 def validate_even(value):
     if value % 2 != 0:
         raise ValidationError('%(value)s ไม่ใช่เลขคู่', params={'value' : value})
+
 
 class PollForm(forms.Form):
     title = forms.CharField(label="ชื่อโพล", max_length=100, required=True)
@@ -82,16 +86,17 @@ def validate_title(value):
     if len(value) > 100:
         raise ValidationError('ตัวอักษรต้องไม่เกิน 100 ตัวอักษร')
 
+
 def validate_body(value):
     if len(value) > 500:
         raise ValidationError('ตัวอักษรต้องไม่เกิน 500 ตัวอักษร')
+
 
 def validate_tel(value):
     if len(value) != 10:
         raise ValidationError('ต้องเป็นตัวเลข 10 ตัว')
     if not value.isdigit():
         raise ValidationError('ต้องเป็นตัวเลขทั้งหมด')
-
 
 
 class CommentForm(forms.Form):
@@ -115,7 +120,6 @@ class QuestionForm(forms.Form):
     type = forms.ChoiceField(choices=Question.TYPES, initial='01')
 
 
-
 class PollModelForm(forms.ModelForm):
 
     # email = forms.CharField(validators=[validators.validate_email])
@@ -125,6 +129,7 @@ class PollModelForm(forms.ModelForm):
     class Meta:
         model = Poll
         exclude = ['del_flag']
+
 
 class ChoiceModelForm(forms.ModelForm):
     class Meta:
@@ -136,7 +141,6 @@ class BookingForm(forms.Form):
     shop_name = forms.CharField(label="Shop Name :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
     shop_open = forms.CharField(label="OPEN/CLOSE :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
     shop_detail = forms.CharField(label="Descirption :", max_length=500, required=True, widget=forms.Textarea(attrs={'class':'form-control'}))
-
 
 
 class ReviewForm(forms.Form):
