@@ -158,38 +158,38 @@ def booking(request, shop_area):
         form = BookingForm(request.POST)
         user = User.objects.get(id=request.user.id)
         shopArea = ShopArea.objects.get(id=shop_area)
+        shop_list = []
+        for i in Shop.objects.filter(shop_owner_id=request.user.id):
+            shop_list.append(i.shop_name)
 
-        if request.POST.get('shop_name'):
-            shop_data = Shop.objects.get(shop_name=request.POST.get('shop_name'))
+        if len(shop_list) != 0:
+            if request.POST.get('shop_name') in shop_list:
+                shop_data = Shop.objects.get(shop_name=request.POST.get('shop_name'))
 
-            print(shop_data.shop_name)
-            for i in Shop.objects.filter(shop_owner_id= request.user.id):
-                
-                if shop_data.shop_name == i.shop_name and shop_data.shop_owner_id == request.user.id:
-                    shop_data.shop_area = area
+                for i in Shop.objects.filter(shop_owner_id=request.user.id):
+
+                    if shop_data.shop_name == i.shop_name and shop_data.shop_owner_id == request.user.id:
+                        shop_data.shop_area = area
+                        shopArea.isBooking = 1
+                        shopArea.shop_owner = user
+
+                        shopArea.save()
+                        shop_data.save()
+                        print(shopArea.isBooking)
+                        break
+            else:
+                if form.is_valid() and shopArea.isBooking != 1:
+                    shop = Shop.objects.create(
+                        shop_name=form.cleaned_data.get('shop_name'),
+                        shop_open=form.cleaned_data.get('shop_open'),
+                        shop_detail=form.cleaned_data.get('shop_detail'),
+                        shop_area=area,
+                        shop_owner=user,
+                    )
                     shopArea.isBooking = 1
                     shopArea.shop_owner = user
-
                     shopArea.save()
-                    shop_data.save()
-                    print('ควย')
                     print(shopArea.isBooking)
-                    break
-
-
-
-        elif form.is_valid() and shopArea.isBooking != 1:
-            shop = Shop.objects.create(
-                shop_name=form.cleaned_data.get('shop_name'),
-                shop_open=form.cleaned_data.get('shop_open'),
-                shop_detail=form.cleaned_data.get('shop_detail'),
-                shop_area=area,
-                shop_owner=user,
-            )
-            shopArea.isBooking = 1
-            shopArea.shop_owner = user
-            shopArea.save()
-            print(shopArea.isBooking)
 
     else:
         form = BookingForm()
