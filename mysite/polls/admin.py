@@ -4,10 +4,14 @@ from django.contrib import admin
 from django.contrib.auth.models import Permission
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 from .models import Poll, Question, Choice, Comment, Shop, UserProfile
 =======
 from .models import Poll, Question, Choice, Comment, ShopArea, Shop
 >>>>>>> ohm
+=======
+from .models import Poll, Question, Choice, Comment, Shop
+>>>>>>> parent of 6b2b143... login frontend
 
 admin.site.register(Permission)
 
@@ -76,6 +80,7 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(Comment, CommentAdmin)
 <<<<<<< HEAD
 admin.site.register(Shop)
+<<<<<<< HEAD
 admin.site.register(UserProfile)
 =======
 
@@ -96,3 +101,5 @@ class ShopAdmin(admin.ModelAdmin):
 
 admin.site.register(Shop, ShopAdmin)
 >>>>>>> ohm
+=======
+>>>>>>> parent of 6b2b143... login frontend

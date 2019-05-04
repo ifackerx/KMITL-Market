@@ -14,14 +14,10 @@
             {{ i.shop_name }}
 
 
-
-            {% if i.image %}
-                <img src="{{ i.image.url }}">
-
-            {% else %}
-              <img src="../../../media/img/no-img.png" width="200px">
-            {% endif %}
-    {% endfor %}
+    {{i.image.url}}
+            <img src="../../../media/img/51538827_386445645474417_392867856930308096_n.jpg">
+            <img src="{{ i.image.url }}">
+        {% endfor %}
 
 
 

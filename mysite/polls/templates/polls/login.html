@@ -1,68 +1,47 @@
-<!DOCTYPE html>{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    
-    <link href="https://fonts.googleapis.com/css?family=Athiti:500" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'polls/css/login.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
 </head>
 <body>
-    
-    <div class="login">
-        <img src="../../../media/img/user.png" style="width: 80px;" class="userpic">
-        
-        <h1>LOGIN</h1>
-        <br>
 
-        <form method="post" action="{% url 'login' %}" class="m-auto" id="logForm">
-            {% csrf_token %}
+    <h1>Log in to my Poll</h1>
+    <br>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table border="1">
             {% if error %}
-            <tr>
+                <tr>
                 <td colspan="2">
                     <span style="color: red; text-align: center;">{{ error }}</span>
                 </td>
-            </tr>
-            
+                </tr>
+
             {% endif %}
+            <tr>
 
+                <th>Username : </th>
+                <td><input type="text" name="username"></td>
 
+            </tr>
 
+            <tr>
+                <th>Password : </th>
+                <td><input type="password" name="password"></td>
+            </tr>
 
-<div class="form-group row">
-    <label class="col-sm-4 m-auto h5">Username :</label>
-    <div class="col-sm-8">
-      <input type="text" name="username" class="form-control" placeholder="Username">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-4 m-auto h5">Password :</label>
-    <div class="col-sm-8">
-      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
-    </div>
-  </div>
-            
-            <button type="submit" class="btn btn-warning w-100 mt-4">Submit</button>
-  Don't have an account ?
-                        <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp"
-                        href="#signupForm">sign-up</a>
+            <tr>
+                <td colspan="2" style="...">                <input type="submit" value="LOGIN">
+</td>
                 <input type="hidden" name="next_url" value="{{ next_url }}">
+            </tr>
 
-        </form>
+        </table>
 
 
-        <style>
+    </form>
 
-            body {
-                  font-family: 'Athiti', sans-serif;
-
-            }
-
-        </style>
-
-    </div>
-    
 </body>
 </html>

@@ -42,10 +42,9 @@
     
     
     
+    <a href="{% url 'review' shop.id %}">Review</a>
     {% if shop.isBooking == 0 %}
     <a href="{% url 'booking' shop.id %}">Book</a>
-    {% else %}
-    <a href="{% url 'review' shop.id %}">Review</a>
     {% endif %}
     
     <br>
