@@ -101,3 +101,29 @@ class Review(models.Model):
 class Hotel(models.Model):
     name = models.CharField(max_length=50)
     hotel_Main_Img = models.ImageField(upload_to='images/')
+
+
+class Payment(models.Model):
+    WAIT = 'รอตรวจสอบ'
+    APPROVE = 'จ่ายแล้ว'
+    NAPPROVE = 'ค้างชำระ'
+    TYPES = (
+        (WAIT, 'รอตรวจสอบ'),
+        (APPROVE, 'จ่ายแล้ว'),
+        (NAPPROVE, 'ค้างชำระ')
+    )
+    payment_status = models.CharField(choices=TYPES, default='รอตรวจสอบ', max_length=100)
+    payment_price = models.IntegerField(default=0)
+    payment_date = models.DateField(null=True)
+    user_payment = models.ForeignKey(User, on_delete=models.PROTECT)
+    payment_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
+
+
+class Zone(models.Model):
+    zone_type = models.CharField(max_length=50)
+
+
+class Event(models.Model):
+    event_date = models.DateField(null=True)
+    event_desc = models.CharField(max_length=500)
+    event_zone = models.ForeignKey(Zone, on_delete=models.PROTECT)
