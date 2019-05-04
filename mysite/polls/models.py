@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 # users/models.py
 from django.contrib.auth.models import AbstractUser
-
+from django.db.models.signals import post_save
 
 
 class Poll(models.Model):
@@ -63,6 +63,17 @@ class Comment(models.Model):
 
 
 # project
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    image = models.ImageField(upload_to='img/user', blank=True)
+
+    def __str__(self):
+        return  self.user.username
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = UserProfile.objects.create(user=kwargs['instance'])
+
+post_save.connect(create_profile, sender=User)
 
 class ShopArea(models.Model):
     area_code = models.CharField(max_length=10)

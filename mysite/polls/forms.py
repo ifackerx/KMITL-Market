@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.forms import forms
 from django import forms
 
-from .models import Poll, Question, Choice, Hotel
+from .models import Poll, Question, Choice, Hotel, UserProfile
 
 
 class EditProfileForm(UserChangeForm):
@@ -15,8 +15,10 @@ class EditProfileForm(UserChangeForm):
             'email',
             'first_name',
             'last_name',
-            'password'
+            'password',
+
         )
+
 
 
 class RegistrationForm(UserCreationForm):
@@ -137,7 +139,7 @@ class BookingForm(forms.Form):
     shop_name = forms.CharField(label="Shop Name :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
     shop_open = forms.CharField(label="OPEN/CLOSE :", max_length=100, required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
     shop_detail = forms.CharField(label="Descirption :", max_length=500, required=True, widget=forms.Textarea(attrs={'class':'form-control'}))
-    image = forms.ImageField()
+    image = forms.ImageField(required=False)
 
 
 class ReviewForm(forms.Form):

@@ -147,6 +147,12 @@
      <div class="row mt-2 p-4 border">
 
             <div class="col-4">
+               {% if review.review_user.userprofile.image %}
+                <img src=" {{review.review_user.userprofile.image.url}}" width="300px">
+
+            {% else %}
+              <img src="../../../media/img/no-img.png" width="300px">
+            {% endif %}
 
 
              </div>
