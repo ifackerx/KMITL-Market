@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.forms import formset_factory
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import Group
 # Create your views here.
 from django.views import View
 
@@ -39,7 +40,15 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            print(request.POST.get('choices'))
+            if request.POST.get('choices') == '01':
+
+                group = Group.objects.get(name='User')
+                user.groups.add(group)
+            else:
+                group = Group.objects.get(name='Admin')
+                user.groups.add(group)
             return redirect('index')
     else:
         form = RegistrationForm()
@@ -177,6 +186,7 @@ def booking(request, shop_area):
                         shop_data.save()
                         print(shopArea.isBooking)
                         break
+
             else:
                 if form.is_valid() and shopArea.isBooking != 1:
                     shop = Shop.objects.create(
@@ -190,7 +200,19 @@ def booking(request, shop_area):
                     shopArea.shop_owner = user
                     shopArea.save()
                     print(shopArea.isBooking)
-
+        else:
+            if form.is_valid() and shopArea.isBooking != 1:
+                shop = Shop.objects.create(
+                    shop_name=form.cleaned_data.get('shop_name'),
+                    shop_open=form.cleaned_data.get('shop_open'),
+                    shop_detail=form.cleaned_data.get('shop_detail'),
+                    shop_area=area,
+                    shop_owner=user,
+                )
+                shopArea.isBooking = 1
+                shopArea.shop_owner = user
+                shopArea.save()
+                print(shopArea.isBooking)
     else:
         form = BookingForm()
 

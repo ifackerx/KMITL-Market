@@ -68,7 +68,8 @@ class ShopArea(models.Model):
     area_code = models.CharField(max_length=10)
     del_shop = models.BooleanField(default=False)
     isBooking = models.BooleanField(default=False)
-    shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, blank=True)
+    shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
+
     WAIT = 'รอการอนุมัติ'
     APPROVE = 'อนุมัติ'
     NAPPROVE = 'ไม่อนุมัติ'
@@ -84,8 +85,9 @@ class Shop(models.Model):
     shop_name = models.CharField(max_length=100)
     shop_open = models.CharField(null=True, blank=True, max_length=100)
     shop_detail = models.CharField(null = True, blank=True, max_length=500)
-    shop_area = models.ForeignKey(ShopArea, on_delete=models.SET_NULL, default=0, null=True)
+    shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT, default=1)
     shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
+    image = models.ImageField(upload_to='img/', blank=True)
 
 
 class Review(models.Model):
@@ -94,3 +96,8 @@ class Review(models.Model):
     review_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
     review_user = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
     text = models.CharField(max_length=100, null=True)
+
+
+class Hotel(models.Model):
+    name = models.CharField(max_length=50)
+    hotel_Main_Img = models.ImageField(upload_to='images/')

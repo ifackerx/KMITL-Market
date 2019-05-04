@@ -26,6 +26,7 @@ class RegistrationForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     password1 = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'password'}))
     password2 = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'password'}))
+    choices = forms.ChoiceField(choices=(('01', 'ลูกค้า'), ('02', 'พ่อค้าแม่ค้า')), initial='ลูกค้า')
 
     class Meta:
         model = User
