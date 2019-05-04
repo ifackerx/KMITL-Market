@@ -14,7 +14,6 @@ from django.views import View
 from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm, EditProfileForm, \
-<<<<<<< HEAD
     RegistrationForm, BookingForm, HotelForm
 
 
@@ -154,7 +153,6 @@ def my_login(request):
 def my_logout(request):
     logout(request)
     return redirect('login')
-=======
 
 def my_login(request):
     context = {}
@@ -244,7 +242,6 @@ def review(request, shop_area):
     shoplink = Shop.objects.get(shop_area=shop_area)
     now = datetime.date.today()
 
-=======
 def my_logout(request):
     logout(request)
     return redirect('login')
@@ -276,13 +273,11 @@ def index2(request):
             context['error'] = 'Wrong username or password'
 
     return render(request, template_name='polls/index2.html', context=context)
->>>>>>> ohm
 
     print(now)
     # การเอาข้อมูลมาแสดง
     # review_list = Review.objects.all()
 
-<<<<<<< HEAD
     ##ส่วนของฐานข้อมูล
 
     if request.method == 'POST':
@@ -307,7 +302,6 @@ def index2(request):
     }
 
     return render(request, template_name='polls/review.html', context=context)
-=======
 def review(request, shop_area):
     area = ShopArea.objects.get(pk=shop_area)
     now = datetime.date.today()
@@ -410,7 +404,6 @@ def booking(request, shop_area):
     }
 
     return render(request, template_name='polls/booking.html', context=context)
->>>>>>> ohm
 
 
 def booking(request, shop_area):
@@ -493,37 +486,31 @@ def booking(request, shop_area):
 def index(request):
     poll_list = Poll.objects.all()
 
-<<<<<<< HEAD
     poll_list = Poll.objects.all()
 
-=======
->>>>>>> ohm
+
     for poll in poll_list:
         question_count = Question.objects.filter(poll_id=poll.id).count()
         poll.question_count = question_count
 
     context = {
-<<<<<<< HEAD
         'page_title' : 'wellcome to my poll page',
         'poll_list' : poll_list
     }
 
     return render(request, template_name='polls/index.html', context=context)
-=======
         'page_title': 'wellcome to my poll page',
         'poll_list': poll_list
     }
 
     return render(request, template_name='polls/index.html', context=context)
 
->>>>>>> ohm
 
 @login_required
 @permission_required('polls.view_poll')
 def detail(request, poll_id):
     poll = Poll.objects.get(pk=poll_id)
 
-<<<<<<< HEAD
     poll = Poll.objects.get(pk=poll_id)
 
     print(request.POST)
@@ -545,7 +532,7 @@ def detail(request, poll_id):
                         question_id=question.id,
                     )
     return render(request, "polls/detail.html", {'poll': poll})
-=======
+
     print(request.POST)
     if request.method == 'POST':
         for question in poll.question_set.all():
