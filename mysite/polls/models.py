@@ -9,7 +9,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 
-
 class Poll(models.Model):
 
     title = models.CharField(max_length=100)
@@ -48,6 +47,7 @@ class Choice(models.Model):
 class Answer(models.Model):
     choice = models.OneToOneField(Choice, on_delete=models.PROTECT)
     question = models.ForeignKey(Question, on_delete=models.PROTECT)
+
 
 class Comment(models.Model):
 
@@ -111,4 +111,8 @@ class Review(models.Model):
 
 class Hotel(models.Model):
     name = models.CharField(max_length=50)
+<<<<<<< HEAD
     hotel_Main_Img = models.ImageField(upload_to='images/')
+=======
+    hotel_Main_Img = models.ImageField(upload_to='images/')
+>>>>>>> ohm
