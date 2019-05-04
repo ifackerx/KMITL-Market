@@ -9,7 +9,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 
 
-
 class Poll(models.Model):
 
     title = models.CharField(max_length=100)
@@ -49,6 +48,7 @@ class Answer(models.Model):
     choice = models.OneToOneField(Choice, on_delete=models.PROTECT)
     question = models.ForeignKey(Question, on_delete=models.PROTECT)
 
+
 class Comment(models.Model):
 
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE, null=True, blank=True)
@@ -70,6 +70,16 @@ class ShopArea(models.Model):
     isBooking = models.BooleanField(default=False)
     shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
 
+    WAIT = 'รอการอนุมัติ'
+    APPROVE = 'อนุมัติ'
+    NAPPROVE = 'ไม่อนุมัติ'
+    TYPES2 = (
+        (WAIT, 'รอการอนุมัติ'),
+        (APPROVE, 'อนุมัติ'),
+        (NAPPROVE, 'ไม่อนุมัติ')
+    )
+    approve_status = models.CharField(max_length=12, choices=TYPES2, default='รอการอนุมัติ')
+
 
 class Shop(models.Model):
     shop_name = models.CharField(max_length=100)
@@ -77,9 +87,17 @@ class Shop(models.Model):
     shop_detail = models.CharField(null = True, blank=True, max_length=500)
     shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT, default=1)
     shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
+    image = models.ImageField(upload_to='img/', blank=True)
+
+
 class Review(models.Model):
     review_title = models.CharField(max_length=100)
     review_message = models.CharField(max_length=500)
     review_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
     review_user = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
     text = models.CharField(max_length=100, null=True)
+
+
+class Hotel(models.Model):
+    name = models.CharField(max_length=50)
+    hotel_Main_Img = models.ImageField(upload_to='images/')
