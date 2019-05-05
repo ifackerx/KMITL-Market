@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 # users/models.py
 from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save
 
 
 class Poll(models.Model):
@@ -48,7 +49,6 @@ class Answer(models.Model):
     choice = models.OneToOneField(Choice, on_delete=models.PROTECT)
     question = models.ForeignKey(Question, on_delete=models.PROTECT)
 
-
 class Comment(models.Model):
 
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE, null=True, blank=True)
@@ -63,6 +63,17 @@ class Comment(models.Model):
 
 
 # project
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    image = models.ImageField(upload_to='img/user', blank=True)
+
+    def __str__(self):
+        return  self.user.username
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = UserProfile.objects.create(user=kwargs['instance'])
+
+post_save.connect(create_profile, sender=User)
 
 class ShopArea(models.Model):
     area_code = models.CharField(max_length=10)
@@ -100,8 +111,30 @@ class Review(models.Model):
 
 class Hotel(models.Model):
     name = models.CharField(max_length=50)
-<<<<<<< HEAD
     hotel_Main_Img = models.ImageField(upload_to='images/')
-=======
-    hotel_Main_Img = models.ImageField(upload_to='images/')
->>>>>>> ohm
+
+
+class Payment(models.Model):
+    WAIT = 'รอตรวจสอบ'
+    APPROVE = 'จ่ายแล้ว'
+    NAPPROVE = 'ค้างชำระ'
+    TYPES = (
+        (WAIT, 'รอตรวจสอบ'),
+        (APPROVE, 'จ่ายแล้ว'),
+        (NAPPROVE, 'ค้างชำระ')
+    )
+    payment_status = models.CharField(choices=TYPES, default='รอตรวจสอบ', max_length=100)
+    payment_price = models.IntegerField(default=0)
+    payment_date = models.DateField(null=True)
+    user_payment = models.ForeignKey(User, on_delete=models.PROTECT)
+    payment_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
+
+
+class Zone(models.Model):
+    zone_type = models.CharField(max_length=50)
+
+
+class Event(models.Model):
+    event_date = models.DateField(null=True)
+    event_desc = models.CharField(max_length=500)
+    event_zone = models.ForeignKey(Zone, on_delete=models.PROTECT)

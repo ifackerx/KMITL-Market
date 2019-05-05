@@ -7,7 +7,7 @@
   <title>KMITL WALKING-STREET
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  
   <link rel="stylesheet" href="{% static 'polls/css/main.css' %}">
   
   
@@ -16,11 +16,16 @@
   
 </head>
 <body>
+  
+  
+  
+  
+  
+  {% if group_name == 'Merchant' %}
+  BOOK >
+  {% endif %}
+  
   <div id="app">
-    
-
-    
-    <img src="{% static 'polls/images/1.jpg' %}">
     <button></button>
     
     {% for shop in shop_listz %}
@@ -42,9 +47,10 @@
     
     
     
-    <a href="{% url 'review' shop.id %}">Review</a>
     {% if shop.isBooking == 0 %}
     <a href="{% url 'booking' shop.id %}">Book</a>
+    {% else %}
+    <a href="{% url 'review' shop.id %}">Review</a>
     {% endif %}
     
     <br>
@@ -84,7 +90,9 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">
+              
               <h3>KMITL WALKING STREET   </h3>
+              
               <span class="sr-only">(current)</span></a>
             </li>
             
@@ -108,15 +116,73 @@
           </ul>
         </div>
         
-        <script>
-          
-          
-          
-        </script>
         
         
+      </nav>
+      
+      <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content p-5">
+            
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button><br>
+              
+              <p class="text-center h3">LOGIN</p> 
+              {% if error %}
+              <script>
+                alert(" Wrong Username or Password");
+              </script>
+              
+              <tr>
+                <td colspan="2">
+                  
+                  <span style="color: red; text-align: center;">{{ error }}</span>
+                </td>
+              </tr>
+              
+              {% endif %}
+              
+              <form method="post" action="{% url 'index2' %}">
+                {% csrf_token %}
+                
+                <div class="input-group mb-3" width="100">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text " id="inputGroup-sizing-default">1</span>
+                  </div>
+                  <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  
+                </div>
+                
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">2</span>
+                  </div>
+                  <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  
+                  
+                </div>
+                <div class="row">
+                  <div class="col text-center">
+                    <button type="submit" value="LOGIN" class="btn btn-primary btn-block">Login</button>
+                  </div></div>
+                  <div class="row">
+                    <div class="col">
+                      Don't have an account ?
+                      <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp" 
+                      href="#signupForm">sign-up</a>
+                    </div>
+                  </div> 
+                </form>
+                
+              </div>
+              
+            </div>
+          </div>
+        </div>
         
-        <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true">
+        <div class="modal fade" id="signupForm" tabindex="-1" role="dialog" aria-labelledby="signupForm" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content p-5">
               
@@ -125,51 +191,80 @@
                   <span aria-hidden="true">&times;</span>
                 </button><br>
                 
-                <p class="text-center h3">LOGIN</p> 
-                {% if error %}
-                <script>
-                  alert(" Wrong Username or Password");
-                </script>
                 
-                <tr>
-                  <td colspan="2">
-                    
-                    <span style="color: red; text-align: center;">{{ error }}</span>
-                  </td>
-                </tr>
                 
-                {% endif %}
+                <p class="text-center h3">Sign Up</p> 
+                <p class="text-center mt-4">คุณต้องการสมัครสมาชิกในรูปแบบใด ? </p>
                 
-                <form method="post" action="{% url 'index2' %}">
-                  {% csrf_token %}
+                <div class="row">
                   
-                  <div class="input-group mb-3" width="100">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text " id="inputGroup-sizing-default">1</span>
-                    </div>
-                    <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  
+                  <div class="col-6">
+                    <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
+                    <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
+                  </div> 
+                  <div class="col-6">
+                    <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
+                    <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
                     
+                    
+                  </div> 
+                  
+                </div>
+                
+                
+                <form action="" class="mt-4" v-show="statusSign">
+                  
+                  <div class="form-group">
+                    <label for="inputAddress">Username :</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress">Password : </label>
+                    <input type="password" class="form-control" id="inputAddress" placeholder="password">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress">Confirm Password :</label>
+                    <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Name : </label>
+                      <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Surname : </label>
+                      <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress">Email</label>
+                    <input type="email" class="form-control" id="inputAddress" placeholder="youremail@text.com">
                   </div>
                   
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-default">2</span>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Tel : </label>
+                      <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
                     </div>
-                    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    
-                    
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Surname : </label>
+                      <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Check me out
+                      </label>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col text-center">
-                      <button type="submit" value="LOGIN" class="btn btn-primary btn-block">Login</button>
+                      <button type="submit" class="btn btn-primary btn-block">Sign up</button>
                     </div></div>
-                    <div class="row">
-                      <div class="col">
-                        Don't have an account ?
-                        <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp" 
-                        href="#signupForm">sign-up</a>
-                      </div>
-                    </div> 
                   </form>
                   
                 </div>
@@ -178,446 +273,436 @@
             </div>
           </div>
           
-          <div class="modal fade" id="signupForm" tabindex="-1" role="dialog" aria-labelledby="signupForm" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content p-5">
-                
-                <div class="modal-body">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button><br>
-                  
-                  
-                  
-                  <p class="text-center h3">Sign Up</p> 
-                  <p class="text-center mt-4">คุณต้องการสมัครสมาชิกในรูปแบบใด ? </p>
-                  
-                  <div class="row">
-                    
-                    
-                    <div class="col-6">
-                      <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
-                      <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
-                    </div> 
-                    <div class="col-6">
-                      <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
-                      <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
-                      
-                      
-                    </div> 
-                    
-                  </div>
-                  
-                  
-                  <form action="" class="mt-4" v-show="statusSign">
-                    
-                    <div class="form-group">
-                      <label for="inputAddress">Username :</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Password : </label>
-                      <input type="password" class="form-control" id="inputAddress" placeholder="password">
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Confirm Password :</label>
-                      <input type="password" class="form-control" id="inputAddress" placeholder="confirm password">
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputEmail4">Name : </label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputPassword4">Surname : </label>
-                        <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Email</label>
-                      <input type="email" class="form-control" id="inputAddress" placeholder="youremail@text.com">
-                    </div>
-                    
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputEmail4">Tel : </label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputPassword4">Surname : </label>
-                        <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
-                      </div>
-                    </div>
-                    
-                    <div class="form-group">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Check me out
-                        </label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col text-center">
-                        <button type="submit" class="btn btn-primary btn-block">Sign up</button>
-                      </div></div>
-                    </form>
-                    
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-            
-            
-            
-            
-            
-          </nav>
+          
+          
+          
+          
           <div class="jumbotron"></div>
           
-          
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#marketForm">Market</button>
-          
-          <!-- ### MARKET FORM ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ###             ###
-            ### MARKET FORM ### -->
+          <div id="scroll_demo" class="m-5">
             
-            
-            <!-- ### MARKET FORM ###  ^^^^^^^^^^
-              ###             ###
-              ###             ###
-              ###             ###
-              ###             ###
-              ###             ###
-              ###             ###
-              ###             ###
-              ### MARKET FORM ### -->
+            <table class="m-auto table-responsive-sm" id="map_table">
               
               
-              <div id="scroll_demo" class="m-5">
+              
+              <tr>
+                <td colspan="7"></td>
+                {% for x in line_7 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}
                 
-                <table class="m-auto table-responsive-sm" id="map_table">
+                
+                {% if x.area_code == 'F55' %}
+                
+                <td colspan="2"></td>
+                {% endif %}
+                
+                {% endfor %}
+                
+                <td colspan="5"></td>
+                
+                {% for x in line_extra %}
+                {% if x.area_code == 'F63'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %} {% endif %}
+                {% endfor %}
+                
+                <tr class="blank_row">
+                  <td>&nbsp;</td>
+                  <td colspan="30"></td>
                   
-                  
-                  
-                  <tr>
-                    <td colspan="7"></td>
-                    {% for x in line_7 %}
-                    <td> <a href="{% url 'shop_detail' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button>                       </a>
-</td>
-
-                    {% if x.area_code == 'F55' %}
-                    
-                    <td colspan="2"></td>
-                    {% endif %}
-                    
-                    {% endfor %}
-                    
-                    <td colspan="5"></td>
-                    
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F63'%}
-                    <td><button class="btn btn-warning btn-sm w-100 data-taget=#marketform"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    
-                    <tr class="blank_row">
-                      <td>&nbsp;</td>
-                      <td colspan="30"></td>
-                      
-                      {% for y in line_extra %}
-                      {% if y.area_code == 'F64'%}
-                      <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                      {% endif %}
-                      {% endfor %}
-                    </tr>
-                    
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                    <td colspan="30"></td>
-                    
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F65'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    
-                  </tr>
-                  <tr>
-                    <td colspan="9"></td>
-                    {% for x in line_6 %}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                    {% endfor %}
-                    <td colspan="7"></td>
-                    
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F66'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    
-                    
-                  </tr>
-                  <tr>
-                    {% for x in line_5 %}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                    {% endfor %}
-                    
-                    <td colspan="24"></td>
-                    
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F67'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                  </tr>
-                  
-                  <tr>
-                    <td colspan="8"></td>
-                    {% for x in line_4 %}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                    {% endfor %}
-                    
-                    <td colspan="6"></td>
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F68'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    
-                  </tr>
-                  
-                  <tr class="blank_row">
-                    <td>&nbsp;</td>
-                    <td colspan="30"></td>
-                    
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F69'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                  </tr>
-                  
-                  <tr>
-                    {% for y in shop_list %}
-                    {% if y.area_code == 'F70'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    
-                    <td colspan="30"></td>
-                    
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F70'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    
-                    
-                  </tr>
-                  
-                  
-                  
-                  <tr>
-                    {% for y in shop_list %}
-                    {% if y.area_code == 'F37'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    
-                    <td colspan="4"></td>
-                    {% for x in line_3 %}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                    {% endfor %}
-                    
-                    <td colspan="1"></td>
-                    
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F71'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                  </tr>
-                  
-                  <tr id="top">
-                    {% for y in shop_list %}
-                    {% if y.area_code == 'F36'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    <td colspan="4"></td>
-                    {% for x in line_2 %}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></td>
-                    {% endfor %}
-                    
-                    <td colspan="1"></td>
-                    {% for y in line_extra %}
-                    {% if y.area_code == 'F72'%}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endif %}
-                    {% endfor %}
-                    {% for y in line_extra2 %}
-                    <td><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></td>
-                    {% endfor %}
-                    
-                  </tr>
-                  
-                  <tr class="blank_row">
-                    <td>&nbsp;</td>
-                  </tr>
-                  
-                  <tr class="blank_row">
-                    <td>&nbsp;</td>
-                  </tr>
-                  
-                  <tr>
-                    {% for x in line_1 %}
-                    <td><button class="btn btn-warning btn-sm w-100" data-toggle="modal" data-target="#{{ x.area_code }}"> {{ x.area_code }} </button></td>
-                    
-                    
-                    {% endfor %}
-                  </tr>
-                  
-                </table>
-              </div>
+                  {% for x in line_extra %}
+                  {% if x.area_code == 'F64'%}
+                  {% if x.approve_status == 'รอการอนุมัติ' %}
+                  <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                  {% elif x.approve_status == 'อนุมัติ' %}
+                  <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                  {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                  <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                  {% endif %}{% endif %}
+                  {% endfor %}
+                </tr>
+                
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td colspan="30"></td>
+                
+                {% for x in line_extra %}
+                {% if x.area_code == 'F65'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}{% endif %}
+                {% endfor %}
+                
+              </tr>
+              <tr>
+                <td colspan="9"></td>
+                {% for x in line_6 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}{% endfor %}
+                <td colspan="7"></td>
+                
+                {% for x in line_extra %}
+                {% if x.area_code == 'F66'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %} {% endif %}
+                {% endfor %}
+                
+                
+              </tr>
+              <tr>
+                {% for x in line_5 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}{% endfor %}
+                
+                <td colspan="24"></td>
+                
+                {% for x in line_extra %}
+                {% if x.area_code == 'F67'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %} {% endif %}
+                {% endfor %}
+              </tr>
               
+              <tr>
+                <td colspan="8"></td>
+                {% for x in line_4 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %} {% endfor %}
+                
+                <td colspan="6"></td>
+                {% for x in line_extra %}
+                {% if x.area_code == 'F68'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %} {% endif %}
+                {% endfor %}
+                
+              </tr>
+              
+              <tr class="blank_row">
+                <td>&nbsp;</td>
+                <td colspan="30"></td>
+                
+                {% for x in line_extra %}
+                {% if x.area_code == 'F69'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}{% endif %}
+                {% endfor %}
+              </tr>
+              
+              <tr>
+                {% for x in shop_list %}
+                {% if x.area_code == 'F38'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}{% endif %}
+                {% endfor %}
+                
+                <td colspan="30"></td>
+                
+                {% for x in line_extra %}
+                {% if x.area_code == 'F70'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}  {% endif %}
+                {% endfor %}
+                
+                
+              </tr>
+              
+              
+              
+              <tr>
+                {% for x in shop_list %}
+                {% if x.area_code == 'F37'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %} {% endif %}
+                {% endfor %}
+                
+                <td colspan="4"></td>
+                {% for x in line_3 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}{% endfor %}
+                
+                <td colspan="1"></td>
+                
+                {% for x in line_extra %}
+                {% if x.area_code == 'F71'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}{% endif %}
+                {% endfor %}
+              </tr>
+              
+              <tr id="top">
+                {% for x in shop_list %}
+                {% if x.area_code == 'F36'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %} {% endif %}
+                {% endfor %}
+                <td colspan="4"></td>
+                {% for x in line_2 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %} {% endfor %}
+                
+                <td colspan="1"></td>
+                {% for x in line_extra %}
+                {% if x.area_code == 'F72'%}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}{% endif %}
+                {% endfor %}
+                {% for y in line_extra2 %}
+                {% if y.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ y.area_code }} </button></td>
+                {% elif y.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' y.id %}"><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></a></td>
+                {% elif y.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ y.area_code }} </button></td>
+                {% endif %}
+                {% endfor %}
+                
+              </tr>
+              
+              <tr class="blank_row">
+                <td>&nbsp;</td>
+              </tr>
+              
+              <tr class="blank_row">
+                <td>&nbsp;</td>
+              </tr>
+              
+              <tr>
+                {% for x in line_1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'review' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% endif %}
+                
+                {% endfor %}
+              </tr>
+              
+            </table>
+          </div>
+          
+          
+        </div>
+        
+        <!-- Footer -->
+        <footer class="page-footer font-small blue pt-4" style="background-color: rgb(239,192,47)">
+          
+          <!-- Footer Links -->
+          <div class="container-fluid text-center text-md-left">
+            
+            <!-- Grid row -->
+            <div class="row">
+              
+              <!-- Grid column -->
+              <div class="col-md-6 mt-md-0 mt-3">
+                
+                <!-- Content -->
+                <h5 class="text-uppercase">Footer Content</h5>
+                <p>Here you can use rows and columns here to organize your footer content.</p>
+                
+              </div>
+              <!-- Grid column -->
+              
+              <hr class="clearfix w-100 d-md-none pb-3">
+              
+              <!-- Grid column -->
+              <div class="col-md-3 mb-md-0 mb-3">
+                
+                <!-- Links -->
+                <h5 class="text-uppercase">Links</h5>
+                
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!">Link 1</a>
+                  </li>
+                  <li>
+                    <a href="#!">Link 2</a>
+                  </li>
+                  <li>
+                    <a href="#!">Link 3</a>
+                  </li>
+                  <li>
+                    <a href="#!">Link 4</a>
+                  </li>
+                </ul>
+                
+              </div>
+              <!-- Grid column -->
+              
+              <!-- Grid column -->
+              <div class="col-md-3 mb-md-0 mb-3">
+                
+                <!-- Links -->
+                <h5 class="text-uppercase">Links</h5>
+                
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!">Link 1</a>
+                  </li>
+                  <li>
+                    <a href="#!">Link 2</a>
+                  </li>
+                  <li>
+                    <a href="#!">Link 3</a>
+                  </li>
+                  <li>
+                    <a href="#!">Link 4</a>
+                  </li>
+                </ul>
+                
+              </div>
+              <!-- Grid column -->
               
             </div>
+            <!-- Grid row -->
             
-            <!-- Footer -->
-<footer class="page-footer font-small blue pt-4" style="background-color: rgb(239,192,47)">
-
-    <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left">
-
-      <!-- Grid row -->
-      <div class="row">
-
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
-
-          <!-- Content -->
-          <h5 class="text-uppercase">Footer Content</h5>
-          <p>Here you can use rows and columns here to organize your footer content.</p>
-
-        </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none pb-3">
-
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-
-            <!-- Links -->
-            <h5 class="text-uppercase">Links</h5>
-
-            <ul class="list-unstyled">
-              <li>
-                <a href="#!">Link 1</a>
-              </li>
-              <li>
-                <a href="#!">Link 2</a>
-              </li>
-              <li>
-                <a href="#!">Link 3</a>
-              </li>
-              <li>
-                <a href="#!">Link 4</a>
-              </li>
-            </ul>
-
           </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-3 mb-md-0 mb-3">
-
-            <!-- Links -->
-            <h5 class="text-uppercase">Links</h5>
-
-            <ul class="list-unstyled">
-              <li>
-                <a href="#!">Link 1</a>
-              </li>
-              <li>
-                <a href="#!">Link 2</a>
-              </li>
-              <li>
-                <a href="#!">Link 3</a>
-              </li>
-              <li>
-                <a href="#!">Link 4</a>
-              </li>
-            </ul>
-
+          <!-- Footer Links -->
+          
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
           </div>
-          <!-- Grid column -->
-
-      </div>
-      <!-- Grid row -->
-
-    </div>
-    <!-- Footer Links -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-
-  </footer>
-  <!-- Footer -->
-            
-            <style type="text/css">
-              #scroll_demo {
-                width: 100%;
-                height:100%;
-                /*border:1px solid red;*/
-                overflow:auto;
+          <!-- Copyright -->
+          
+        </footer>
+        <!-- Footer -->
+        
+        <style type="text/css">
+          #scroll_demo {
+            width: 100%;
+            height:100%;
+            /*border:1px solid red;*/
+            overflow:auto;
+          }
+        </style>
+        
+        <style>
+          
+          #map_table button {
+            /*border-radius: 20px;*/
+          }
+          
+        </style>
+        
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <!-- #for view Js. -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        
+        <script>
+          
+          var app = new Vue({
+            el: '#app',
+            data: {
+              message: 'Hello Vue!',
+              statusSign: false
+            },
+            methods: {
+              statusForm(){
+                this.statusSign = !this.statusSign
               }
-            </style>
-            
-            <style>
-              
-              #map_table button {
-                /*border-radius: 20px;*/
-              }
-              
-            </style>
-            
-            
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-            
-            <!-- #for view Js. -->
-            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-            
-            <script>
-              
-              var app = new Vue({
-                el: '#app',
-                data: {
-                  message: 'Hello Vue!',
-                  statusSign: false
-                },
-                methods: {
-                  statusForm(){
-                    this.statusSign = !this.statusSign
-                  }
-                },
-              }
-              )
-              
-            </script>
-            
-          </body>
-          </html>
+            },
+          }
+          )
+          
+        </script>
+        
+      </body>
+      </html>

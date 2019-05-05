@@ -10,7 +10,7 @@
     <h2> PopPular polls </h2>
 
     <ul>
-
+        {{ form.as_p }}
         {% for poll in poll_list %}
             <li>{{poll.id}} {{poll.title}} {จำนวนคำถาม : {{ poll.question_count }} }
                 {% if user.is_authenticated %}

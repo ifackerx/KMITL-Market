@@ -4,28 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <title>Shop Detail</title>
+    <link rel="stylesheet" href="{% static 'polls/css/shop.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
 </head>
 <body>
-
+    
+    
+    
+    
+    
+    
     {% if shoplink != 'noo' %}
+    
+    {% for i in shoplink %}
+    
+    
+    <div class="container">
+        
+        <div id="frameA">
+            <div class="row">
+                <div class="col m-5 text-center">
+                      {% if i.image %}
+        <img src="{{ i.image.url }}" width="300px" height="300">
 
-        {% for i in shoplink %}
+        {% else %}
+        <img src="../../../media/img/no-img.png" width="200px">
+        {% endif %}
+                    <p class="mt-4 h3 text-center">ZONE : {{ i.shop_area.area_code }}</p>
 
-            {{ i.shop_name }}
+                </div>
+                <div class="col m-5">
 
 
-    {{i.image.url}}
-            <img src="../../../media/img/51538827_386445645474417_392867856930308096_n.jpg">
-            <img src="{{ i.image.url }}">
+
+                    {% if i.shop_area.isBooking == 0 %}
+                    <a href="{% url 'booking' i.shop_area.id %}">Book</a>
+                    {% else %}
+                    <a href="{% url 'review' i.shop_area.id %}">Review</a>
+                    {% endif %}
+                    {{ i.shop_area.isBooking }}
+
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+
         {% endfor %}
-
-
-
-     {% else %}
-            NO data
-
-    {% endif %}
-
-
+        
+        
+        
+        {% else %}
+        NO data
+        sdfsdf
+        <a href="{% url 'booking' shop_area %}">Book</a>
+        
+        
+        {% endif %}
+        
+    </div>
+    
+    
+    
+    
+    
+    
 </body>
 </html>

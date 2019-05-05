@@ -3,18 +3,9 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib.auth.models import Permission
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 from .models import Poll, Question, Choice, Comment, Shop, UserProfile
-=======
-from .models import Poll, Question, Choice, Comment, ShopArea, Shop
->>>>>>> ohm
-=======
-from .models import Poll, Question, Choice, Comment, Shop
->>>>>>> parent of 6b2b143... login frontend
 
 admin.site.register(Permission)
-
 
 class QuestionInline(admin.StackedInline):
     model = Question
@@ -50,13 +41,11 @@ class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 1
 
-
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ['id','poll','text']
     list_per_page = 15
 
     inlines = [ChoiceInline]
-
 
 admin.site.register(Question, QuestionAdmin)
 
@@ -66,7 +55,9 @@ class ChoiceAdmin(admin.ModelAdmin):
     list_per_page = 15
 
 
+
 admin.site.register(Choice, ChoiceAdmin)
+
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -77,29 +68,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ['poll']
 
 
+
 admin.site.register(Comment, CommentAdmin)
-<<<<<<< HEAD
 admin.site.register(Shop)
-<<<<<<< HEAD
 admin.site.register(UserProfile)
-=======
-
-
-class BookingAdmin(admin.ModelAdmin):
-    list_display = ['area_code', 'del_shop', 'isBooking', 'shop_owner']
-    list_per_page = 15
-    search_fields = ['area_code']
-
-
-admin.site.register(ShopArea, BookingAdmin)
-
-
-class ShopAdmin(admin.ModelAdmin):
-    list_display = ['shop_name', 'shop_open', 'shop_detail', 'shop_area', 'shop_owner']
-    list_per_page = 15
-
-
-admin.site.register(Shop, ShopAdmin)
->>>>>>> ohm
-=======
->>>>>>> parent of 6b2b143... login frontend
