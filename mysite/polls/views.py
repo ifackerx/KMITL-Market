@@ -16,23 +16,6 @@ from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceMod
     RegistrationForm, BookingForm, HotelForm
 
 
-# Create your views here.
-def hotel_image_view(request):
-    if request.method == 'POST':
-        form = HotelForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            form.save()
-            return redirect('success')
-    else:
-        form = HotelForm()
-    return render(request, 'hotel_image_form.html', {'form': form})
-
-
-def success(request):
-    return HttpResponse('successfuly uploaded')
-
-
 def shop_detail(request, shop_area):
     shoplink = Shop.objects.filter(shop_area=shop_area)
     if shoplink:
@@ -120,10 +103,10 @@ def my_logout(request):
 
 def index2(request):
 
-    query_set = Group.objects.filter(user=request.user)
-    group_name = ''
-    for g in query_set:
-        group_name = g.name
+    # query_set = Group.objects.filter(user=request.user)
+    # group_name = ''
+    # for g in query_set:
+    #     group_name = g.name
 
 
     shop_list = ShopArea.objects.all()
@@ -158,7 +141,6 @@ def index2(request):
         'line_extra2' : line_extra2,
         'user' : request.user,
         'shopr': shop,
-        'group_name' : group_name
     }
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -184,7 +166,6 @@ def review(request, shop_area):
     shoplink = Shop.objects.get(shop_area=shop_area)
     now = datetime.date.today()
 
-
     print(now)
     # การเอาข้อมูลมาแสดง
     # review_list = Review.objects.all()
@@ -199,7 +180,7 @@ def review(request, shop_area):
                 review_title = form.cleaned_data.get('review_title'),
                 review_message = form.cleaned_data.get('review_message'),
                 review_shop_id = shoplink.id,
-                text = now,
+                date = now,
                 review_user = user
             )
     else:
@@ -262,6 +243,7 @@ def booking(request, shop_area):
                         image=request.FILES.get('image'),
                         shop_area=area,
                         shop_owner=user,
+                        shop_booking= now
 
                     )
                     shopArea.isBooking = 1
@@ -279,6 +261,7 @@ def booking(request, shop_area):
                     image=request.FILES.get('image'),
                     shop_area=area,
                     shop_owner=user,
+                    shop_booking=now
 
                 )
                 shopArea.isBooking = 1

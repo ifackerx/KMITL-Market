@@ -75,6 +75,12 @@ def create_profile(sender, **kwargs):
 
 post_save.connect(create_profile, sender=User)
 
+
+
+
+class Zone(models.Model):
+    zone_type = models.CharField(max_length=50)
+
 class ShopArea(models.Model):
     area_code = models.CharField(max_length=10)
     del_shop = models.BooleanField(default=False)
@@ -92,10 +98,12 @@ class ShopArea(models.Model):
     approve_status = models.CharField(max_length=12, choices=TYPES2, default='รอการอนุมัติ')
 
 
+
 class Shop(models.Model):
     shop_name = models.CharField(max_length=100)
     shop_open = models.CharField(null=True, blank=True, max_length=100)
     shop_detail = models.CharField(null = True, blank=True, max_length=500)
+    shop_booking = models.DateField(null=True)
     shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT, default=1)
     shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
     image = models.ImageField(upload_to='img/', blank=True)
@@ -106,7 +114,7 @@ class Review(models.Model):
     review_message = models.CharField(max_length=500)
     review_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
     review_user = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
-    text = models.CharField(max_length=100, null=True)
+    day = models.CharField(max_length=100, null=True)
 
 
 class Hotel(models.Model):
@@ -130,8 +138,6 @@ class Payment(models.Model):
     payment_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
 
 
-class Zone(models.Model):
-    zone_type = models.CharField(max_length=50)
 
 
 class Event(models.Model):
