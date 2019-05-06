@@ -17,11 +17,10 @@
 </head>
 <body>
   
-  
-
 
 
   <div id="app">
+
 
 
 
@@ -45,7 +44,12 @@
               <li class="nav-item">
               <a class="nav-link" href="{% url 'booked' %}">  Book</a>
               </li>
+
+
           {% endif %}
+                  <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}"> Guide</a>
+            </li>
           {% if not user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}"> Login</a>
@@ -223,7 +227,7 @@
           
 
           
-          
+
 
           <div class="jumbotron mb-5">
 
@@ -239,44 +243,79 @@
         </div></div>
           </div>
 
-  <div class="container">
-      <div class="content text-center">We offer!</div>
+  <div class="container" id="sideBase">
     <div class="row m-auto" id="intro">
 
         <div class="col-3 text-center">
-            ดูพื้นที่แมพ
+            <div class="circleBase">
+                <a href="#map_table">  <img src="../../../media/img/map-location.png" width="100px"></a>
+            </div>
+
+            <div class="content">
+                <h3> แผนผังร้านค้า </h3>
+                <hr>
+                <small>สามารถเลือกดู รายละเอียดร้านค้าต่าง ๆ ที่มาเปิดร้านภายในวันนั้น โดยสามารถเลือกดูในรูปของแผนผัง</small>
+            </div>
+
         </div>
 
 
         <div class="col-3 text-center">
-            สามารถรีวิว
+                     <div class="circleBase">
+                <img src="../../../media/img/testimonial.png" width="100px">
+            </div>
+
+        <div class="content">
+                <h3> รีวิวร้านค้า </h3>
+                <hr>
+                <small>สามารถเข้ามาอ่านรีวิวร้านค้าต่าง ๆ ได้ และหากคุณต้องการรีวิว ก็แค่สมัครสมาชิก จากนั้นก้สามารถรีวิวได้เลย</small>
+            </div>
         </div>
 
 
         <div class="col-3 text-center">
-            สามารถจอง
+                        <div class="circleBase">
+                            <a href="{% url 'booked' %}"> <img src="../../../media/img/online-shop.png" width="100px"></a>
+            </div>
+        <div class="content">
+                <h3> จองพื้นที่ </h3>
+                <hr>
+                <small>จองล็อคร้านค้าที่ต้องการ เพียงสมัครสมาชิกในรูปแบบ พ่อค้า-แม่ค้า ได้อย่างสะดวก ไม่มีปัญหาการลัดคิว</small>
+            </div>
         </div>
 
 
         <div class="col-3 text-center">
-            คู่มือการใช้
+                        <div class="circleBase">
+                <img src="../../../media/img/guide.png" width="100px">
+            </div>
+         <div class="content">
+                <h3> คุ่มือแนะนำ </h3>
+                <hr>
+                <small>คู่มือแนะนำเบื้องต้น สำหรับผู้ใช้บริการสถานีคนเดินพระจอมเกล้าลาดกระบัง</small>
+            </div>
         </div>
     </div>
 </div>
 
 
+  <div class="col text-center">
+      <h1 class="pb-10">แผนผังร้านค้า</h1>
+      <img src="../../../media/img/map.png" width="1000" style="border-radius: 50px; text-align: center">
 
-                <div class="row m-auto">
-                    <div class="col-1"><h1 class="text-center"></h1>
-                    </div>
-                     <div class="col-10"><h1 class="text-center" style="border-style: solid;">สนามกีฬา</h1>
-                    </div>
-                     <div class="col-1"><h1 class="text-center"></h1>
+  </div>
+
+
+
+  <div class="container mt-5" style="display:block;">
+
+                <div class="row m-auto pt-10" style="display: block">
+                     <div class="col-12"><h1 class="text-center" style="border-style: solid;">สนามกีฬา</h1>
                     </div>
                 </div>
 
             <hr>
-          
+  </div>
           <div id="scroll_demo" class="p-5">
 
             <table class="m-auto table-responsive-sm" id="map_table">
@@ -597,6 +636,7 @@
       <div class="light"></div>
     </div>
   </div>
+      
       <div class="row">
       <div class="col-1"></div>
 
@@ -635,9 +675,11 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        
+
         <!-- #for view Js. -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
         
         <script>
           

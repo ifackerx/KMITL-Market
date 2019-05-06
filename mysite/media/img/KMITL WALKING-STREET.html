@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://127.0.0.1:8000/polls/booked/#map_table -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>KMITL WALKING-STREET
+  </title>
+  <link rel="stylesheet" href="./KMITL WALKING-STREET_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="./KMITL WALKING-STREET_files/main.css">
+  
+  
+  <link href="./KMITL WALKING-STREET_files/css" rel="stylesheet">
+  
+  
+</head>
+<body>
+  
+  
+  
+  
+  
+
+  
+  <div id="app"><button></button> <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top"><div class="container"><a href="http://127.0.0.1:8000/polls/booked/#" class="navbar-brand"><img src="./KMITL WALKING-STREET_files/train.png" width="50px"> KMITL MARKET
+        </a> <button type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button> <div id="navbarResponsive" class="collapse navbar-collapse"><ul class="navbar-nav ml-auto"><li class="nav-item active"><a href="http://127.0.0.1:8000/polls/index2/" class="nav-link">Home
+                <span class="sr-only">(current)</span></a></li> <li class="nav-item"><a href="http://127.0.0.1:8000/polls/booked/" class="nav-link">  Book</a></li> <li class="nav-item"><a href="http://127.0.0.1:8000/polls/register/" class="nav-link"> Guide</a></li> <a href="http://127.0.0.1:8000/polls/logout/" class="nav-link"> Logout</a></ul></div></div></nav> <div id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content p-5"><div class="modal-body"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><br> <p class="text-center h3">LOGIN</p> <form method="post" action="http://127.0.0.1:8000/polls/index2/"><input type="hidden" name="csrfmiddlewaretoken" value="mmHyJB070lEAWSSBtZ8EzPBBDJJHH2GehC7ZJZNtiyK6cW8Lc1Jtw31DySYd1rYE"> <div width="100" class="input-group mb-3"><div class="input-group-prepend"><span id="inputGroup-sizing-default" class="input-group-text ">1</span></div> <input type="text" name="username" placeholder="Username" aria-label="Username" aria-describedby="inputGroup-sizing-default" class="form-control"></div> <div class="input-group mb-3"><div class="input-group-prepend"><span id="inputGroup-sizing-default" class="input-group-text">2</span></div> <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="inputGroup-sizing-default" class="form-control"></div> <div class="row"><div class="col text-center"><button type="submit" value="LOGIN" class="btn btn-primary btn-block">Login</button></div></div> <div class="row"><div class="col">
+                      Don't have an account ?
+                      <a data-target="#signupForm" data-toggle="modal" id="MainNavHelp" href="http://127.0.0.1:8000/polls/booked/#signupForm" class="MainNavText">sign-up</a></div></div></form></div></div></div></div> <div id="signupForm" tabindex="-1" role="dialog" aria-labelledby="signupForm" aria-hidden="true" class="modal fade"><div role="document" class="modal-dialog"><div class="modal-content p-5"><div class="modal-body"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><br> <p class="text-center h3">Sign Up</p> <p class="text-center mt-4">คุณต้องการสมัครสมาชิกในรูปแบบใด ? </p> <div class="row"><div class="col-6"><button type="button" class="btn btn-primary btn-block">ลูกค้า</button> <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small></div> <div class="col-6"><button type="button" class="btn btn-primary btn-block">พ่อค้า/แม่ค้า</button> <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small></div></div> <form action="http://127.0.0.1:8000/polls/booked/" class="mt-4" style="display: none;"><div class="form-group"><label for="inputAddress">Username :</label> <input type="text" id="inputAddress" placeholder="Username" class="form-control"></div> <div class="form-group"><label for="inputAddress">Password : </label> <input type="password" id="inputAddress" placeholder="password" class="form-control"></div> <div class="form-group"><label for="inputAddress">Confirm Password :</label> <input type="password" id="inputAddress" placeholder="confirm password" class="form-control"></div> <div class="form-row"><div class="form-group col-md-6"><label for="inputEmail4">Name : </label> <input type="text" id="inputEmail4" placeholder="Name" class="form-control"></div> <div class="form-group col-md-6"><label for="inputPassword4">Surname : </label> <input type="text" id="inputPassword4" placeholder="Surname" class="form-control"></div></div> <div class="form-group"><label for="inputAddress">Email</label> <input type="email" id="inputAddress" placeholder="youremail@text.com" class="form-control"></div> <div class="form-row"><div class="form-group col-md-6"><label for="inputEmail4">Tel : </label> <input type="text" id="inputEmail4" placeholder="Name" class="form-control"></div> <div class="form-group col-md-6"><label for="inputPassword4">Surname : </label> <input type="text" id="inputPassword4" placeholder="Surname" class="form-control"></div></div> <div class="form-group"><div class="form-check"><input type="checkbox" id="gridCheck" class="form-check-input"> <label for="gridCheck" class="form-check-label">
+                        Check me out
+                      </label></div></div> <div class="row"><div class="col text-center"><button type="submit" class="btn btn-primary btn-block">Sign up</button></div></div></form></div></div></div></div> <div class="jumbotron"><div class="row"><div id="banner" class="col text-center"><div><h1>สถานีคนเดินพระจอมเกล้าลาดกระบัง</h1></div> <br> <a href="http://127.0.0.1:8000/polls/booked/#map_table"><button class="btn btn-warning">LooK a Map!</button></a></div></div></div> <div id="scroll_demo" class="m-5"><table id="map_table" class="m-auto table-responsive-sm"><tbody><tr><td colspan="7"></td> <td><a href="http://127.0.0.1:8000/polls/booking/46/"><button class="btn btn-warning btn-sm w-100"> F46 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/47/"><button class="btn btn-warning btn-sm w-100"> F47 </button></a></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F48 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F49 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F50 </button></td> <td><a href="http://127.0.0.1:8000/polls/booking/51/"><button class="btn btn-warning btn-sm w-100"> F51 </button></a></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F52 </button></td> <td><a href="http://127.0.0.1:8000/polls/booking/53/"><button class="btn btn-warning btn-sm w-100"> F53 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/54/"><button class="btn btn-warning btn-sm w-100"> F54 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/55/"><button class="btn btn-warning btn-sm w-100"> F55 </button></a></td> <td colspan="2"></td> <td><a href="http://127.0.0.1:8000/polls/booking/56/"><button class="btn btn-warning btn-sm w-100"> F56 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/57/"><button class="btn btn-warning btn-sm w-100"> F57 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/58/"><button class="btn btn-warning btn-sm w-100"> F58 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/59/"><button class="btn btn-warning btn-sm w-100"> F59 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/60/"><button class="btn btn-warning btn-sm w-100"> F60 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/61/"><button class="btn btn-warning btn-sm w-100"> F61 </button></a></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F62 </button></td> <td colspan="5"></td> <td><a href="http://127.0.0.1:8000/polls/booking/63/"><button class="btn btn-warning btn-sm w-100"> F63 </button></a></td></tr><tr class="blank_row"><td>&nbsp;</td> <td colspan="30"></td> <td><a href="http://127.0.0.1:8000/polls/booking/64/"><button class="btn btn-warning btn-sm w-100"> F64 </button></a></td></tr> <tr><td>&nbsp;</td> <td colspan="30"></td> <td><a href="http://127.0.0.1:8000/polls/booking/65/"><button class="btn btn-warning btn-sm w-100"> F65 </button></a></td></tr> <tr><td colspan="9"></td> <td><a href="http://127.0.0.1:8000/polls/booking/160/"><button class="btn btn-warning btn-sm w-100"> FO </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/159/"><button class="btn btn-warning btn-sm w-100"> FN </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/158/"><button class="btn btn-warning btn-sm w-100"> FM </button></a></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> FL </button></td> <td><a href="http://127.0.0.1:8000/polls/booking/156/"><button class="btn btn-warning btn-sm w-100"> FK </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/155/"><button class="btn btn-warning btn-sm w-100"> FJ </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/154/"><button class="btn btn-warning btn-sm w-100"> FI </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/153/"><button class="btn btn-warning btn-sm w-100"> FH </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/152/"><button class="btn btn-warning btn-sm w-100"> FG </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/151/"><button class="btn btn-warning btn-sm w-100"> FF </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/150/"><button class="btn btn-warning btn-sm w-100"> FE </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/149/"><button class="btn btn-warning btn-sm w-100"> FD </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/148/"><button class="btn btn-warning btn-sm w-100"> FC </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/147/"><button class="btn btn-warning btn-sm w-100"> FB </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/146/"><button class="btn btn-warning btn-sm w-100"> FA </button></a></td> <td colspan="7"></td> <td><a href="http://127.0.0.1:8000/polls/booking/66/"><button class="btn btn-warning btn-sm w-100"> F66 </button></a></td></tr> <tr><td><a href="http://127.0.0.1:8000/polls/booking/39/"><button class="btn btn-warning btn-sm w-100"> F39 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/40/"><button class="btn btn-warning btn-sm w-100"> F40 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/41/"><button class="btn btn-warning btn-sm w-100"> F41 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/42/"><button class="btn btn-warning btn-sm w-100"> F42 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/43/"><button class="btn btn-warning btn-sm w-100"> F43 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/44/"><button class="btn btn-warning btn-sm w-100"> F44 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/45/"><button class="btn btn-warning btn-sm w-100"> F45 </button></a></td> <td colspan="24"></td> <td><a href="http://127.0.0.1:8000/polls/booking/67/"><button class="btn btn-warning btn-sm w-100"> F67 </button></a></td></tr> <tr><td colspan="8"></td> <td><a href="http://127.0.0.1:8000/polls/booking/144/"><button class="btn btn-warning btn-sm w-100"> F144 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/143/"><button class="btn btn-warning btn-sm w-100"> F143 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/142/"><button class="btn btn-warning btn-sm w-100"> F142 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/141/"><button class="btn btn-warning btn-sm w-100"> F141 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/140/"><button class="btn btn-warning btn-sm w-100"> F140 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/139/"><button class="btn btn-warning btn-sm w-100"> F139 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/138/"><button class="btn btn-warning btn-sm w-100"> F138 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/137/"><button class="btn btn-warning btn-sm w-100"> F137 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/136/"><button class="btn btn-warning btn-sm w-100"> F136 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/135/"><button class="btn btn-warning btn-sm w-100"> F135 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/134/"><button class="btn btn-warning btn-sm w-100"> F134 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/133/"><button class="btn btn-warning btn-sm w-100"> F133 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/132/"><button class="btn btn-warning btn-sm w-100"> F132 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/131/"><button class="btn btn-warning btn-sm w-100"> F131 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/130/"><button class="btn btn-warning btn-sm w-100"> F130 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/129/"><button class="btn btn-warning btn-sm w-100"> F129 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/128/"><button class="btn btn-warning btn-sm w-100"> F128 </button></a></td> <td colspan="6"></td> <td><a href="http://127.0.0.1:8000/polls/booking/68/"><button class="btn btn-warning btn-sm w-100"> F68 </button></a></td></tr> <tr class="blank_row"><td>&nbsp;</td> <td colspan="30"></td> <td><a href="http://127.0.0.1:8000/polls/booking/69/"><button class="btn btn-warning btn-sm w-100"> F69 </button></a></td></tr> <tr><td><a href="http://127.0.0.1:8000/polls/booking/38/"><button class="btn btn-warning btn-sm w-100"> F38 </button></a></td> <td colspan="30"></td> <td><a href="http://127.0.0.1:8000/polls/booking/70/"><button class="btn btn-warning btn-sm w-100"> F70 </button></a></td></tr> <tr><td><a href="http://127.0.0.1:8000/polls/booking/37/"><button class="btn btn-warning btn-sm w-100"> F37 </button></a></td> <td colspan="4"></td> <td><a href="http://127.0.0.1:8000/polls/booking/126/"><button class="btn btn-warning btn-sm w-100"> F126 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/125/"><button class="btn btn-warning btn-sm w-100"> F125 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/124/"><button class="btn btn-warning btn-sm w-100"> F124 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/123/"><button class="btn btn-warning btn-sm w-100"> F123 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/122/"><button class="btn btn-warning btn-sm w-100"> F122 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/121/"><button class="btn btn-warning btn-sm w-100"> F121 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/120/"><button class="btn btn-warning btn-sm w-100"> F120 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/119/"><button class="btn btn-warning btn-sm w-100"> F119 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/118/"><button class="btn btn-warning btn-sm w-100"> F118 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/117/"><button class="btn btn-warning btn-sm w-100"> F117 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/116/"><button class="btn btn-warning btn-sm w-100"> F116 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/115/"><button class="btn btn-warning btn-sm w-100"> F115 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/114/"><button class="btn btn-warning btn-sm w-100"> F114 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/113/"><button class="btn btn-warning btn-sm w-100"> F113 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/112/"><button class="btn btn-warning btn-sm w-100"> F112 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/111/"><button class="btn btn-warning btn-sm w-100"> F111 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/110/"><button class="btn btn-warning btn-sm w-100"> F110 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/109/"><button class="btn btn-warning btn-sm w-100"> F109 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/108/"><button class="btn btn-warning btn-sm w-100"> F108 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/107/"><button class="btn btn-warning btn-sm w-100"> F107 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/106/"><button class="btn btn-warning btn-sm w-100"> F106 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/105/"><button class="btn btn-warning btn-sm w-100"> F105 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/104/"><button class="btn btn-warning btn-sm w-100"> F104 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/103/"><button class="btn btn-warning btn-sm w-100"> F103 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/102/"><button class="btn btn-warning btn-sm w-100"> F102 </button></a></td> <td colspan="1"></td> <td><a href="http://127.0.0.1:8000/polls/booking/71/"><button class="btn btn-warning btn-sm w-100"> F71 </button></a></td></tr> <tr id="top"><td><a href="http://127.0.0.1:8000/polls/booking/36/"><button class="btn btn-warning btn-sm w-100"> F36 </button></a></td> <td colspan="4"></td> <td><a href="http://127.0.0.1:8000/polls/booking/101/"><button class="btn btn-warning btn-sm w-100"> F101 </button></a></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F100 </button></td> <td><a href="http://127.0.0.1:8000/polls/booking/99/"><button class="btn btn-warning btn-sm w-100"> F99 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/98/"><button class="btn btn-warning btn-sm w-100"> F98 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/97/"><button class="btn btn-warning btn-sm w-100"> F97 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/96/"><button class="btn btn-warning btn-sm w-100"> F96 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/95/"><button class="btn btn-warning btn-sm w-100"> F95 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/94/"><button class="btn btn-warning btn-sm w-100"> F94 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/93/"><button class="btn btn-warning btn-sm w-100"> F93 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/92/"><button class="btn btn-warning btn-sm w-100"> F92 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/91/"><button class="btn btn-warning btn-sm w-100"> F91 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/90/"><button class="btn btn-warning btn-sm w-100"> F90 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/89/"><button class="btn btn-warning btn-sm w-100"> F89 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/88/"><button class="btn btn-warning btn-sm w-100"> F88 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/87/"><button class="btn btn-warning btn-sm w-100"> F87 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/86/"><button class="btn btn-warning btn-sm w-100"> F86 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/85/"><button class="btn btn-warning btn-sm w-100"> F85 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/84/"><button class="btn btn-warning btn-sm w-100"> F84 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/83/"><button class="btn btn-warning btn-sm w-100"> F83 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/82/"><button class="btn btn-warning btn-sm w-100"> F82 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/81/"><button class="btn btn-warning btn-sm w-100"> F81 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/80/"><button class="btn btn-warning btn-sm w-100"> F80 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/79/"><button class="btn btn-warning btn-sm w-100"> F79 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/78/"><button class="btn btn-warning btn-sm w-100"> F78 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/77/"><button class="btn btn-warning btn-sm w-100"> F77 </button></a></td> <td colspan="1"></td> <td><a href="http://127.0.0.1:8000/polls/booking/72/"><button class="btn btn-warning btn-sm w-100"> F72 </button></a></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F73 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F74 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F75 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F76 </button></td></tr> <tr class="blank_row"><td>&nbsp;</td></tr> <tr class="blank_row"><td>&nbsp;</td></tr> <tr><td><a href="http://127.0.0.1:8000/polls/booking/34/"><button class="btn btn-warning btn-sm w-100"> F34 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/33/"><button class="btn btn-warning btn-sm w-100"> F33 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/32/"><button class="btn btn-warning btn-sm w-100"> F32 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/31/"><button class="btn btn-warning btn-sm w-100"> F31 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/30/"><button class="btn btn-warning btn-sm w-100"> F30 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/29/"><button class="btn btn-warning btn-sm w-100"> F29 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/28/"><button class="btn btn-warning btn-sm w-100"> F28 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/27/"><button class="btn btn-warning btn-sm w-100"> F27 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/26/"><button class="btn btn-warning btn-sm w-100"> F26 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/25/"><button class="btn btn-warning btn-sm w-100"> F25 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/24/"><button class="btn btn-warning btn-sm w-100"> F24 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/23/"><button class="btn btn-warning btn-sm w-100"> F23 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/22/"><button class="btn btn-warning btn-sm w-100"> F22 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/21/"><button class="btn btn-warning btn-sm w-100"> F21 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/20/"><button class="btn btn-warning btn-sm w-100"> F20 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/19/"><button class="btn btn-warning btn-sm w-100"> F19 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/18/"><button class="btn btn-warning btn-sm w-100"> F18 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/17/"><button class="btn btn-warning btn-sm w-100"> F17 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/16/"><button class="btn btn-warning btn-sm w-100"> F16 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/15/"><button class="btn btn-warning btn-sm w-100"> F15 </button></a></td> <td><a href="http://127.0.0.1:8000/polls/booking/14/"><button class="btn btn-warning btn-sm w-100"> F14 </button></a></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F13 </button></td> <td><a href="http://127.0.0.1:8000/polls/booking/12/"><button class="btn btn-warning btn-sm w-100"> F12 </button></a></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F11 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F10 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F9 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F8 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F7 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F6 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F5 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F4 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F3 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F2 </button></td> <td><button disabled="disabled" class="btn btn-secondary btn-sm w-100"> F1 </button></td></tr></tbody></table></div></div>
+        
+        <!-- Footer -->
+        <footer class="page-footer font-small blue pt-4" style="background-color: rgb(239,192,47)">
+          
+          <!-- Footer Links -->
+          <div class="container-fluid text-center text-md-left">
+            
+            <!-- Grid row -->
+            <div class="row">
+              
+              <!-- Grid column -->
+              <div class="col-md-6 mt-md-0 mt-3">
+                
+                <!-- Content -->
+                <h5 class="text-uppercase">Footer Content</h5>
+                <p>Here you can use rows and columns here to organize your footer content.</p>
+                
+              </div>
+              <!-- Grid column -->
+              
+              <hr class="clearfix w-100 d-md-none pb-3">
+              
+              <!-- Grid column -->
+              <div class="col-md-3 mb-md-0 mb-3">
+                
+                <!-- Links -->
+                <h5 class="text-uppercase">Links</h5>
+                
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="http://127.0.0.1:8000/polls/booked/#!">Link 1</a>
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:8000/polls/booked/#!">Link 2</a>
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:8000/polls/booked/#!">Link 3</a>
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:8000/polls/booked/#!">Link 4</a>
+                  </li>
+                </ul>
+                
+              </div>
+              <!-- Grid column -->
+              
+              <!-- Grid column -->
+              <div class="col-md-3 mb-md-0 mb-3">
+                
+                <!-- Links -->
+                <h5 class="text-uppercase">Links</h5>
+                
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="http://127.0.0.1:8000/polls/booked/#!">Link 1</a>
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:8000/polls/booked/#!">Link 2</a>
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:8000/polls/booked/#!">Link 3</a>
+                  </li>
+                  <li>
+                    <a href="http://127.0.0.1:8000/polls/booked/#!">Link 4</a>
+                  </li>
+                </ul>
+                
+              </div>
+              <!-- Grid column -->
+              
+            </div>
+            <!-- Grid row -->
+            
+          </div>
+          <!-- Footer Links -->
+          
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+          </div>
+          <!-- Copyright -->
+          
+        </footer>
+        <!-- Footer -->
+        
+        <style type="text/css">
+          #scroll_demo {
+            width: 100%;
+            height:100%;
+            /*border:1px solid red;*/
+            overflow:auto;
+          }
+        </style>
+        
+        <style>
+          
+          #map_table button {
+            /*border-radius: 20px;*/
+          }
+          
+        </style>
+        
+        
+        <script src="./KMITL WALKING-STREET_files/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="./KMITL WALKING-STREET_files/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="./KMITL WALKING-STREET_files/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <!-- #for view Js. -->
+        <script src="./KMITL WALKING-STREET_files/vue.js"></script>
+        
+        <script>
+          
+          var app = new Vue({
+            el: '#app',
+            data: {
+              message: 'Hello Vue!',
+              statusSign: false
+            },
+            methods: {
+              statusForm(){
+                this.statusSign = !this.statusSign
+              }
+            },
+          }
+          )
+          
+        </script>
+        
+      
+      </body></html>
