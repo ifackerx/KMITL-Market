@@ -58,9 +58,9 @@ def register(request):
                 group = Group.objects.get(name='User')
                 user.groups.add(group)
             else:
-                group = Group.objects.get(name='Admin')
+                group = Group.objects.get(name='Merchant')
                 user.groups.add(group)
-            return redirect('index')
+            return redirect('index2')
     else:
         form = RegistrationForm()
 
@@ -361,7 +361,6 @@ def comment(request, poll_id):
                 email=form.cleaned_data.get('email'),
                 tel=form.cleaned_data.get('tel'),
             )
-
     else:
         form = CommentForm()
 
@@ -458,3 +457,66 @@ def add_choice_api(request, question_id):
         else:
             return JsonResponse({'message' : error_list}, status=400)
     return JsonResponse({'message': 'This API does not accept GET request.'}, status=405)
+
+
+@login_required()
+@permission_required('polls.add_shop')
+def booked(request):
+
+    # query_set = Group.objects.filter(user=request.user)
+    # group_name = ''
+    # for g in query_set:
+    #     group_name = g.name
+
+
+    shop_list = ShopArea.objects.all()
+    shop_listz = ShopArea.objects.all()[0:1]
+
+    line_1 = ShopArea.objects.all()[0:34:-1]
+    line_2 = ShopArea.objects.all()[76:101:-1]
+    line_3 = ShopArea.objects.all()[101:126:-1]
+    line_4 = ShopArea.objects.all()[127:144:-1]
+    line_5 = ShopArea.objects.all()[38:45]
+    line_6 = ShopArea.objects.all()[145:160:-1]
+    line_7 = ShopArea.objects.all()[45:62]
+
+
+    line_extra = ShopArea.objects.all()[62:72]
+    line_extra2 = ShopArea.objects.all()[72:76]
+
+    shop = Shop.objects.all()
+
+
+    context = {
+        'shop_list' : shop_list,
+        'shop_listz' : shop_listz,
+        'line_1' : line_1,
+        'line_2' : line_2,
+        'line_3' : line_3,
+        'line_4' : line_4,
+        'line_5' : line_5,
+        'line_6' : line_6,
+        'line_7' : line_7,
+        'line_extra' : line_extra,
+        'line_extra2' : line_extra2,
+        'user' : request.user,
+        'shopr': shop,
+    }
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user:
+            login(request, user)
+
+            return redirect('index')
+        else:
+            context['username'] = username
+            context['password'] = password
+            context['error'] = 'Wrong username or password'
+
+
+
+    return render(request, template_name='polls/booked.html', context=context)

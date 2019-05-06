@@ -97,6 +97,11 @@ class ShopArea(models.Model):
     )
     approve_status = models.CharField(max_length=12, choices=TYPES2, default='รอการอนุมัติ')
 
+    def __str__(self):
+        return self.area_code
+
+
+
 
 
 class Shop(models.Model):
@@ -107,6 +112,9 @@ class Shop(models.Model):
     shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT, default=1)
     shop_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
     image = models.ImageField(upload_to='img/', blank=True)
+
+    def __str__(self):
+        return self.shop_name
 
 
 class Review(models.Model):

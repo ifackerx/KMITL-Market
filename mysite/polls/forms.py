@@ -22,7 +22,7 @@ class EditProfileForm(UserChangeForm):
 
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True,widget=forms.TextInput(attrs={'class':'form-control'}),validators=[validators.validate_email])
+    email = forms.EmailField(required=True,widget=forms.TextInput(attrs={'class':'form-control'}))
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
@@ -148,7 +148,7 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Shop
         exclude = [
-            'shop_area', 'shop_owner']
+            'shop_area', 'shop_owner', 'shop_booking']
 
 
 

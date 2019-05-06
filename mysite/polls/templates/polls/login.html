@@ -14,7 +14,6 @@
     
     <div class="login">
         <img src="../../../media/img/user.png" style="width: 80px;" class="userpic">
-        
         <h1>LOGIN</h1>
         <br>
 
@@ -47,8 +46,7 @@
             
             <button type="submit" class="btn btn-warning w-100 mt-4">Submit</button>
   Don't have an account ?
-                        <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp"
-                        href="{% url 'register' %}">sign-up</a>
+            <a href="{% url 'register' %}">sign-up</a> / Login as a <a href="{% url 'index2' %}">guest.</a>
                 <input type="hidden" name="next" value="{{ next_url }}">
 
         </form>
