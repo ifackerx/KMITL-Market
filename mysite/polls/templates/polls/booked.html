@@ -19,7 +19,7 @@
   
 
   <div id="app">
-  
+
     <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
   <div class="container">
@@ -496,13 +496,13 @@
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endif %}
                 {% endfor %}
-                {% for y in line_extra2 %}
-                {% if y.approve_status == 'รอการอนุมัติ' %}
-                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ y.area_code }} </button></td>
-                {% elif y.approve_status == 'อนุมัติ' %}
-                <td> <a href="{% url 'booking' y.id %}"><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></a></td>
-                {% elif y.approve_status == 'ไม่อนุมัติ' %}
-                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ y.area_code }} </button></td>
+                {% for x in line_extra2 %}
+                {% if x.isBooking == 1 %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% elif x.isBooking != 1 %}
+                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}
                 {% endfor %}
                 

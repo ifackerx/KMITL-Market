@@ -180,7 +180,7 @@ def review(request, shop_area):
                 review_title = form.cleaned_data.get('review_title'),
                 review_message = form.cleaned_data.get('review_message'),
                 review_shop_id = shoplink.id,
-                date = now,
+                day = now,
                 review_user = user
             )
     else:
@@ -230,6 +230,7 @@ def booking(request, shop_area):
                         shopArea.save()
                         shop_data.save()
                         print(shopArea.isBooking)
+                        return redirect('booked')
                         break
 
             else:
@@ -250,6 +251,8 @@ def booking(request, shop_area):
                     shopArea.shop_owner = user
                     shopArea.save()
                     print(shopArea.isBooking)
+                    return redirect('booked')
+
 
         else:
             if form.is_valid() and shopArea.isBooking != 1:
@@ -269,6 +272,8 @@ def booking(request, shop_area):
                 shopArea.save()
 
                 print(shopArea.isBooking)
+                return redirect('booked')
+
 
     else:
         form = BookingForm()

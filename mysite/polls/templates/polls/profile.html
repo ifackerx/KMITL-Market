@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,8 @@
     <p> {{ user.last_name }} </p>
     <p> {{ user.email }} </p>
 
+
+    <img src="{{ user.userprofile.image.url }}">
 
 </body>
 </html>
