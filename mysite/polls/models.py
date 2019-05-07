@@ -95,7 +95,7 @@ class ShopArea(models.Model):
         (APPROVE, 'อนุมัติ'),
         (NAPPROVE, 'ไม่อนุมัติ')
     )
-    approve_status = models.CharField(max_length=12, choices=TYPES2, default='รอการอนุมัติ')
+    approve_status = models.CharField(max_length=12, choices=TYPES2, default='ไม่อนุมัติ')
 
     def __str__(self):
         return self.area_code
@@ -106,7 +106,8 @@ class ShopArea(models.Model):
 
 class Shop(models.Model):
     shop_name = models.CharField(max_length=100)
-    shop_open = models.CharField(null=True, blank=True, max_length=100)
+    shop_open = models.TimeField(null=True, blank=True)
+    shop_close = models.TimeField(null=True, blank=True)
     shop_detail = models.CharField(null = True, blank=True, max_length=500)
     shop_booking = models.DateField(null=True)
     shop_area = models.ForeignKey(ShopArea, on_delete=models.PROTECT, default=1)
@@ -117,10 +118,11 @@ class Shop(models.Model):
         return self.shop_name
 
 
+
 class Review(models.Model):
     review_title = models.CharField(max_length=100)
     review_message = models.CharField(max_length=500)
-    review_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
+    review_shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
     review_user = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
     day = models.CharField(max_length=100, null=True)
 

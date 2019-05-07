@@ -7,20 +7,24 @@
   <title>KMITL WALKING-STREET
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
+
   <link rel="stylesheet" href="{% static 'polls/css/main.css' %}">
-  
-  
+
+
   <link href="https://fonts.googleapis.com/css?family=Athiti:500" rel="stylesheet">
-  
-  
+
+
 </head>
 <body>
-  
+
+
 
   <div id="app">
 
-    <!-- Navigation -->
+
+
+
+  <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
   <div class="container">
     <a class="navbar-brand" href="{% url 'index2' %}">
@@ -31,13 +35,13 @@
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item ">
+        <li class="nav-item active">
           <a class="nav-link" href="{% url 'index2' %}">Home
                 <span class="sr-only">(current)</span>
               </a>
         </li>
  {% if perms.polls.add_shop %}
-              <li class="nav-item active">
+              <li class="nav-item">
               <a class="nav-link" href="{% url 'booked' %}">  Book</a>
               </li>
 
@@ -63,49 +67,53 @@
     </div>
   </div>
 </nav>
-      
+
+
+
+
+
       <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content p-5">
-            
+
             <div class="modal-body">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button><br>
-              
-              <p class="text-center h3">LOGIN</p> 
+
+              <p class="text-center h3">LOGIN</p>
               {% if error %}
               <script>
                 alert(" Wrong Username or Password");
               </script>
-              
+
               <tr>
                 <td colspan="2">
-                  
+
                   <span style="color: red; text-align: center;">{{ error }}</span>
                 </td>
               </tr>
-              
+
               {% endif %}
-              
+
               <form method="post" action="{% url 'index2' %}">
                 {% csrf_token %}
-                
+
                 <div class="input-group mb-3" width="100">
                   <div class="input-group-prepend">
                     <span class="input-group-text " id="inputGroup-sizing-default">1</span>
                   </div>
                   <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                  
+
                 </div>
-                
+
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">2</span>
                   </div>
                   <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                  
-                  
+
+
                 </div>
                 <div class="row">
                   <div class="col text-center">
@@ -114,51 +122,51 @@
                   <div class="row">
                     <div class="col">
                       Don't have an account ?
-                      <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp" 
+                      <a data-target="#signupForm" data-toggle="modal" class="MainNavText" id="MainNavHelp"
                       href="#signupForm">sign-up</a>
                     </div>
-                  </div> 
+                  </div>
                 </form>
-                
+
               </div>
-              
+
             </div>
           </div>
         </div>
-        
+
         <div class="modal fade" id="signupForm" tabindex="-1" role="dialog" aria-labelledby="signupForm" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content p-5">
-              
+
               <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button><br>
-                
-                
-                
-                <p class="text-center h3">Sign Up</p> 
+
+
+
+                <p class="text-center h3">Sign Up</p>
                 <p class="text-center mt-4">คุณต้องการสมัครสมาชิกในรูปแบบใด ? </p>
-                
+
                 <div class="row">
-                  
-                  
+
+
                   <div class="col-6">
                     <button type="button" class="btn btn-primary btn-block" @click="statusForm()">ลูกค้า</button>
                     <small style="color: gray; font-size: 12px;">*หากท่านต้องการสมัครเพื่อรีวิวร้านค้า</small>
-                  </div> 
+                  </div>
                   <div class="col-6">
                     <button type="button" class="btn btn-primary btn-block" @click="statusForm()">พ่อค้า/แม่ค้า</button>
                     <small style="color: gray; font-size: 12px;">*หากต้องการ จองพื้นที่ขายสินค้า</small>
-                    
-                    
-                  </div> 
-                  
+
+
+                  </div>
+
                 </div>
-                
-                
+
+
                 <form action="" class="mt-4" v-show="statusSign">
-                  
+
                   <div class="form-group">
                     <label for="inputAddress">Username :</label>
                     <input type="text" class="form-control" id="inputAddress" placeholder="Username">
@@ -185,7 +193,7 @@
                     <label for="inputAddress">Email</label>
                     <input type="email" class="form-control" id="inputAddress" placeholder="youremail@text.com">
                   </div>
-                  
+
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="inputEmail4">Tel : </label>
@@ -196,7 +204,7 @@
                       <input type="text" class="form-control" id="inputPassword4" placeholder="Surname">
                     </div>
                   </div>
-                  
+
                   <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -210,367 +218,471 @@
                       <button type="submit" class="btn btn-primary btn-block">Sign up</button>
                     </div></div>
                   </form>
-                  
+
                 </div>
-                
+
               </div>
             </div>
           </div>
-          
-          
-          
-          
-          
-          <div class="jumbotron">
 
 
-              <div class="row">
+
+
+
+          <div class="jumbotron mb-5">
+
+          <div class="row">
 
               <div class="col text-center" id="banner">
 
                   <div>
-                      <h1>จองล็อคร้านค้า</h1>
+                      <h1>สถานีคนเดินพระจอมเกล้าลาดกระบัง</h1>
                   </div>
                   <br>
-                      <a href="#map_table">   <button class="btn btn-warning">จองเลย</button></a>
+                      <a href="#map_table">   <button class="btn btn-warning">LooK a Map!</button></a>
         </div></div>
-
           </div>
 
-    <h1 class="text-center mb-5">เลือกล็อคร้านถ้าที่ต้องการ</h1>
+  <div class="container" id="sideBase">
+    <div class="row m-auto" id="intro">
 
-<div class="text-center">
-               <button class="btn btn-warning mr-2" > สามารถจองได้</button>
-                    <button class="btn btn-secondary" >ไม่สามารถจอง</button>
+        <div class="col-3 text-center">
+            <div class="circleBase">
+                <a href="#map_table">  <img src="../../../media/img/map-location.png" width="100px"></a>
+            </div>
+
+            <div class="content">
+                <h3> แผนผังร้านค้า </h3>
+                <hr>
+                <small>สามารถเลือกดู รายละเอียดร้านค้าต่าง ๆ ที่มาเปิดร้านภายในวันนั้น โดยสามารถเลือกดูในรูปของแผนผัง</small>
+            </div>
+
+        </div>
+
+
+        <div class="col-3 text-center">
+                     <div class="circleBase">
+                <img src="../../../media/img/testimonial.png" width="100px">
+            </div>
+
+        <div class="content">
+                <h3> รีวิวร้านค้า </h3>
+                <hr>
+                <small>สามารถเข้ามาอ่านรีวิวร้านค้าต่าง ๆ ได้ และหากคุณต้องการรีวิว ก็แค่สมัครสมาชิก จากนั้นก้สามารถรีวิวได้เลย</small>
+            </div>
+        </div>
+
+
+        <div class="col-3 text-center">
+                        <div class="circleBase">
+                            <a href="{% url 'booked' %}"> <img src="../../../media/img/online-shop.png" width="100px"></a>
+            </div>
+        <div class="content">
+                <h3> จองพื้นที่ </h3>
+                <hr>
+                <small>จองล็อคร้านค้าที่ต้องการ เพียงสมัครสมาชิกในรูปแบบ พ่อค้า-แม่ค้า ได้อย่างสะดวก ไม่มีปัญหาการลัดคิว</small>
+            </div>
+        </div>
+
+
+        <div class="col-3 text-center">
+                        <div class="circleBase">
+                <img src="../../../media/img/guide.png" width="100px">
+            </div>
+         <div class="content">
+                <h3> คุ่มือแนะนำ </h3>
+                <hr>
+                <small>คู่มือแนะนำเบื้องต้น สำหรับผู้ใช้บริการสถานีคนเดินพระจอมเกล้าลาดกระบัง</small>
+            </div>
+        </div>
+    </div>
 </div>
 
-          <div id="" class="m-5 table-responsive">
 
+  <div class="col text-center">
+      <h1 class="pb-10">แผนผังร้านค้า</h1>
+      <img src="../../../media/img/map.png" width="1000" style="border-radius: 50px; text-align: center">
+
+  </div>
+
+
+
+  <div class="container mt-5" style="display:block;">
+
+                <div class="row m-auto pt-10" style="display: block">
+                     <div class="col-12"><h1 class="text-center" style="border-style: solid;">สนามกีฬา</h1>
+                    </div>
+                </div>
+
+            <hr>
+  </div>
+          <div id="scroll_demo" class="p-5">
 
             <table class="m-auto table-responsive-sm" id="map_table">
-              
 
               <tr>
                 <td colspan="7"></td>
                 {% for x in line_7 %}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}
-                
-                
+
+
                 {% if x.area_code == 'F55' %}
-                
+
                 <td colspan="2"></td>
                 {% endif %}
-                
+
                 {% endfor %}
-                
+
                 <td colspan="5"></td>
-                
+
                 {% for x in line_extra %}
                 {% if x.area_code == 'F63'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %} {% endif %}
                 {% endfor %}
-                
+
                 <tr class="blank_row">
                   <td>&nbsp;</td>
                   <td colspan="30"></td>
-                  
+
                   {% for x in line_extra %}
                   {% if x.area_code == 'F64'%}
-                  {% if x.isBooking == 1 %}
+                  {% if x.approve_status == 'รอการอนุมัติ' %}
                   <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                  {% elif x.isBooking != 1 %}
-                  <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                  {% elif x.approve_status == 'อนุมัติ' %}
+                  <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                   {% elif x.approve_status == 'ไม่อนุมัติ' %}
                   <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                   {% endif %}{% endif %}
                   {% endfor %}
                 </tr>
-                
+
               </tr>
               <tr>
                 <td>&nbsp;</td>
                 <td colspan="30"></td>
-                
+
                 {% for x in line_extra %}
                 {% if x.area_code == 'F65'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endif %}
                 {% endfor %}
-                
+
               </tr>
               <tr>
                 <td colspan="9"></td>
                 {% for x in line_6 %}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endfor %}
                 <td colspan="7"></td>
-                
+
                 {% for x in line_extra %}
                 {% if x.area_code == 'F66'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %} {% endif %}
                 {% endfor %}
-                
-                
+
+
               </tr>
               <tr>
                 {% for x in line_5 %}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endfor %}
-                
+
                 <td colspan="24"></td>
-                
+
                 {% for x in line_extra %}
                 {% if x.area_code == 'F67'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %} {% endif %}
                 {% endfor %}
               </tr>
-              
+
               <tr>
                 <td colspan="8"></td>
                 {% for x in line_4 %}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %} {% endfor %}
-                
+
                 <td colspan="6"></td>
                 {% for x in line_extra %}
                 {% if x.area_code == 'F68'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %} {% endif %}
                 {% endfor %}
-                
+
               </tr>
-              
+
               <tr class="blank_row">
                 <td>&nbsp;</td>
                 <td colspan="30"></td>
-                
+
                 {% for x in line_extra %}
                 {% if x.area_code == 'F69'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endif %}
                 {% endfor %}
               </tr>
-              
+
               <tr>
                 {% for x in shop_list %}
                 {% if x.area_code == 'F38'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endif %}
                 {% endfor %}
-                
+
                 <td colspan="30"></td>
-                
+
                 {% for x in line_extra %}
                 {% if x.area_code == 'F70'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}  {% endif %}
                 {% endfor %}
-                
-                
+
+
               </tr>
-              
-              
-              
+
+
+
               <tr>
                 {% for x in shop_list %}
                 {% if x.area_code == 'F37'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %} {% endif %}
                 {% endfor %}
-                
+
                 <td colspan="4"></td>
                 {% for x in line_3 %}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endfor %}
-                
+
                 <td colspan="1"></td>
-                
+
                 {% for x in line_extra %}
                 {% if x.area_code == 'F71'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endif %}
                 {% endfor %}
               </tr>
-              
+
               <tr id="top">
                 {% for x in shop_list %}
                 {% if x.area_code == 'F36'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %} {% endif %}
                 {% endfor %}
                 <td colspan="4"></td>
                 {% for x in line_2 %}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %} {% endfor %}
-                
+
                 <td colspan="1"></td>
                 {% for x in line_extra %}
                 {% if x.area_code == 'F72'%}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}{% endif %}
                 {% endfor %}
-                {% for x in line_extra2 %}
-                {% if x.isBooking == 1 %}
-                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
-                {% elif x.approve_status == 'ไม่อนุมัติ' %}
-                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
+                {% for y in line_extra2 %}
+                {% if y.approve_status == 'รอการอนุมัติ' %}
+                <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ y.area_code }} </button></td>
+                {% elif y.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' y.id %}"><button class="btn btn-warning btn-sm w-100"> {{ y.area_code }} </button></a></td>
+                {% elif y.approve_status == 'ไม่อนุมัติ' %}
+                <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ y.area_code }} </button></td>
                 {% endif %}
                 {% endfor %}
-                
+
               </tr>
-              
+
               <tr class="blank_row">
                 <td>&nbsp;</td>
               </tr>
-              
+
               <tr class="blank_row">
                 <td>&nbsp;</td>
               </tr>
-              
+
               <tr>
                 {% for x in line_1 %}
-                {% if x.isBooking == 1 %}
+                {% if x.approve_status == 'รอการอนุมัติ' %}
                 <td><button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
-                {% elif x.isBooking != 1 %}
-                <td> <a href="{% url 'booking' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
+                {% elif x.approve_status == 'อนุมัติ' %}
+                <td> <a href="{% url 'delete_shop' x.id %}"><button class="btn btn-warning btn-sm w-100"> {{ x.area_code }} </button></a></td>
                 {% elif x.approve_status == 'ไม่อนุมัติ' %}
                 <td> <button class="btn btn-secondary btn-sm w-100" disabled> {{ x.area_code }} </button></td>
                 {% endif %}
-                
+
                 {% endfor %}
               </tr>
-              
+
             </table>
           </div>
-          
-          
-        </div>
-        
 
-        
+
+        </div>
+
+
+
+
+
+  <section class="stage">
+
+  <div class="sky">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+
+  </div>
+  <div class="train">
+    <div class="wagon"></div>
+    <div class="wagon"></div>
+    <div class="wagon"></div>
+    <div class="locomotive">
+      <div class="cabin"></div>
+      <div class="motor"></div>
+      <div class="chimney">
+        <div class="smoke"></div>
+      </div>
+      <div class="light"></div>
+    </div>
+  </div>
+
+      <div class="row">
+      <div class="col-1"></div>
+
+      <div class="col-10">
+    <h1 class="text-center" style="position: relative; top: -30px; border-style: solid">ริมทางรถไฟ</h1>
+</div>
+      <div class="col-1"></div>
+          </div>
+</section>
+
+
+
+
         <style type="text/css">
           #scroll_demo {
             width: 100%;
             height:100%;
+            background-color: #FFFAF0;
+
             /*border:1px solid red;*/
             overflow:auto;
           }
         </style>
-        
+
         <style>
-          
+
           #map_table button {
             /*border-radius: 20px;*/
           }
-          
+
+
         </style>
-        
+
+
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        
+
         <!-- #for view Js. -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        
+
+
+
         <script>
-          
+
           var app = new Vue({
             el: '#app',
             data: {
@@ -584,8 +696,36 @@
             },
           }
           )
-          
+
         </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
       </body>
       </html>

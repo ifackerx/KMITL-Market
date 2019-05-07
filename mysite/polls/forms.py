@@ -40,7 +40,12 @@ class RegistrationForm(UserCreationForm):
             'password2'
         )
 
+    def clean_username(self):
+        data = self.cleaned_data['username']
 
+        if len(data) < 5 or len(data) > 15:
+            raise forms.ValidationError('Username ต้องอยู่ระหว่าง 5-15ตัวอักษร')
+        return data
 
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
@@ -141,7 +146,8 @@ class ChoiceModelForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
 
     shop_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    shop_open = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    shop_open = forms.TimeField(label='เวลาเปิดร้าน', widget=forms.TimeInput(format='%H:%M',attrs={'class': 'form-control','placeholder': 'HH:MM'}))
+    shop_close = forms.TimeField(label='เวลาปิดร้าน', widget=forms.TimeInput(format='%H:%M',attrs={'class': 'form-control','placeholder': 'HH:MM'}))
     shop_detail = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control'}))
 
     class Meta:
@@ -149,7 +155,14 @@ class BookingForm(forms.ModelForm):
         exclude = [
             'shop_area', 'shop_owner', 'shop_booking']
 
+    def clean(self):
+        cleaned_data = super().clean()
+        start = cleaned_data.get('shop_open')
+        end = cleaned_data.get('shop_close')
 
+        if str(start) > str(end):
+            # raise forms.ValidationError('โปรดเลือกวันที่ส้นสุด')
+            self.add_error('shop_close', 'เวลาปิดร้านไม่ถูกต้อง')
 
 
 class ReviewForm(forms.Form):

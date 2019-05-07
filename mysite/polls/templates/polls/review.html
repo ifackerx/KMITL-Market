@@ -107,7 +107,17 @@
 
           </div>
           <div class="col-10">
-            <h3>{{ shopname.shop_open}}</h3>
+            <h3>
+                {% if shopname.shop_open and shopname.shop_close %}
+                Open : {{ shopname.shop_open }} - {{ shopname.shop_close }}
+                {% elif shopname.shop_open and not shopname.shop_close %}
+                    Open : {{ shopname.shop_open }}
+                {% elif not shopname.shop_open and shopname.shop_close %}
+                    Close : {{ shopname.shop_close }}
+                {% else %}
+                    -
+                {% endif %}
+            </h3>
           </div>
         </div>
 

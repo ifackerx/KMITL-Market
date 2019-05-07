@@ -29,12 +29,13 @@ def shop_detail(request):
         }
     return render(request, 'polls/shop_detail.html', context=context)
 
-
+@login_required()
 def profile(request):
     args = {'user' : request.user}
 
     return render(request, 'polls/profile.html', args)
 
+@login_required()
 def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
@@ -197,6 +198,8 @@ def review(request, shop_area):
     return render(request, template_name='polls/review.html', context=context)
 
 
+@login_required()
+@permission_required('polls.add_shop')
 def booking(request, shop_area):
     area = ShopArea.objects.get(pk=shop_area)
     now = datetime.date.today()
@@ -240,14 +243,17 @@ def booking(request, shop_area):
                     shop = Shop.objects.create(
                         shop_name=form.cleaned_data.get('shop_name'),
                         shop_open=form.cleaned_data.get('shop_open'),
+                        shop_close=form.cleaned_data.get('shop_close'),
                         shop_detail=form.cleaned_data.get('shop_detail'),
                         image=request.FILES.get('image'),
                         shop_area=area,
                         shop_owner=user,
-                        shop_booking= now
+                        shop_booking= now,
+
 
                     )
                     shopArea.isBooking = 1
+                    shopArea.approve_status = 'รอการอนุมัติ'
                     shopArea.shop_owner = user
                     shopArea.save()
                     print(shopArea.isBooking)
@@ -260,6 +266,7 @@ def booking(request, shop_area):
                 shop = Shop.objects.create(
                     shop_name=form.cleaned_data.get('shop_name'),
                     shop_open=form.cleaned_data.get('shop_open'),
+                    shop_close=form.cleaned_data.get('shop_close'),
                     shop_detail=form.cleaned_data.get('shop_detail'),
                     image=request.FILES.get('image'),
                     shop_area=area,
@@ -268,6 +275,7 @@ def booking(request, shop_area):
 
                 )
                 shopArea.isBooking = 1
+                shopArea.approve_status = 'รอการอนุมัติ'
                 shopArea.shop_owner = user
                 shopArea.save()
 
@@ -421,13 +429,6 @@ def update(request, poll_id):
     context = {'form' : form, 'formset' : formset ,'poll_obj' : poll}
     return render(request, 'polls/update.html', context=context)
 
-@login_required
-@permission_required('polls.change_poll')
-def delete_question(request, question_id):
-    question = Question.objects.get(id=question_id)
-    question.delete()
-    return redirect('update_poll', poll_id=question.poll.id)
-
 
 @login_required
 @permission_required('polls.change_poll')
@@ -526,6 +527,8 @@ def booked(request):
 
     return render(request, template_name='polls/booked.html', context=context)
 
+@login_required()
+@permission_required('polls.change_shop')
 def edit_shop(request, shop_id):
     a = Shop.objects.get(id=shop_id)
     b = Shop.objects.filter(id=shop_id)
@@ -542,3 +545,75 @@ def edit_shop(request, shop_id):
 
     return render(request, template_name='polls/edit_shop.html', context=context)
 
+
+
+def delete_shop(request, shop_area):
+    area = ShopArea.objects.get(id=shop_area)
+    area.isBooking = 0
+    area.shop_owner_id = None
+    area.approve_status = "ไม่อนุมัติ"
+    area.save()
+    Shop.objects.filter(shop_area=shop_area).delete()
+    # SomeModel.objects.filter(id=id).delete()
+
+    return redirect('delete')
+
+
+
+def delete(request):
+
+    # query_set = Group.objects.filter(user=request.user)
+    # group_name = ''
+    # for g in query_set:
+    #     group_name = g.name
+
+
+    shop_list = ShopArea.objects.all()
+    shop_listz = ShopArea.objects.all()[0:1]
+
+    line_1 = ShopArea.objects.all()[0:34:-1]
+    line_2 = ShopArea.objects.all()[76:101:-1]
+    line_3 = ShopArea.objects.all()[101:126:-1]
+    line_4 = ShopArea.objects.all()[127:144:-1]
+    line_5 = ShopArea.objects.all()[38:45]
+    line_6 = ShopArea.objects.all()[145:160:-1]
+    line_7 = ShopArea.objects.all()[45:62]
+
+
+    line_extra = ShopArea.objects.all()[62:72]
+    line_extra2 = ShopArea.objects.all()[72:76]
+
+    shop = Shop.objects.all()
+
+
+    context = {
+        'shop_list' : shop_list,
+        'shop_listz' : shop_listz,
+        'line_1' : line_1,
+        'line_2' : line_2,
+        'line_3' : line_3,
+        'line_4' : line_4,
+        'line_5' : line_5,
+        'line_6' : line_6,
+        'line_7' : line_7,
+        'line_extra' : line_extra,
+        'line_extra2' : line_extra2,
+        'user' : request.user,
+        'shopr': shop,
+    }
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user:
+            login(request, user)
+
+            return redirect('index')
+        else:
+            context['username'] = username
+            context['password'] = password
+            context['error'] = 'Wrong username or password'
+
+    return render(request, template_name='polls/delete.html', context=context)

@@ -1,6 +1,7 @@
 
 body {
   font-family: 'Athiti', sans-serif;
+
   background: url(../images/photolog.jpg) no-repeat center center fixed;
   background-blend-mode: darken;
   -webkit-background-size: cover;

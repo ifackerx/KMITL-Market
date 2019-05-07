@@ -6,7 +6,8 @@
     <title>Shop Detail</title>
     <link rel="stylesheet" href="{% static 'polls/css/shop.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+      <link href="https://fonts.googleapis.com/css?family=Athiti:500" rel="stylesheet">
+
 </head>
 <body>
     
@@ -86,7 +87,7 @@
             {% for i in shoplink %}
                 <tr>
 
-                <td>{{ i.shop_name }}   </td>
+                <td>{{ forloop.counter }} : {{ i.shop_name }}   </td>
                 <td> <a href="{% url 'edit_shop' i.id %}">แก้ไขรายละเอียด</a></td>
                 </tr>
 
