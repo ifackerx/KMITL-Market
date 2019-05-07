@@ -40,25 +40,49 @@
                 <span class="sr-only">(current)</span>
               </a>
         </li>
- {% if perms.polls.add_shop %}
-              <li class="nav-item">
-              <a class="nav-link" href="{% url 'booked' %}">  Book</a>
+       {% if perms.polls.delete_shop %}
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'delete' %}">  delete shop</a>
               </li>
 
 
+        {% endif %}
+ {% if perms.polls.add_shop %}
+              <li class="nav-item">
+
+              <a class="nav-link" href="{% url 'booked' %}">  Book</a>
+              </li>
           {% endif %}
-                  <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}"> Guide</a>
-            </li>
+
           {% if not user.is_authenticated %}
-            <li class="nav-item">
+             <li class="nav-item">
+                 <div class="nav-link">|</div>
+            </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}"> Login</a>
             </li>
           {% else %}
-              <a class="nav-link" href="{% url 'logout' %}"> Logout</a>
+               <li class="nav-item">
+                 <div class="nav-link">|</div>
+            </li>
+
+              <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{ user }}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <a href="{% url 'profile' %}"><button class="dropdown-item" type="button">Profile</button></a>
+    <a href="{% url 'shop_detail' %}"><button class="dropdown-item" type="button">Edit Shop</button></a>
+      <a href="{% url 'logout' %}"><button class="dropdown-item" type="button">Log out</button></a>
+
+  </div>
+</div>
+
           {% endif %}
                 {% if not user.is_authenticated %}
-            <li class="nav-item">
+
+                    <li class="nav-item">
                 <a class="nav-link" href="{% url 'register' %}"> Sign Up</a>
             </li>
         {% endif %}
@@ -67,8 +91,6 @@
     </div>
   </div>
 </nav>
-
-
 
 
 
@@ -236,81 +258,21 @@
               <div class="col text-center" id="banner">
 
                   <div>
-                      <h1>สถานีคนเดินพระจอมเกล้าลาดกระบัง</h1>
+                      <h1 style="color: red;">ลบร้านค้า</h1>
                   </div>
                   <br>
                       <a href="#map_table">   <button class="btn btn-warning">LooK a Map!</button></a>
         </div></div>
           </div>
 
-  <div class="container" id="sideBase">
-    <div class="row m-auto" id="intro">
 
-        <div class="col-3 text-center">
-            <div class="circleBase">
-                <a href="#map_table">  <img src="../../../media/img/map-location.png" width="100px"></a>
-            </div>
-
-            <div class="content">
-                <h3> แผนผังร้านค้า </h3>
-                <hr>
-                <small>สามารถเลือกดู รายละเอียดร้านค้าต่าง ๆ ที่มาเปิดร้านภายในวันนั้น โดยสามารถเลือกดูในรูปของแผนผัง</small>
-            </div>
-
-        </div>
-
-
-        <div class="col-3 text-center">
-                     <div class="circleBase">
-                <img src="../../../media/img/testimonial.png" width="100px">
-            </div>
-
-        <div class="content">
-                <h3> รีวิวร้านค้า </h3>
-                <hr>
-                <small>สามารถเข้ามาอ่านรีวิวร้านค้าต่าง ๆ ได้ และหากคุณต้องการรีวิว ก็แค่สมัครสมาชิก จากนั้นก้สามารถรีวิวได้เลย</small>
-            </div>
-        </div>
-
-
-        <div class="col-3 text-center">
-                        <div class="circleBase">
-                            <a href="{% url 'booked' %}"> <img src="../../../media/img/online-shop.png" width="100px"></a>
-            </div>
-        <div class="content">
-                <h3> จองพื้นที่ </h3>
-                <hr>
-                <small>จองล็อคร้านค้าที่ต้องการ เพียงสมัครสมาชิกในรูปแบบ พ่อค้า-แม่ค้า ได้อย่างสะดวก ไม่มีปัญหาการลัดคิว</small>
-            </div>
-        </div>
-
-
-        <div class="col-3 text-center">
-                        <div class="circleBase">
-                <img src="../../../media/img/guide.png" width="100px">
-            </div>
-         <div class="content">
-                <h3> คุ่มือแนะนำ </h3>
-                <hr>
-                <small>คู่มือแนะนำเบื้องต้น สำหรับผู้ใช้บริการสถานีคนเดินพระจอมเกล้าลาดกระบัง</small>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-  <div class="col text-center">
-      <h1 class="pb-10">แผนผังร้านค้า</h1>
-      <img src="../../../media/img/map.png" width="1000" style="border-radius: 50px; text-align: center">
-
-  </div>
 
 
 
   <div class="container mt-5" style="display:block;">
 
                 <div class="row m-auto pt-10" style="display: block">
-                     <div class="col-12"><h1 class="text-center" style="border-style: solid;">สนามกีฬา</h1>
+                     <div class="col-12"><h1 class="text-center" style="border-style: solid;">เลือกร้านค้าที่ต้องการลบ</h1>
                     </div>
                 </div>
 
@@ -614,38 +576,6 @@
 
 
 
-
-
-  <section class="stage">
-
-  <div class="sky">
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-
-  </div>
-  <div class="train">
-    <div class="wagon"></div>
-    <div class="wagon"></div>
-    <div class="wagon"></div>
-    <div class="locomotive">
-      <div class="cabin"></div>
-      <div class="motor"></div>
-      <div class="chimney">
-        <div class="smoke"></div>
-      </div>
-      <div class="light"></div>
-    </div>
-  </div>
-
-      <div class="row">
-      <div class="col-1"></div>
-
-      <div class="col-10">
-    <h1 class="text-center" style="position: relative; top: -30px; border-style: solid">ริมทางรถไฟ</h1>
-</div>
-      <div class="col-1"></div>
-          </div>
-</section>
 
 
 

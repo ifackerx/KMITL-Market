@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Edit Shop[
+  <title>Edit Shop
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -33,15 +33,21 @@
                 <span class="sr-only">(current)</span>
               </a>
         </li>
+       {% if perms.polls.delete_shop %}
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'delete' %}">  delete shop</a>
+              </li>
+
+
+        {% endif %}
  {% if perms.polls.add_shop %}
               <li class="nav-item">
 
               <a class="nav-link" href="{% url 'booked' %}">  Book</a>
               </li>
           {% endif %}
-                  <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}"> Guide</a>
-            </li>
+
           {% if not user.is_authenticated %}
              <li class="nav-item">
                  <div class="nav-link">|</div>
@@ -60,7 +66,6 @@
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
       <a href="{% url 'profile' %}"><button class="dropdown-item" type="button">Profile</button></a>
-    <a href="{% url 'edit_profile' %}"><button class="dropdown-item" type="button">Edit Profile</button></a>
     <a href="{% url 'shop_detail' %}"><button class="dropdown-item" type="button">Edit Shop</button></a>
       <a href="{% url 'logout' %}"><button class="dropdown-item" type="button">Log out</button></a>
 
@@ -86,13 +91,21 @@
     <div class="row">
         <div class="col-4 text-center">
 
-    <img src="{{ user.userprofile.image.url }}" width="300" height="300"><br>
-    <a href="{% url 'edit_profile' %}"><button type="button" class="btn btn-warning w-100 mt-2">Edit Profile</button></a>
+            {% if user.userprofile.image %}
+            <img src="{{ user.userprofile.image.url }}" width="300" height="300"><br>
+        {% else %}
+            <img src="../../../media/img/no-img.png" width="300" height="300"><br>
+
+
+        {% endif %}
+
+    <a href="{% url 'edit_pic' %}"><button type="button" class="btn btn-warning w-100 mt-2">Edit Profile Picture</button></a>
         </div>
         <div class="col-8">
             <div class="row mb-3">
                 <div class="col-4"><h2>Username :</h2></div>
-                <div class="col-6"><h2>{{ user }}</h2></div>
+                <div class="col-4"><h2>{{ user }}</h2></div>
+                <div class="col-4"><h4><a href="{% url 'edit_profile' %}"><img src="../../../media/img/edit.png" width="30px">แก้ไขข้อมูล</a></h4></div>
             </div>
 
             <hr>

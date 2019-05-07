@@ -10,10 +10,10 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.views import View
 
-from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea
+from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea, UserProfile
 
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm, EditProfileForm, \
-    RegistrationForm, BookingForm, HotelForm
+    RegistrationForm, BookingForm, HotelForm, UserProfileForm
 
 
 def shop_detail(request):
@@ -38,7 +38,7 @@ def profile(request):
 @login_required()
 def edit_profile(request):
     if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance=request.user)
+        form = EditProfileForm(request.POST,request.FILES, instance=request.user)
 
         if form.is_valid():
             form.save()
@@ -47,6 +47,26 @@ def edit_profile(request):
         form = EditProfileForm(instance=request.user)
         args = {'form' : form}
         return render(request, template_name='polls/edit_profile.html', context=args)
+
+
+@login_required()
+def edit_pic(request):
+    a = UserProfile.objects.get(user_id=request.user.id)
+    b = UserProfile.objects.filter(user_id=request.user.id)
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=a)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = UserProfileForm(instance=a)
+
+    context = {
+    'form': form,
+    'shop': b
+     }
+    return render(request, template_name='polls/edit_pic.html', context=context)
+
 
 def register(request):
     if request.method == 'POST':
@@ -547,6 +567,9 @@ def edit_shop(request, shop_id):
 
 
 
+
+@login_required()
+@permission_required('polls.delete_shop')
 def delete_shop(request, shop_area):
     area = ShopArea.objects.get(id=shop_area)
     area.isBooking = 0
@@ -560,6 +583,8 @@ def delete_shop(request, shop_area):
 
 
 
+@login_required()
+@permission_required('polls.delete_shop')
 def delete(request):
 
     # query_set = Group.objects.filter(user=request.user)
