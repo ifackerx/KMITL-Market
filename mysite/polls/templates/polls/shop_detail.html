@@ -1,4 +1,4 @@
-<!DOCTYPE html>    {% load staticfiles %}
+<!DOCTYPE html>    {% load static %}
 
 <html lang="en">
 <head>
@@ -12,66 +12,98 @@
     
     
     
-    
-    
-    
-    {% if shoplink != 'noo' %}
-    
-    {% for i in shoplink %}
-    
-    
-    <div class="container">
-        
-        <div id="frameA">
-            <div class="row">
-                <div class="col m-5 text-center">
-                      {% if i.image %}
-        <img src="{{ i.image.url }}" width="300px" height="300">
 
-        {% else %}
-        <img src="../../../media/img/no-img.png" width="200px">
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'index2' %}">
+                <img src="../../../media/img/train.png" width="50px"> KMITL MARKET
+        </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index2' %}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+ {% if perms.polls.add_shop %}
+              <li class="nav-item">
+
+              <a class="nav-link" href="{% url 'booked' %}">  Book</a>
+              </li>
+          {% endif %}
+                  <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}"> Guide</a>
+            </li>
+          {% if not user.is_authenticated %}
+             <li class="nav-item">
+                 <div class="nav-link">|</div>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}"> Login</a>
+            </li>
+          {% else %}
+               <li class="nav-item">
+                 <div class="nav-link">|</div>
+            </li>
+
+              <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{ user }}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <a href="{% url 'profile' %}"><button class="dropdown-item" type="button">Profile</button></a>
+    <a href="{% url 'edit_profile' %}"><button class="dropdown-item" type="button">Edit Profile</button></a>
+    <a href="{% url 'shop_detail' %}"><button class="dropdown-item" type="button">Edit Shop</button></a>
+      <a href="{% url 'logout' %}"><button class="dropdown-item" type="button">Log out</button></a>
+
+  </div>
+</div>
+
+          {% endif %}
+                {% if not user.is_authenticated %}
+
+                    <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}"> Sign Up</a>
+            </li>
         {% endif %}
-                    <p class="mt-4 h3 text-center">ZONE : {{ i.shop_area.area_code }}</p>
 
-                </div>
-                <div class="col m-5">
-
-
-
-                    {% if i.shop_area.isBooking == 0 %}
-                    <a href="{% url 'booking' i.shop_area.id %}">Book</a>
-                    {% else %}
-                    <a href="{% url 'review' i.shop_area.id %}">Review</a>
-                    {% endif %}
-                    {{ i.shop_area.isBooking }}
-
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        
-        
-
-        {% endfor %}
-        
-        
-        
-        {% else %}
-        NO data
-        sdfsdf
-        <a href="{% url 'booking' shop_area %}">Book</a>
-        
-        
-        {% endif %}
-        
+      </ul>
     </div>
+  </div>
+</nav>
     
     
-    
-    
-    
+
+    <div class="container">
+    <table class="table table-light table-bordered">
+
+    {% if shoplink != 'Nodata' %}
+            {% for i in shoplink %}
+                <tr>
+
+                <td>{{ i.shop_name }}   </td>
+                <td> <a href="{% url 'edit_shop' i.id %}">แก้ไขรายละเอียด</a></td>
+                </tr>
+
+            {% endfor %}
+    {% else %}
+             <tr>
+                 <td>Nodata</td>
+             </tr>
+    {% endif %}
+    </table>
+    </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     
 </body>
 </html>

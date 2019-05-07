@@ -16,16 +16,16 @@ from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceMod
     RegistrationForm, BookingForm, HotelForm
 
 
-def shop_detail(request, shop_area):
-    shoplink = Shop.objects.filter(shop_area=shop_area)
+def shop_detail(request):
+    shoplink = Shop.objects.filter(shop_owner=request.user.id)
+    print(shoplink)
     if shoplink:
         context = {
             'shoplink' : shoplink
         }
     else:
         context = {
-            'shoplink': 'noo',
-            'shop_area' : shop_area
+            'shoplink' : 'Nodata'
         }
     return render(request, 'polls/shop_detail.html', context=context)
 
@@ -525,3 +525,20 @@ def booked(request):
 
 
     return render(request, template_name='polls/booked.html', context=context)
+
+def edit_shop(request, shop_id):
+    a = Shop.objects.get(id=shop_id)
+    b = Shop.objects.filter(id=shop_id)
+    if request.method == 'POST':
+        form = BookingForm(request.POST,request.FILES, instance=a)
+        if form.is_valid():
+            form.save()
+    else:
+        form = BookingForm(instance=a)
+    context = {
+                'form' : form,
+                'shop' : b
+                }
+
+    return render(request, template_name='polls/edit_shop.html', context=context)
+

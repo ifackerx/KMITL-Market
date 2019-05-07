@@ -10,7 +10,7 @@ urlpatterns = [
     path('booked/', views.booked, name='booked'),
 
     path('review/<int:shop_area>/', views.review, name='review'),
-    path('shop_detail/<int:shop_area>/', views.shop_detail, name='shop_detail'),
+    path('shop_detail/', views.shop_detail, name='shop_detail'),
 
     path('booking/<int:shop_area>/', views.booking, name='booking'),
 
@@ -18,7 +18,6 @@ urlpatterns = [
 
 
     path('profile/', views.profile, name='profile'),
-    path('edit_profile/', views.edit_profile, name='edit_profile'),
 
     path('detail/<int:poll_id>/', views.detail, name='poll_detail'),
 
@@ -32,6 +31,9 @@ urlpatterns = [
     path('delete/<int:question_id>/', views.delete_question, name='delete_question'),
     path('<int:question_id>/add-choice/', views.add_choice, name='add_choice'),
     path('api/<int:question_id>/add-choice/', views.add_choice_api, name='add_choice_api'),
+
+    path('edit_shop/<int:shop_id>/', views.edit_shop, name='edit_shop'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
 
 ]
 

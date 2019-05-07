@@ -15,7 +15,6 @@ class EditProfileForm(UserChangeForm):
             'email',
             'first_name',
             'last_name',
-            'password',
 
         )
 
@@ -162,3 +161,8 @@ class HotelForm(forms.ModelForm):
     class Meta:
         model = Hotel
         fields = ['name', 'hotel_Main_Img']
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = '__all__'

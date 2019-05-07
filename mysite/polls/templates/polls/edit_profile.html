@@ -9,7 +9,10 @@
     <form method="post">
 
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.email }}
+        {{ form.first_name }}
+        {{ form.last_name }}
+
         <button type="submit">Submit</button>
     </form>
 
