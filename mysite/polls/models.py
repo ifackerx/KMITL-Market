@@ -10,73 +10,19 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 
 
-class Poll(models.Model):
-
-    title = models.CharField(max_length=100)
-    start_date = models.DateField(null=True, blank=True)
-    end_date = models.DateField(null=True, blank=True)
-    del_flag = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.title
-
-
-class Question(models.Model):
-    text = models.TextField()
-    SINGLE = '01'
-    MULTIPLE = '02'
-    TYPES = (
-        (SINGLE, 'Single answer'),
-        (MULTIPLE, 'Multiple answer')
-    )
-    type = models.CharField(max_length=2, choices=TYPES, default='01')
-    poll = models.ForeignKey(Poll, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return '(%s) %s' % (self.poll.title, self.text)
-
-
-class Choice(models.Model):
-    text = models.CharField(max_length=100)
-    value = models.IntegerField(default=0)
-    question = models.ForeignKey(Question, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return '(%s) %s' % (self.question.text, self.text)
-
-
-class Answer(models.Model):
-    choice = models.OneToOneField(Choice, on_delete=models.PROTECT)
-    question = models.ForeignKey(Question, on_delete=models.PROTECT)
-
-class Comment(models.Model):
-
-    poll = models.ForeignKey(Poll, on_delete=models.CASCADE, null=True, blank=True)
-
-    title = models.CharField(max_length=100)
-    body = models.TextField()
-    email = models.EmailField()
-    tel = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.title
-
-
 # project
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     image = models.ImageField(upload_to='img/user', blank=True)
 
     def __str__(self):
-        return  self.user.username
+        return self.user.username
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = UserProfile.objects.create(user=kwargs['instance'])
 
 post_save.connect(create_profile, sender=User)
-
-
 
 
 class Zone(models.Model):
@@ -100,9 +46,6 @@ class ShopArea(models.Model):
 
     def __str__(self):
         return self.area_code
-
-
-
 
 
 class Shop(models.Model):
@@ -149,8 +92,6 @@ class Payment(models.Model):
     payment_date = models.DateField(null=True)
     user_payment = models.ForeignKey(User, on_delete=models.PROTECT)
     payment_shop = models.ForeignKey(Shop, on_delete=models.PROTECT)
-
-
 
 
 class Event(models.Model):

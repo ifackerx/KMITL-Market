@@ -10,10 +10,9 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.views import View
 
-from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea, UserProfile
+from .models import Review, Shop, ShopArea, UserProfile
 
-from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm, EditProfileForm, \
-    RegistrationForm, BookingForm, HotelForm, UserProfileForm
+from .forms import ReviewForm, EditProfileForm, RegistrationForm, BookingForm, UserProfileForm
 
 @login_required()
 @permission_required('polls.change_shop')
@@ -90,7 +89,6 @@ def register(request):
     return render(request, template_name='polls/register.html', context=args)
 
 
-from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm
 
 def my_login(request):
     context = {}
@@ -311,179 +309,11 @@ def booking(request, shop_area):
         'page_title': 'welcome to my poll page',
         'area': area,
         'form': form,
+
     }
 
     return render(request, template_name='polls/booking.html', context=context)
-def index(request):
 
-    poll_list = Poll.objects.all()
-
-    for poll in poll_list:
-        question_count = Question.objects.filter(poll_id=poll.id).count()
-        poll.question_count = question_count
-
-    context = {
-        'page_title' : 'wellcome to my poll page',
-        'poll_list' : poll_list
-
-    }
-
-    return render(request, template_name='polls/index.html', context=context)
-
-@login_required
-@permission_required('polls.view_poll')
-def detail(request, poll_id):
-
-    poll = Poll.objects.get(pk=poll_id)
-
-    print(request.POST)
-    if request.method == 'POST':
-        for question in poll.question_set.all():
-            name = 'choice' + str(question.id)
-            choice_id = request.POST.get(name)
-            print(choice_id)
-
-            if choice_id:
-                try:
-                    ans = Answer.objects.get(question_id=question.id)
-                    ans.choice_id = choice_id
-                    ans.save()
-
-                except Answer.DoesNotExist:
-                    Answer.objects.create(
-                        choice_id=choice_id,
-                        question_id=question.id,
-                    )
-    return render(request, "polls/detail.html", {'poll': poll})
-
-@login_required
-@permission_required('polls.add_poll')
-def create(request):
-    context = {
-
-    }
-    QuestionFormSet = formset_factory(QuestionForm, extra=2, max_num=10)
-    if request.method == 'POST':
-        form = PollModelForm(request.POST)
-        formset = QuestionFormSet(request.POST)
-        if form.is_valid():
-            poll = form.save()
-            if formset.is_valid():
-                for question_form in formset:
-                    Question.objects.create(
-                        text=question_form.cleaned_data.get('text'),
-                        type=question_form.cleaned_data.get('type'),
-                        poll=poll
-                    )
-                context['success'] = "Poll %s is created successfully!" % poll.title
-    else:
-        form = PollModelForm()
-        formset = QuestionFormSet()
-
-    context['form'] = form
-    context['formset'] = formset
-    return render(request, 'polls/create.html', context=context)
-
-def comment(request, poll_id):
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-
-        if form.is_valid():
-            comment = Comment.objects.create(
-                title=form.cleaned_data.get('title'),
-                body=form.cleaned_data.get('body'),
-                email=form.cleaned_data.get('email'),
-                tel=form.cleaned_data.get('tel'),
-            )
-    else:
-        form = CommentForm()
-
-    context = {
-        'form': form,
-        'poll_id' : poll_id
-    }
-    return render(request, 'polls/create-comment.html', context=context)
-
-@login_required
-@permission_required('polls.change_poll')
-def update(request, poll_id):
-
-    poll = Poll.objects.get(id=poll_id)
-    QuestionFormSet = formset_factory(QuestionForm, extra=2, max_num=10)
-
-    if request.method == 'POST':
-        form = PollModelForm(request.POST, instance=poll)
-        formset = QuestionFormSet(request.POST)
-        if form.is_valid():
-            form.save()
-            if formset.is_valid():
-                for question_form in formset:
-                    if question_form.cleaned_data.get('question_id'):
-                        question = Question.objects.get(id=question_form.cleaned_data.get('question_id'))
-                        if question:
-                            question.text = question_form.cleaned_data.get('text')
-                            question.type = question_form.cleaned_data.get('type')
-                            question.save()
-                    else:
-                        if question_form.cleaned_data.get('text'):
-                            Question.objects.create(
-                                text=question_form.cleaned_data.get('text'),
-                                type=question_form.cleaned_data.get('type'),
-                                poll=poll
-                            )
-                return redirect('update_poll', poll_id=poll_id)
-    else:
-        form = PollModelForm(instance=poll)
-        data = []
-        for question in poll.question_set.all():
-            data.append(
-                {
-                    'text' : question.text,
-                    'type' : question.type,
-                    'question_id' : question.id
-                }
-            )
-        print(data)
-
-        formset = QuestionFormSet(initial=data)
-
-    context = {'form' : form, 'formset' : formset ,'poll_obj' : poll}
-    return render(request, 'polls/update.html', context=context)
-
-
-@login_required
-@permission_required('polls.change_poll')
-def add_choice(request, question_id):
-    question = Question.objects.get(id=question_id)
-
-    context = {'question': question}
-    return render(request, 'choices/add.html', context=context)
-
-def add_choice_api(request, question_id):
-    if request.method == 'POST':
-        choice_list = json.loads(request.body)
-        error_list = []
-        # question = Question.objects.get(pk=question_id)
-
-        for choice in choice_list:
-
-            data = {
-                'text': choice['text'],
-                'value': choice['value'],
-                'question': question_id
-            }
-            form = ChoiceModelForm(data)
-            print(form)
-            if form.is_valid():
-                form.save()
-            else:
-                print(form.errors)
-                error_list.append(form.errors.as_text())
-        if len(error_list) == 0:
-            return JsonResponse({'message' : 'success'}, status=200)
-        else:
-            return JsonResponse({'message' : error_list}, status=400)
-    return JsonResponse({'message': 'This API does not accept GET request.'}, status=405)
 
 
 @login_required()
