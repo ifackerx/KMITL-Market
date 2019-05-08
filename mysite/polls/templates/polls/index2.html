@@ -73,7 +73,9 @@
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
       <a href="{% url 'profile' %}"><button class="dropdown-item" type="button">Profile</button></a>
+ {% if perms.polls.add_shop %}
     <a href="{% url 'shop_detail' %}"><button class="dropdown-item" type="button">Edit Shop</button></a>
+     {% endif %}
       <a href="{% url 'logout' %}"><button class="dropdown-item" type="button">Log out</button></a>
 
   </div>

@@ -15,7 +15,8 @@ from .models import Poll, Question, Answer, Comment, Review, Shop, ShopArea, Use
 from .forms import PollForm, CommentForm, PollModelForm, QuestionForm, ChoiceModelForm, ReviewForm, EditProfileForm, \
     RegistrationForm, BookingForm, HotelForm, UserProfileForm
 
-
+@login_required()
+@permission_required('polls.change_shop')
 def shop_detail(request):
     shoplink = Shop.objects.filter(shop_owner=request.user.id)
     print(shoplink)
