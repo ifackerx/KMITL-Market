@@ -37,6 +37,9 @@ class RegistrationForm(UserCreationForm):
             'password1',
             'password2'
         )
+        # widgets = {
+        #     'username':
+        # }
 
     def clean_username(self):
         data = self.cleaned_data['username']

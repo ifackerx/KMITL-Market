@@ -81,13 +81,22 @@ def register(request):
             else:
                 group = Group.objects.get(name='Merchant')
                 user.groups.add(group)
-            return redirect('index2')
+            return redirect('login')
     else:
         form = RegistrationForm()
 
     args = {'form': form}
     return render(request, template_name='polls/register.html', context=args)
 
+
+def adminx(request):
+    return redirect('/admin')
+
+
+
+def guide(request):
+    context = {}
+    return render(request, 'polls/guide.html', context=context)
 
 
 def my_login(request):
@@ -387,6 +396,7 @@ def edit_shop(request, shop_id):
         form = BookingForm(request.POST,request.FILES, instance=a)
         if form.is_valid():
             form.save()
+            redirect('index2')
     else:
         form = BookingForm(instance=a)
     context = {
