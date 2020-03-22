@@ -14,3 +14,6 @@
 - จัดการอณุมัติร้านค้า
 
 <image src="readme-src/usecase.png" alt="api overview"/>
+
+# How to Use
+- สามารถโหลดเอกสารคู่มือได้จาก folder `handbook` ใน git 
