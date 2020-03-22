@@ -17,7 +17,7 @@
 
 # How to Use
 - สามารถโหลดเอกสารคู่มือได้จาก folder `KMITL-Market/handbook`
-- คลิป Demo on [Youtube](https://youtu.be/boOhlhBxT88)
+- หรือสามารถดูคลิป Demo ได้ที่ [KMITL-MARKET](https://youtu.be/boOhlhBxT88)
 
 # Tools
 
