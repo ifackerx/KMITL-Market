@@ -16,4 +16,4 @@
 <image src="readme-src/usecase.png" alt="api overview"/>
 
 # How to Use
-- สามารถโหลดเอกสารคู่มือได้จาก folder `handbook` ใน git 
+- สามารถโหลดเอกสารคู่มือได้จาก folder `KMITL-Market/handbook`
