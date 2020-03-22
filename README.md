@@ -17,9 +17,13 @@
 
 # How to Use
 - สามารถโหลดเอกสารคู่มือได้จาก folder `KMITL-Market/handbook`
+- คลิป Demo on [Youtube](https://youtu.be/boOhlhBxT88)
 
 # Tools
 
 - `Django` for back-end
 - `Vue.JS` for front-end
 - `MySQL` for database
+
+# Example 
+
